@@ -1,15 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhdew4mlkjxct"]
+[gd_scene load_steps=7 format=3 uid="uid://dhdew4mlkjxct"]
 
 [ext_resource type="PackedScene" uid="uid://bd6vv0g2vw6ie" path="res://Scenes/interior_character.tscn" id="1_6ih0u"]
 [ext_resource type="Script" path="res://src/ship_interior.gd" id="1_x326t"]
 [ext_resource type="Script" path="res://src/interior_border.gd" id="3_8rish"]
 [ext_resource type="PackedScene" uid="uid://dbtoh2vrw0ta1" path="res://Scenes/interactable.tscn" id="4_wpjgs"]
+[ext_resource type="PackedScene" uid="uid://d348lg2dx6dqf" path="res://Scenes/user_interface.tscn" id="5_ptrib"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_aamvy"]
 
 [node name="ShipInterior" type="Node2D"]
 script = ExtResource("1_x326t")
 metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -2025.0
+offset_top = -1601.0
+offset_right = 2757.0
+offset_bottom = 1499.0
+color = Color(0.136826, 0.136826, 0.136826, 1)
 
 [node name="ShipFloor" type="Polygon2D" parent="."]
 color = Color(0.544288, 0.298503, 0.0982161, 1)
@@ -40,3 +48,5 @@ action_name = "Navigation"
 [node name="Engines" parent="." instance=ExtResource("4_wpjgs")]
 position = Vector2(0, 135)
 action_name = "Engines"
+
+[node name="Hud" parent="." instance=ExtResource("5_ptrib")]
