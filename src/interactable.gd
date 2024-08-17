@@ -4,12 +4,15 @@ extends Sprite2D
 @export var threshhold_distance: float = 130
 
 var player: CharacterBody2D
+@onready var label = $Label
 
 signal interacted(action_name: String)
 
 func _ready():
 	add_to_group("interactable")
 	player = get_parent().get_node("InteriorCharacter")
+	label.text = action_name
+	label.visible = false
 	assert(player, "Player not found")
 	# Connects the interacted signal to the interaction controller
 	self.connect("interacted", InteractionController.interacted_with_object)
@@ -17,6 +20,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	var player_near = is_player_near();
+	label.visible = player_near
 	if player_near:
 		modulate = Color(1, 1, 1, .5)
 	else:

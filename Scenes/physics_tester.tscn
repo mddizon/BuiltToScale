@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm6dk33upugkp"]
+
+[ext_resource type="Texture2D" uid="uid://cqbidmh5p2s84" path="res://Resources/Art/red_character.png" id="1_21h8x"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s5io1"]
+friction = 0.0
+bounce = 5.9
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3gvr3"]
+radius = 23.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_psgqd"]
+friction = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkpxo"]
+size = Vector2(522, 16)
+
+[node name="PhysicsTester" type="Node2D"]
+
+[node name="Ball" type="RigidBody2D" parent="."]
+position = Vector2(277, 101)
+physics_material_override = SubResource("PhysicsMaterial_s5io1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+texture = ExtResource("1_21h8x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("CircleShape2D_3gvr3")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_psgqd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(269, 305)
+shape = SubResource("RectangleShape2D_vkpxo")

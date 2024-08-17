@@ -1,21 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4kxm63m55gyf"]
+[gd_scene load_steps=5 format=3 uid="uid://d4kxm63m55gyf"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_8hfjr"]
 [ext_resource type="LabelSettings" uid="uid://dffgelpd4rgp8" path="res://Resources/title_font_settings.tres" id="2_trujm"]
 [ext_resource type="Theme" uid="uid://w7lokxr7htxk" path="res://Resources/button_theme.tres" id="3_dnofe"]
+[ext_resource type="PackedScene" uid="uid://cm6dk33upugkp" path="res://Scenes/physics_tester.tscn" id="4_3rwbg"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_8hfjr")
 
-[node name="Hud" type="CanvasLayer" parent="."]
+[node name="PhysicsTester" parent="." instance=ExtResource("4_3rwbg")]
+position = Vector2(123, 206)
 
-[node name="ColorRect" type="ColorRect" parent="Hud"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.791401, 0.5044, 0.92071, 1)
+[node name="Hud" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="Hud"]
 anchors_preset = 8

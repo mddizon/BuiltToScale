@@ -9,6 +9,7 @@
 
 [node name="ShipInterior" type="Node2D"]
 script = ExtResource("1_x326t")
+metadata/_edit_lock_ = true
 
 [node name="ShipFloor" type="Polygon2D" parent="."]
 color = Color(0.544288, 0.298503, 0.0982161, 1)
@@ -22,11 +23,20 @@ points = PackedVector2Array(8, 277, 481, 304, 1077, 685, 763, -616, 475, -930, -
 script = ExtResource("3_8rish")
 
 [node name="InteriorCharacter" parent="." instance=ExtResource("1_6ih0u")]
-position = Vector2(-808, 175)
+position = Vector2(-4, -333)
 motion_mode = 1
-speed = 200
+speed = 300
 
 [node name="Camera2D" type="Camera2D" parent="InteriorCharacter"]
 
-[node name="Interactable" parent="." instance=ExtResource("4_wpjgs")]
-action_name = "Locker"
+[node name="WeaponsLocker" parent="." instance=ExtResource("4_wpjgs")]
+position = Vector2(-691, -227)
+action_name = "Weapons Locker"
+
+[node name="Navigation" parent="." instance=ExtResource("4_wpjgs")]
+position = Vector2(5, -877)
+action_name = "Navigation"
+
+[node name="Engines" parent="." instance=ExtResource("4_wpjgs")]
+position = Vector2(0, 135)
+action_name = "Engines"
