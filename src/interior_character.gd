@@ -6,6 +6,8 @@ func _physics_process(_delta):
 	player_movement();
 
 func player_movement():
+	if not visible:
+		pass
 	if Input.is_action_pressed("left"):
 		velocity.x = -speed
 		velocity.y = 0

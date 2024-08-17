@@ -12,5 +12,8 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
+
+func get_ship_position():
+	return get_node("PlayerShip").global_position
