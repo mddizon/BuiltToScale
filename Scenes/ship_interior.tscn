@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhdew4mlkjxct"]
+
+[ext_resource type="PackedScene" uid="uid://bd6vv0g2vw6ie" path="res://Scenes/interior_character.tscn" id="1_6ih0u"]
+[ext_resource type="Script" path="res://InteriorBorder.gd" id="3_8rish"]
+
+[sub_resource type="Gradient" id="Gradient_bem64"]
+offsets = PackedFloat32Array(0, 0.479777, 1)
+colors = PackedColorArray(0.299547, 0.299547, 0.299547, 1, 0.447195, 0.191193, 0.268451, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pdqr5"]
+gradient = SubResource("Gradient_bem64")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_aamvy"]
+
+[node name="ShipInterior" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(17, -212)
+scale = Vector2(55.2818, 44.2892)
+texture = SubResource("GradientTexture2D_pdqr5")
+
+[node name="ShipFloor" type="Polygon2D" parent="."]
+color = Color(0.544288, 0.298503, 0.0982161, 1)
+texture = SubResource("CanvasTexture_aamvy")
+polygon = PackedVector2Array(1075, 691, 479, 313, -3, 278, -591, 364, -1028, 700, -720, -613, -453, -909, 6, -1083, 470, -933, 767, -610)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Border" type="Line2D" parent="StaticBody2D"]
+points = PackedVector2Array(8, 277, 481, 304, 1077, 685, 763, -616, 475, -930, -1, -1095, -466, -916, -715, -619, -1029, 691, -601, 364, 5, 274)
+script = ExtResource("3_8rish")
+
+[node name="InteriorCharacter" parent="." instance=ExtResource("1_6ih0u")]
+position = Vector2(-808, 175)
+motion_mode = 1
+speed = 200
+
+[node name="Camera2D" type="Camera2D" parent="InteriorCharacter"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://dliqq4b6wv2dx"]
+
+[ext_resource type="LabelSettings" uid="uid://dffgelpd4rgp8" path="res://Resources/title_font_settings.tres" id="1_d2yj8"]
+[ext_resource type="Script" path="res://src/credits.gd" id="1_u00ti"]
+[ext_resource type="Theme" uid="uid://w7lokxr7htxk" path="res://Resources/button_theme.tres" id="3_oxqrc"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u00ti")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.337331, 0.428968, 0.802239, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -33.5
+offset_right = 82.0
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Credits
+
+Andrew - Music
+Chris - Design
+Reza - Programming
+Mark - Programming
+Tony - Art"
+label_settings = ExtResource("1_d2yj8")
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 874.0
+offset_top = 856.0
+offset_right = 985.0
+offset_bottom = 895.0
+theme = ExtResource("3_oxqrc")
+text = "Back to Title"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4kxm63m55gyf"]
+
+[ext_resource type="Script" path="res://Game.gd" id="1_8hfjr"]
+[ext_resource type="LabelSettings" uid="uid://dffgelpd4rgp8" path="res://Resources/title_font_settings.tres" id="2_trujm"]
+[ext_resource type="Theme" uid="uid://w7lokxr7htxk" path="res://Resources/button_theme.tres" id="3_dnofe"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_8hfjr")
+
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Hud"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.791401, 0.5044, 0.92071, 1)
+
+[node name="Label" type="Label" parent="Hud"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.5
+offset_top = -33.5
+offset_right = 194.5
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Goes Here"
+label_settings = ExtResource("2_trujm")
+
+[node name="Button" type="Button" parent="Hud"]
+offset_left = 918.0
+offset_top = 668.0
+offset_right = 1024.0
+offset_bottom = 707.0
+theme = ExtResource("3_dnofe")
+text = "BackToTitle"
+
+[connection signal="pressed" from="Hud/Button" to="." method="_on_button_pressed"]
