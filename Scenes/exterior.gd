@@ -3,7 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var scene = preload("res://scenes/asteroid.tscn")
+	var scene = preload("res://Scenes/asteroid.tscn")
 	for i in range(10):
 		var instance = scene.instantiate()
 		add_child(instance)
