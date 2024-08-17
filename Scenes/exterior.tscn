@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://imt1sja1np1g"]
+
+[ext_resource type="Script" path="res://Scenes/PlayerShip.gd" id="1_dmfcx"]
+[ext_resource type="Script" path="res://Scenes/exterior.gd" id="1_jafm8"]
+[ext_resource type="Texture2D" uid="uid://87euu0j7ppyr" path="res://Resources/Art/spaceship_placeholder.png" id="2_m0my0"]
+[ext_resource type="PackedScene" uid="uid://kjdayayyunk7" path="res://Scenes/asteroid.tscn" id="4_i7i7e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8672g"]
+size = Vector2(67, 136)
+
+[node name="Exterior" type="Node2D"]
+script = ExtResource("1_jafm8")
+
+[node name="PlayerShip" type="RigidBody2D" parent="."]
+position = Vector2(-4.66748, 1.26294)
+script = ExtResource("1_dmfcx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerShip"]
+position = Vector2(-5.5, 4)
+shape = SubResource("RectangleShape2D_8672g")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerShip"]
+position = Vector2(-3, 1)
+texture = ExtResource("2_m0my0")
+
+[node name="Camera2D" type="Camera2D" parent="PlayerShip"]
+position = Vector2(-6.33252, -1.26294)
+zoom = Vector2(0.5, 0.5)
+
+[node name="Asteroid" parent="." instance=ExtResource("4_i7i7e")]
+position = Vector2(880, 253)
