@@ -1,23 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://ro3yhobq5dcd"]
+[gd_scene load_steps=11 format=3 uid="uid://imt1sja1np1g"]
 
-[ext_resource type="Script" path="res://Scenes/PlayerShip.gd" id="1_dmfcx"]
-[ext_resource type="Script" path="res://Scenes/exterior.gd" id="1_jafm8"]
+[ext_resource type="Script" path="res://src/exterior.gd" id="1_e06au"]
 [ext_resource type="Texture2D" uid="uid://87euu0j7ppyr" path="res://Resources/Art/spaceship_placeholder.png" id="2_m0my0"]
+[ext_resource type="Script" path="res://src/PlayerShip.gd" id="2_xf7td"]
 [ext_resource type="Texture2D" uid="uid://bysr5r8if5bey" path="res://Resources/Art/rocket_plume/4.png" id="4_1xxcn"]
-[ext_resource type="PackedScene" path="res://Scenes/asteroid.tscn" id="4_i7i7e"]
+[ext_resource type="PackedScene" uid="uid://kjdayayyunk7" path="res://Scenes/asteroid.tscn" id="4_i7i7e"]
 [ext_resource type="Texture2D" uid="uid://du8jjb0ughv46" path="res://Resources/Art/rocket_plume/3.png" id="5_x5wgr"]
 [ext_resource type="Texture2D" uid="uid://dhut1nha44x7m" path="res://Resources/Art/rocket_plume/2.png" id="6_vnjeq"]
 [ext_resource type="Texture2D" uid="uid://bk20wlrdigcpe" path="res://Resources/Art/rocket_plume/1.png" id="7_leqxl"]
+[ext_resource type="PackedScene" uid="uid://dg5w4d1obpl3g" path="res://Scenes/ship_interior.tscn" id="8_s01qx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8672g"]
 size = Vector2(67, 136)
 
 [node name="Exterior" type="Node2D"]
-script = ExtResource("1_jafm8")
+script = ExtResource("1_e06au")
 
 [node name="PlayerShip" type="RigidBody2D" parent="."]
 position = Vector2(-4.66748, 1.26294)
-script = ExtResource("1_dmfcx")
+script = ExtResource("2_xf7td")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerShip"]
 position = Vector2(-5.5, 4)
@@ -54,6 +55,12 @@ visible = false
 position = Vector2(-2.33252, 98.7371)
 scale = Vector2(0.200001, 0.200001)
 texture = ExtResource("7_leqxl")
+
+[node name="ShipInterior" parent="PlayerShip" instance=ExtResource("8_s01qx")]
+visible = false
+z_index = 10
+position = Vector2(-0.33252, 28.7371)
+scale = Vector2(0.1, 0.1)
 
 [node name="Asteroid" parent="." instance=ExtResource("4_i7i7e")]
 position = Vector2(880, 253)

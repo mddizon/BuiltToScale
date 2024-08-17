@@ -10,6 +10,7 @@ extends RigidBody2D
 ]
 
 var currentThrustIdx = 0
+var controlsDisabled = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,6 +23,8 @@ func _process(delta):
 	pass
 
 func _physics_process(_delta):
+	if controlsDisabled:
+		return
 
 	if (Input.is_action_pressed("space")):
 		currentThrustIdx = 4 # (currentThrustIdx + 1) % len(thrusts)

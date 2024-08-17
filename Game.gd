@@ -1,18 +1,15 @@
 extends Node2D
 
-@onready var interior = preload("res://Scenes/ship_interior.tscn").instantiate()
-@onready var exterior = preload("res://Scenes/exterior.tscn").instantiate()
+@onready var interior = $Exterior/PlayerShip/ShipInterior
+@onready var exterior = $Exterior
+@onready var spaceCamera = $Exterior/PlayerShip/Camera2D
+@onready var spaceship = $Exterior/PlayerShip
 @onready var current_scene = "exterior"
 @onready var zoom_inputs = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_tree().root.add_child(interior)
-	get_tree().root.add_child(exterior)
-	exterior.z_index = 0
-	interior.z_index = -10
-	interior.visible = false
-	current_scene = "exterior"
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -34,6 +31,7 @@ func _process(_delta):
 			_handle_zoom("zoom-in")
 
 func _handle_zoom(direction: String):
+	GlobalGameState.current_zoom_inputs = 0
 	if current_scene == "exterior" and direction == "zoom-in":
 		zoomToInterior()
 	elif current_scene == "exterior" and direction == "zoom-out":
@@ -48,19 +46,16 @@ func _handle_zoom(direction: String):
 		pass
 
 func zoomToInterior():
-	var exterior_ship_transform = exterior.get_ship_position();
-	interior.position = exterior_ship_transform
 	interior.visible = true
-	interior.z_index = 10
-	exterior.z_index = -10
+	spaceCamera.zoom = Vector2(5, 5)
+	spaceship.controlsDisabled = true
 	current_scene = "interior"
 
+
 func zoomToExterior():
-	var exterior_ship_transform = exterior.get_ship_position();
-	interior.position = exterior_ship_transform
 	interior.visible = false
-	exterior.z_index = 10
-	interior.z_index = -10
+	spaceship.controlsDisabled = false
+	spaceCamera.zoom = Vector2(0.5, 0.5)
 	current_scene = "exterior"
 
 func _on_button_pressed():
