@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Init="*res://src/init.gd"
 AudioController="*res://Scenes/audio_controller.tscn"
+InteractionController="*res://src/interaction_controller.gd"
 
 [display]
 

@@ -2,9 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 100
 
-func _physics_process(delta):
-	if Input.is_action_just_pressed("action"):
-		print("Interacted")
+func _physics_process(_delta):
 	player_movement();
 
 func player_movement():

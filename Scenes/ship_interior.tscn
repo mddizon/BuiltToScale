@@ -1,23 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://dhdew4mlkjxct"]
 
 [ext_resource type="PackedScene" uid="uid://bd6vv0g2vw6ie" path="res://Scenes/interior_character.tscn" id="1_6ih0u"]
-[ext_resource type="Script" path="res://InteriorBorder.gd" id="3_8rish"]
-
-[sub_resource type="Gradient" id="Gradient_bem64"]
-offsets = PackedFloat32Array(0, 0.479777, 1)
-colors = PackedColorArray(0.299547, 0.299547, 0.299547, 1, 0.447195, 0.191193, 0.268451, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_pdqr5"]
-gradient = SubResource("Gradient_bem64")
+[ext_resource type="Script" path="res://src/ship_interior.gd" id="1_x326t"]
+[ext_resource type="Script" path="res://src/interior_border.gd" id="3_8rish"]
+[ext_resource type="PackedScene" uid="uid://dbtoh2vrw0ta1" path="res://Scenes/interactable.tscn" id="4_wpjgs"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_aamvy"]
 
 [node name="ShipInterior" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(17, -212)
-scale = Vector2(55.2818, 44.2892)
-texture = SubResource("GradientTexture2D_pdqr5")
+script = ExtResource("1_x326t")
 
 [node name="ShipFloor" type="Polygon2D" parent="."]
 color = Color(0.544288, 0.298503, 0.0982161, 1)
@@ -36,3 +27,6 @@ motion_mode = 1
 speed = 200
 
 [node name="Camera2D" type="Camera2D" parent="InteriorCharacter"]
+
+[node name="Interactable" parent="." instance=ExtResource("4_wpjgs")]
+action_name = "Locker"
