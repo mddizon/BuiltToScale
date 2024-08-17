@@ -2,6 +2,13 @@ extends RigidBody2D
 
 @export var thrusts = [0, 10, 50, 100, 200]
 
+@onready var rocketPlumes = [
+	$plume_1,
+	$plume_2,
+	$plume_3,
+	$plume_4
+]
+
 var currentThrustIdx = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -16,8 +23,15 @@ func _process(delta):
 
 func _physics_process(_delta):
 
-	if (Input.is_action_just_pressed("space")):
-		currentThrustIdx = (currentThrustIdx + 1) % len(thrusts)
+	if (Input.is_action_pressed("space")):
+		currentThrustIdx = 4 # (currentThrustIdx + 1) % len(thrusts)
+		# for i in range(4):
+		# 	rocketPlumes[i].visible = i == currentThrustIdx
+		rocketPlumes[2].visible = true
+	else:
+		#all plumes off
+		for i in range(4):
+			rocketPlumes[i].visible = false
 
 	if (Input.is_action_pressed("left")):
 		apply_torque_impulse(100)
