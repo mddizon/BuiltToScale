@@ -23,6 +23,7 @@ var controlsDisabled = true;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	angular_damp = 1
+	SignalBus.player_damage_taken.connect(on_damage)
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,20 +52,6 @@ func _physics_process(_delta):
 	var force = orientation * thrusts[currentThrustIdx]
 	apply_central_force(force)
 	pass
-
-
-func _on_ship_interior_engine_interacted(released):
-	_update_camera(released)
-
-func _on_ship_interior_turn_left(released):
-	_update_camera(released)
-	if not released:
-		turn(true)
-
-func _on_ship_interior_turn_right(released):
-	_update_camera(released)
-	if not released:
-		turn(false)
 
 func _update_camera(released):
 	if (released):

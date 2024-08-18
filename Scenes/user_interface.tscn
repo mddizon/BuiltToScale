@@ -5,7 +5,7 @@
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_goxpi")
 
-[node name="Label" type="Label" parent="."]
+[node name="Hp" type="Label" parent="."]
 offset_left = 80.0
 offset_top = 51.0
 offset_right = 203.0
@@ -13,16 +13,9 @@ offset_bottom = 74.0
 text = "HP
 "
 
-[node name="Label2" type="Label" parent="."]
+[node name="Weapon" type="Label" parent="."]
 offset_left = 79.0
 offset_top = 89.0
 offset_right = 119.0
 offset_bottom = 112.0
 text = "Shields"
-
-[node name="Zoom" type="Label" parent="."]
-offset_left = 81.0
-offset_top = 128.0
-offset_right = 121.0
-offset_bottom = 151.0
-text = "Zoom"

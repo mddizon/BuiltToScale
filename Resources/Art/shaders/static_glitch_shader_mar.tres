@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cfjgvh77vnmdi"]
+
+[ext_resource type="Shader" path="res://Resources/Art/shaders/static_glitch.gdshader" id="1_ggc6r"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_5o7ii"]
+
+[resource]
+shader = ExtResource("1_ggc6r")
+shader_parameter/dispAmt = 0.0
+shader_parameter/abberationAmtX = 0.0
+shader_parameter/abberationAmtY = 0.0
+shader_parameter/dispSize = 0.1
+shader_parameter/maxAlpha = 0.1
+shader_parameter/displace = SubResource("CanvasTexture_5o7ii")
