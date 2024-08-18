@@ -21,6 +21,7 @@ Init="*res://src/init.gd"
 AudioController="*res://Scenes/audio_controller.tscn"
 InteractionController="*res://src/interaction_controller.gd"
 GlobalGameState="*res://src/global_game_state.gd"
+SignalBus="*res://src/signal_bus.gd"
 
 [display]
 

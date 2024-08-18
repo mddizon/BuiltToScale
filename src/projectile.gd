@@ -1,9 +1,10 @@
 extends Area2D
 
-signal damaged(node: Node, damage: int)
-
 @export var speed = 1000
 @export var damage = 10
+
+func _ready():
+	pass
 
 func _physics_process(delta):
 	position += Vector2.UP.rotated(rotation) * speed * delta
@@ -15,6 +16,8 @@ func die() -> void:
 	queue_free()
 
 func _on_body_entered(body):
-	if body.has_method("on_damage"):
-		body.call("on_damage", damage)
+	if is_in_group("enemy") and body.is_in_group("player"):
+		SignalBus.player_damage_taken.emit(damage)
+	# if body.has_method("on_damage"):
+	# 	body.call("on_damage", damage)
 	die()

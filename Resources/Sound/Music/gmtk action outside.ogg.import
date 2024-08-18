@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cukxpyeap5itg"
+path="res://.godot/imported/gmtk action outside.ogg-4fd72d6531c7727efe94e315cacb81fa.oggvorbisstr"
+
+[deps]
+
+source_file="res://Resources/Sound/Music/gmtk action outside.ogg"
+dest_files=["res://.godot/imported/gmtk action outside.ogg-4fd72d6531c7727efe94e315cacb81fa.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

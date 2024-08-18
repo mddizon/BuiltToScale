@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c6hdu8pvv38f8"
+path="res://.godot/imported/gmtk scream 2.ogg-bcece1c82b8c7661b7083066626e159d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Resources/Sound/SFX/gmtk scream 2.ogg"
+dest_files=["res://.godot/imported/gmtk scream 2.ogg-bcece1c82b8c7661b7083066626e159d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

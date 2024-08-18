@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ct51b6ixllto1"
+path="res://.godot/imported/gmtk collision ship.ogg-06c926713c041d252e895f1e024f7dc6.oggvorbisstr"
+
+[deps]
+
+source_file="res://Resources/Sound/SFX/gmtk collision ship.ogg"
+dest_files=["res://.godot/imported/gmtk collision ship.ogg-06c926713c041d252e895f1e024f7dc6.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

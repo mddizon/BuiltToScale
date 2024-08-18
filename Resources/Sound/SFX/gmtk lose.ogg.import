@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dvy66uq2h6fri"
+path="res://.godot/imported/gmtk lose.ogg-a2e6a40582804c037ad94f2a4b654aef.oggvorbisstr"
+
+[deps]
+
+source_file="res://Resources/Sound/SFX/gmtk lose.ogg"
+dest_files=["res://.godot/imported/gmtk lose.ogg-a2e6a40582804c037ad94f2a4b654aef.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

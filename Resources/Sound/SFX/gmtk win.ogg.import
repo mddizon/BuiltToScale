@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://v6d1tf7050h1"
+path="res://.godot/imported/gmtk win.ogg-093e13b2c8cd698b013bf09ec30b9b6d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Resources/Sound/SFX/gmtk win.ogg"
+dest_files=["res://.godot/imported/gmtk win.ogg-093e13b2c8cd698b013bf09ec30b9b6d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

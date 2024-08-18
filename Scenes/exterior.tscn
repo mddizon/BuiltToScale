@@ -25,7 +25,7 @@ position = Vector2(-0.000244141, 0)
 scale = Vector2(4.80833, 4.80833)
 texture = ExtResource("2_6h1ja")
 
-[node name="PlayerShip" type="RigidBody2D" parent="."]
+[node name="PlayerShip" type="RigidBody2D" parent="." groups=["player"]]
 position = Vector2(-4.66748, 1.26294)
 collision_mask = 5
 mass = 20.0
@@ -86,12 +86,9 @@ enabled = true
 [node name="Asteroid" parent="." instance=ExtResource("4_i7i7e")]
 position = Vector2(880, 253)
 
-[node name="Cannon" parent="." instance=ExtResource("12_ifxdx")]
+[node name="Cannon" parent="." groups=["enemy"] instance=ExtResource("12_ifxdx")]
 position = Vector2(-1449, -6)
 rotation = 1.57365
 
 [connection signal="enable_combat" from="PlayerShip/ShipInterior" to="PlayerShip" method="_on_ship_interior_enable_combat"]
 [connection signal="enable_flight_controls" from="PlayerShip/ShipInterior" to="PlayerShip" method="_on_ship_interior_enable_flight_controls"]
-[connection signal="engine_interacted" from="PlayerShip/ShipInterior" to="PlayerShip" method="_on_ship_interior_engine_interacted"]
-[connection signal="turn_left" from="PlayerShip/ShipInterior" to="PlayerShip" method="_on_ship_interior_turn_left"]
-[connection signal="turn_right" from="PlayerShip/ShipInterior" to="PlayerShip" method="_on_ship_interior_turn_right"]

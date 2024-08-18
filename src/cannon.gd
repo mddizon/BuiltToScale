@@ -13,6 +13,7 @@ func shoot():
 	var newProjectile = projectile.instantiate()
 	newProjectile.rotation = global_rotation
 	newProjectile.global_position = global_position
+	newProjectile.add_to_group("enemy")
 	get_parent().add_child.call_deferred(newProjectile)
 
 func _on_shot_timer_timeout():
