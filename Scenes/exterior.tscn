@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ro3yhobq5dcd"]
+[gd_scene load_steps=12 format=3 uid="uid://ro3yhobq5dcd"]
 
 [ext_resource type="Script" path="res://src/exterior.gd" id="1_e06au"]
 [ext_resource type="Texture2D" uid="uid://87euu0j7ppyr" path="res://Resources/Art/spaceship_placeholder.png" id="2_m0my0"]
 [ext_resource type="Script" path="res://src/PlayerShip.gd" id="2_xf7td"]
 [ext_resource type="Texture2D" uid="uid://bysr5r8if5bey" path="res://Resources/Art/rocket_plume/4.png" id="4_1xxcn"]
-[ext_resource type="PackedScene" path="res://Scenes/asteroid.tscn" id="4_i7i7e"]
+[ext_resource type="PackedScene" uid="uid://kjdayayyunk7" path="res://Scenes/asteroid.tscn" id="4_i7i7e"]
+[ext_resource type="Script" path="res://src/Camera2D.gd" id="4_wqu87"]
 [ext_resource type="Texture2D" uid="uid://du8jjb0ughv46" path="res://Resources/Art/rocket_plume/3.png" id="5_x5wgr"]
 [ext_resource type="Texture2D" uid="uid://dhut1nha44x7m" path="res://Resources/Art/rocket_plume/2.png" id="6_vnjeq"]
 [ext_resource type="Texture2D" uid="uid://bk20wlrdigcpe" path="res://Resources/Art/rocket_plume/1.png" id="7_leqxl"]
@@ -31,6 +32,7 @@ texture = ExtResource("2_m0my0")
 [node name="Camera2D" type="Camera2D" parent="PlayerShip"]
 position = Vector2(-6.33252, -1.26294)
 zoom = Vector2(0.5, 0.5)
+script = ExtResource("4_wqu87")
 
 [node name="plume_4" type="Sprite2D" parent="PlayerShip"]
 visible = false

@@ -47,13 +47,12 @@ func _handle_zoom(direction: String):
 
 func zoomToInterior():
 	interior.visible = true
-	spaceCamera.zoom = Vector2(5, 5)
+	spaceCamera.set_target_zoom(Vector2(5, 5))
 	current_scene = "interior"
-
 
 func zoomToExterior():
 	interior.visible = false
-	spaceCamera.zoom = Vector2(0.5, 0.5)
+	spaceCamera.set_target_zoom(Vector2(0.5, 0.5))
 	current_scene = "exterior"
 
 func _on_button_pressed():

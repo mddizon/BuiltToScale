@@ -35,6 +35,7 @@ func _physics_process(_delta):
 
 
 func _on_ship_interior_engine_interacted(released):
+	_update_camera(released)
 	if (not released):
 		currentThrustIdx = 4 # (currentThrustIdx + 1) % len(thrusts)
 		# for i in range(4):
@@ -46,9 +47,18 @@ func _on_ship_interior_engine_interacted(released):
 			rocketPlumes[i].visible = false
 
 func _on_ship_interior_turn_left(released):
+	_update_camera(released)
 	if not released:
+		# get parent camera node
 		apply_torque_impulse(-rotation_speed)
 
 func _on_ship_interior_turn_right(released):
+	_update_camera(released)
 	if not released:
 		apply_torque_impulse(rotation_speed)
+
+func _update_camera(released):
+	if (released):
+		$Camera2D.set_target_zoom(Vector2(5, 5))
+	else:
+		$Camera2D.set_target_zoom(Vector2(3, 3))
