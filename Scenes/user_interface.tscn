@@ -1,21 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://d348lg2dx6dqf"]
+[gd_scene load_steps=3 format=3 uid="uid://d348lg2dx6dqf"]
 
 [ext_resource type="Script" path="res://src/user_interface.gd" id="1_goxpi"]
+[ext_resource type="PackedScene" uid="uid://bo2of27scyvid" path="res://Scenes/healthbar.tscn" id="2_b2qaa"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_goxpi")
 
 [node name="Hp" type="Label" parent="."]
-offset_left = 80.0
-offset_top = 51.0
-offset_right = 203.0
-offset_bottom = 74.0
-text = "HP
+offset_left = 61.0
+offset_top = 56.0
+offset_right = 184.0
+offset_bottom = 79.0
+text = "Captain \"Golden Arms\" Akimbo
 "
 
-[node name="Weapon" type="Label" parent="."]
-offset_left = 79.0
-offset_top = 89.0
-offset_right = 119.0
-offset_bottom = 112.0
-text = "Shields"
+[node name="Healthbar" parent="." instance=ExtResource("2_b2qaa")]
+offset_left = 60.0
+offset_top = 94.0
+offset_right = 1415.0
+offset_bottom = 145.0
