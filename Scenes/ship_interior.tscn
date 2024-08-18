@@ -51,8 +51,8 @@ position = Vector2(0, -336)
 [node name="Pilot" parent="." instance=ExtResource("4_wpjgs")]
 position = Vector2(0, -919)
 
-[connection signal="interacted" from="WeaponsLocker" to="." method="_on_interaction"]
 [connection signal="interacted" from="WeaponsLocker" to="." method="_on_weapons_locker_interacted"]
+[connection signal="interacted" from="WeaponsLocker" to="." method="_on_interaction"]
 [connection signal="interacted" from="NavigationLeft" to="." method="_on_navigation_left_interacted"]
 [connection signal="interacted" from="Engines" to="." method="_on_engines_interacted"]
 [connection signal="interacted" from="NavigationRight" to="." method="_on_navigation_right_interacted"]
