@@ -22,16 +22,16 @@ func _process(delta):
 
 
 var mouse_pos: Vector2
+var ship_relative_pos: Vector2
 
 func _physics_process(delta):
-	mouse_pos = get_global_mouse_position()
-	if (drawDebug):
-		queue_redraw()
+	if (enabled or mouse_pos == Vector2.ZERO or ship_relative_pos == Vector2.ZERO):
+		mouse_pos = get_global_mouse_position()
+		ship_relative_pos = (mouse_pos - ship.global_position).normalized() * armLength
+		pass
 
-	if (not enabled):
-		return
+	var globalHandPos = ship.global_position + ship_relative_pos
 
-	var globalHandPos = ship.global_position + ((mouse_pos - ship.global_position).normalized() * armLength)
 	var shipRelative = ship.to_local(globalHandPos)
 	var isRight = shipRelative.x > 0
 	if (isRight and righty) or (not isRight and not righty):
@@ -41,12 +41,16 @@ func _physics_process(delta):
 		shipRelative.x = -shipRelative.x
 		var localHandPos = to_local(ship.to_global(shipRelative))
 		apply_central_impulse(localHandPos * 5)
+
+	if (drawDebug):
+		queue_redraw()
 	
 	
 func _draw():
 	if (not drawDebug):
 		return
-	var globalHandPos = ship.global_position + ((mouse_pos - ship.global_position).normalized() * armLength)
+
+	var globalHandPos = ship.global_position + ship_relative_pos
 	var shipRelative = ship.to_local(globalHandPos)
 	var isRight = shipRelative.x > 0
 	if (isRight and righty) or (not isRight and not righty):
