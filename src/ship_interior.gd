@@ -3,6 +3,8 @@ extends Node2D
 signal engine_interacted(released: bool)
 signal turn_right(released: bool)
 signal turn_left(released: bool)
+signal enable_flight_controls()
+signal enable_combat()
 signal swap_left_weapon(weapon_name: String)
 signal swap_right_weapon(weapon_name: String)
 
@@ -46,3 +48,13 @@ func _process(_delta):
 		elif Input.is_action_just_released("action"):
 			emit_signal("turn_right", true)
 			current_system = null
+	elif current_system == "pilot":
+		if Input.is_action_just_pressed("secondary_action"):
+			current_system = null
+
+func _on_pilot_interacted(action_name):
+	current_system = "pilot"
+	emit_signal("enable_flight_controls")
+
+func _on_combat_interacted(action_name):
+	current_system = "combat"
