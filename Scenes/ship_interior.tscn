@@ -24,6 +24,7 @@ points = PackedVector2Array(8, 277, 481, 304, 1077, 685, 763, -616, 475, -930, -
 script = ExtResource("3_8rish")
 
 [node name="InteriorCharacter" parent="." instance=ExtResource("1_6ih0u")]
+position = Vector2(5, -656)
 motion_mode = 1
 speed = 30
 
@@ -43,8 +44,8 @@ position = Vector2(0, -336)
 [node name="Pilot" parent="." instance=ExtResource("4_wpjgs")]
 position = Vector2(0, -919)
 
-[connection signal="interacted" from="WeaponsLocker" to="." method="_on_weapons_locker_interacted"]
 [connection signal="interacted" from="WeaponsLocker" to="." method="_on_interaction"]
+[connection signal="interacted" from="WeaponsLocker" to="." method="_on_weapons_locker_interacted"]
 [connection signal="interacted" from="Engines" to="." method="_on_engines_interacted"]
 [connection signal="interacted" from="Combat" to="." method="_on_combat_interacted"]
 [connection signal="interacted" from="Pilot" to="." method="_on_pilot_interacted"]
