@@ -2,8 +2,8 @@ extends RigidBody2D
 
 signal interacted(action_name: String)
 
-@export var thrusts = [0, 10, 50, 100, 200]
-@export var rotation_speed = 100
+@export var thrusts = [0, 100, 500, 1000, 2000]
+@export var rotation_speed = 1000
 @export var zoom_level_interact = Vector2(2, 2);
 @export var zoom_level_exterior = Vector2(5, 5);
 
