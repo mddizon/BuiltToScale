@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://imt1sja1np1g"]
+[gd_scene load_steps=14 format=3 uid="uid://ro3yhobq5dcd"]
 
 [ext_resource type="Script" path="res://src/exterior.gd" id="1_e06au"]
+[ext_resource type="Texture2D" uid="uid://60qok5adb74f" path="res://Resources/Art/space_render.jpg" id="2_6h1ja"]
 [ext_resource type="Texture2D" uid="uid://87euu0j7ppyr" path="res://Resources/Art/spaceship_placeholder.png" id="2_m0my0"]
 [ext_resource type="Script" path="res://src/PlayerShip.gd" id="2_xf7td"]
 [ext_resource type="Texture2D" uid="uid://bysr5r8if5bey" path="res://Resources/Art/rocket_plume/4.png" id="4_1xxcn"]
@@ -9,21 +10,19 @@
 [ext_resource type="Texture2D" uid="uid://du8jjb0ughv46" path="res://Resources/Art/rocket_plume/3.png" id="5_x5wgr"]
 [ext_resource type="Texture2D" uid="uid://dhut1nha44x7m" path="res://Resources/Art/rocket_plume/2.png" id="6_vnjeq"]
 [ext_resource type="Texture2D" uid="uid://bk20wlrdigcpe" path="res://Resources/Art/rocket_plume/1.png" id="7_leqxl"]
-[ext_resource type="PackedScene" uid="uid://dg5w4d1obpl3g" path="res://Scenes/ship_interior.tscn" id="8_s01qx"]
-[ext_resource type="Script" path="res://src/Arm.gd" id="9_gnh72"]
+[ext_resource type="PackedScene" uid="uid://dhdew4mlkjxct" path="res://Scenes/ship_interior.tscn" id="8_s01qx"]
+[ext_resource type="PackedScene" uid="uid://cq2is3wafqarq" path="res://Scenes/cannon.tscn" id="12_ifxdx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8672g"]
 size = Vector2(67, 136)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_go86i"]
-
-[sub_resource type="Gradient" id="Gradient_01naw"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_llill"]
-gradient = SubResource("Gradient_01naw")
-
 [node name="Exterior" type="Node2D"]
 script = ExtResource("1_e06au")
+
+[node name="Starfield" type="Sprite2D" parent="."]
+position = Vector2(-0.000244141, 0)
+scale = Vector2(4.80833, 4.80833)
+texture = ExtResource("2_6h1ja")
 
 [node name="PlayerShip" type="RigidBody2D" parent="."]
 position = Vector2(-4.66748, 1.26294)
@@ -72,35 +71,12 @@ z_index = 10
 position = Vector2(-0.33252, 28.7371)
 scale = Vector2(0.1, 0.1)
 
-[node name="Arm" type="RigidBody2D" parent="PlayerShip"]
-position = Vector2(64.6675, 0.737059)
-rotation = 1.5708
-angular_damp = 23.732
-script = ExtResource("9_gnh72")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerShip/Arm"]
-rotation = 3.14159
-scale = Vector2(1.63356, -4.38365)
-shape = SubResource("CapsuleShape2D_go86i")
-
-[node name="Sprite2D" type="Sprite2D" parent="PlayerShip/Arm"]
-z_index = -1
-position = Vector2(0.11947, 0.856833)
-scale = Vector2(0.429679, 2.09129)
-texture = SubResource("GradientTexture2D_llill")
-offset = Vector2(-2.12139, -0.701618)
-
-[node name="shoulder" type="PinJoint2D" parent="PlayerShip/Arm"]
-position = Vector2(-0.606722, 61.3973)
-node_a = NodePath("../..")
-node_b = NodePath("..")
-softness = 16.0
-
-[node name="hand" type="Node2D" parent="PlayerShip/Arm"]
-position = Vector2(-1, -68)
-
 [node name="Asteroid" parent="." instance=ExtResource("4_i7i7e")]
 position = Vector2(880, 253)
+
+[node name="Cannon" parent="." instance=ExtResource("12_ifxdx")]
+position = Vector2(-1449, -6)
+rotation = 1.57365
 
 [connection signal="engine_interacted" from="PlayerShip/ShipInterior" to="PlayerShip" method="_on_ship_interior_engine_interacted"]
 [connection signal="turn_left" from="PlayerShip/ShipInterior" to="PlayerShip" method="_on_ship_interior_turn_left"]
