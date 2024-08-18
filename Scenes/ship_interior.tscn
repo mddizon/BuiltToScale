@@ -16,8 +16,8 @@ texture = SubResource("CanvasTexture_aamvy")
 polygon = PackedVector2Array(1075, 691, 479, 313, -3, 278, -591, 364, -1028, 700, -720, -613, -453, -909, 6, -1083, 470, -933, 767, -610)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 256
+collision_mask = 256
 
 [node name="Border" type="Line2D" parent="StaticBody2D"]
 points = PackedVector2Array(8, 277, 481, 304, 1077, 685, 763, -616, 475, -930, -1, -1095, -466, -916, -715, -619, -1029, 691, -601, 364, 5, 274)
@@ -47,8 +47,8 @@ action_name = "Engines"
 position = Vector2(146, -894)
 action_name = "Turn Right"
 
-[connection signal="interacted" from="WeaponsLocker" to="." method="_on_interaction"]
 [connection signal="interacted" from="WeaponsLocker" to="." method="_on_weapons_locker_interacted"]
+[connection signal="interacted" from="WeaponsLocker" to="." method="_on_interaction"]
 [connection signal="interacted" from="NavigationLeft" to="." method="_on_navigation_left_interacted"]
 [connection signal="interacted" from="Engines" to="." method="_on_engines_interacted"]
 [connection signal="interacted" from="NavigationRight" to="." method="_on_navigation_right_interacted"]

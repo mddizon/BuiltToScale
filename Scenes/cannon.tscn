@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://cq2is3wafqarq"]
+
+[ext_resource type="Texture2D" uid="uid://ci2pjew43wf65" path="res://icon.svg" id="1_d0cax"]
+[ext_resource type="Script" path="res://src/cannon.gd" id="1_yxevx"]
+
+[sub_resource type="Animation" id="Animation_5lft1"]
+resource_name = "fade_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D:default_color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 0.353554, 0.148651),
+"update": 0,
+"values": [Color(0.721569, 0, 0.301961, 0), Color(0.552941, 0, 0.0588235, 0.247059), Color(0.552941, 0, 0.0588235, 0.490196)]
+}
+
+[sub_resource type="Animation" id="Animation_i633p"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D:default_color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.552941, 0, 0.0588235, 0.47451), Color(0.552941, 0, 0.0588235, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a06vw"]
+_data = {
+"fade_in": SubResource("Animation_5lft1"),
+"fade_out": SubResource("Animation_i633p")
+}
+
+[node name="Cannon" type="Node2D"]
+position = Vector2(863, 366)
+rotation = 2.77151
+script = ExtResource("1_yxevx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_d0cax")
+
+[node name="ShotTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Line2D" type="Line2D" parent="."]
+z_index = -1
+points = PackedVector2Array(0, 0, 0, -1000)
+width = 50.0
+default_color = Color(0.721569, 0, 0.301961, 0)
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="ActiveTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a06vw")
+}
+
+[connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_windup_timer_timeout"]
+[connection signal="timeout" from="ActiveTimer" to="." method="_on_active_timer_timeout"]

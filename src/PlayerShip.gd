@@ -22,7 +22,6 @@ func _ready():
 	angular_damp = 1
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
@@ -64,3 +63,6 @@ func _update_camera(released):
 		$Camera2D.set_target_zoom(zoom_level_exterior)
 	else:
 		$Camera2D.set_target_zoom(zoom_level_interact)
+		
+func on_damage(damage):
+	print('im hit!')
