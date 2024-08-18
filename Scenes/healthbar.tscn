@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bo2of27scyvid"]
+
+[ext_resource type="Theme" uid="uid://w7lokxr7htxk" path="res://Resources/button_theme.tres" id="1_wbqab"]
+[ext_resource type="Script" path="res://src/healthbar.gd" id="2_7mgt6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wmiv3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5t1u"]
+bg_color = Color(0.176471, 0.886275, 0.901961, 1)
+
+[node name="Healthbar" type="ProgressBar"]
+z_index = 1
+offset_right = 1355.0
+offset_bottom = 51.0
+theme = ExtResource("1_wbqab")
+theme_override_styles/background = SubResource("StyleBoxEmpty_wmiv3")
+value = 55.0
+show_percentage = false
+script = ExtResource("2_7mgt6")
+
+[node name="Damagebar" type="ProgressBar" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wbqab")
+theme_override_styles/fill = SubResource("StyleBoxFlat_n5t1u")
+value = 80.0
+show_percentage = false
+
+[node name="HealthWaitTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="timeout" from="HealthWaitTimer" to="." method="_on_health_wait_timer_timeout"]
