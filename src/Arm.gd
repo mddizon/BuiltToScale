@@ -43,7 +43,7 @@ func _physics_process(delta):
 		(parentAngle < mouseAngleUpperLimit + b and parentAngle > 0.0))):
 		return
 
-	var angleDelta = angleToHand - angleToMouse
+	var angleDelta = angleToMouse - angleToHand
 	#print("%s, %s, %s", [angleToHand, angleToMouse, angleDelta])
 	#if abs(angleDelta) > 0.3:
 	var forceDirection = Vector2(hand.position.y, hand.position.x).normalized()
