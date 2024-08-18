@@ -1,6 +1,9 @@
 extends RigidBody2D
 
+signal interacted(action_name: String)
+
 @export var thrusts = [0, 10, 50, 100, 200]
+@export var rotation_speed = 100
 
 @onready var rocketPlumes = [
 	$plume_1,
@@ -19,14 +22,20 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func _physics_process(_delta):
-	if controlsDisabled:
-		return
 
-	if (Input.is_action_pressed("space")):
+	# Get the orientation vector of the rigitbody 
+	var orientation = -global_transform.y.normalized()
+	var force = orientation * thrusts[currentThrustIdx]
+	apply_central_force(force)
+	pass
+
+
+func _on_ship_interior_engine_interacted(released):
+	if (not released):
 		currentThrustIdx = 4 # (currentThrustIdx + 1) % len(thrusts)
 		# for i in range(4):
 		# 	rocketPlumes[i].visible = i == currentThrustIdx
@@ -36,16 +45,10 @@ func _physics_process(_delta):
 		for i in range(4):
 			rocketPlumes[i].visible = false
 
-	if (Input.is_action_pressed("left")):
-		apply_torque_impulse(100)
+func _on_ship_interior_turn_left(released):
+	if not released:
+		apply_torque_impulse(-rotation_speed)
 
-	if (Input.is_action_pressed("right")):
-		apply_torque_impulse(-100)
-
-	# Rotational damping
-
-	# Get the orientation vector of the rigitbody 
-	var orientation = -global_transform.y.normalized()
-	var force = orientation * thrusts[currentThrustIdx]
-	apply_central_force(force)
-	pass
+func _on_ship_interior_turn_right(released):
+	if not released:
+		apply_torque_impulse(rotation_speed)

@@ -14,8 +14,6 @@ func _ready():
 	label.text = action_name
 	label.visible = false
 	assert(player, "Player not found")
-	# Connects the interacted signal to the interaction controller
-	self.connect("interacted", InteractionController.interacted_with_object)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -25,7 +23,7 @@ func _process(_delta):
 		modulate = Color(1, 1, 1, .5)
 	else:
 		modulate = Color(1, 1, 1, 1)
-	if player_near and Input.is_action_just_pressed("action"):
+	if player_near and Input.is_action_pressed("action"):
 		emit_signal("interacted", action_name)
 
 func is_player_near():

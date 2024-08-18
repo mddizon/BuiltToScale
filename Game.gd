@@ -48,13 +48,11 @@ func _handle_zoom(direction: String):
 func zoomToInterior():
 	interior.visible = true
 	spaceCamera.zoom = Vector2(5, 5)
-	spaceship.controlsDisabled = true
 	current_scene = "interior"
 
 
 func zoomToExterior():
 	interior.visible = false
-	spaceship.controlsDisabled = false
 	spaceCamera.zoom = Vector2(0.5, 0.5)
 	current_scene = "exterior"
 

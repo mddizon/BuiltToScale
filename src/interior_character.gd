@@ -2,9 +2,6 @@ extends CharacterBody2D
 
 @export var speed = 10
 
-func _physics_process(_delta):
-	player_movement();
-
 func player_movement():
 	if not visible:
 		pass
