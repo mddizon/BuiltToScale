@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ro3yhobq5dcd"]
+[gd_scene load_steps=21 format=3 uid="uid://ro3yhobq5dcd"]
 
 [ext_resource type="Script" path="res://src/exterior.gd" id="1_e06au"]
 [ext_resource type="Texture2D" uid="uid://60qok5adb74f" path="res://Resources/Art/space_render.jpg" id="2_6h1ja"]
@@ -13,9 +13,24 @@
 [ext_resource type="PackedScene" uid="uid://dhdew4mlkjxct" path="res://Scenes/ship_interior.tscn" id="8_s01qx"]
 [ext_resource type="PackedScene" uid="uid://gladf3eq8w5n" path="res://Scenes/arm.tscn" id="11_oxhuc"]
 [ext_resource type="PackedScene" path="res://Scenes/cannon.tscn" id="12_ifxdx"]
+[ext_resource type="Script" path="res://src/sword.gd" id="12_m6n1n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8672g"]
 size = Vector2(67, 136)
+
+[sub_resource type="Gradient" id="Gradient_ctlx6"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bx214"]
+gradient = SubResource("Gradient_ctlx6")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pcycr"]
+size = Vector2(19.0047, 171.279)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8kfbu"]
+size = Vector2(12442, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppc1c"]
+size = Vector2(124, 10354)
 
 [node name="Exterior" type="Node2D"]
 script = ExtResource("1_e06au")
@@ -27,7 +42,7 @@ texture = ExtResource("2_6h1ja")
 
 [node name="PlayerShip" type="RigidBody2D" parent="." groups=["player"]]
 position = Vector2(-4.66748, 1.26294)
-collision_mask = 5
+collision_mask = 21
 mass = 20.0
 script = ExtResource("2_xf7td")
 
@@ -78,6 +93,22 @@ scale = Vector2(0.1, 0.1)
 position = Vector2(-200, 0)
 rotation = 0.00475759
 
+[node name="Sword" type="StaticBody2D" parent="PlayerShip/LeftArm"]
+position = Vector2(1.59961, -14.2707)
+rotation = -0.00475759
+script = ExtResource("12_m6n1n")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerShip/LeftArm/Sword"]
+position = Vector2(-99, 13)
+rotation = -1.5708
+scale = Vector2(0.368797, 2.68053)
+texture = SubResource("GradientTexture2D_bx214")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerShip/LeftArm/Sword"]
+position = Vector2(-99, 13)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_pcycr")
+
 [node name="RightArm" parent="PlayerShip" instance=ExtResource("11_oxhuc")]
 position = Vector2(200, 0)
 righty = true
@@ -89,6 +120,27 @@ position = Vector2(880, 253)
 [node name="Cannon" parent="." groups=["enemy"] instance=ExtResource("12_ifxdx")]
 position = Vector2(-1449, -6)
 rotation = 1.57365
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(6174, 34)
+collision_layer = 16
+collision_mask = 15
+
+[node name="Down" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-6063, 5147)
+shape = SubResource("RectangleShape2D_8kfbu")
+
+[node name="Left" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-12330, -49)
+shape = SubResource("RectangleShape2D_ppc1c")
+
+[node name="Right" type="CollisionShape2D" parent="Wall"]
+position = Vector2(51, -33)
+shape = SubResource("RectangleShape2D_ppc1c")
+
+[node name="Up" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-6100, -5266)
+shape = SubResource("RectangleShape2D_8kfbu")
 
 [connection signal="enable_combat" from="PlayerShip/ShipInterior" to="PlayerShip" method="_on_ship_interior_enable_combat"]
 [connection signal="enable_flight_controls" from="PlayerShip/ShipInterior" to="PlayerShip" method="_on_ship_interior_enable_flight_controls"]
