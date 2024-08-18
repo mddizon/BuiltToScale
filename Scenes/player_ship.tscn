@@ -1,0 +1,115 @@
+[gd_scene load_steps=17 format=3 uid="uid://nqjvarmir6ow"]
+
+[ext_resource type="Script" path="res://src/PlayerShip.gd" id="1_a0hv5"]
+[ext_resource type="Texture2D" uid="uid://qjonxbcobeus" path="res://Resources/Art/Akimbo _ sprite sheets.png" id="2_knouc"]
+[ext_resource type="Script" path="res://src/Camera2D.gd" id="3_rfxn3"]
+[ext_resource type="Texture2D" uid="uid://bysr5r8if5bey" path="res://Resources/Art/rocket_plume/4.png" id="4_hj8k5"]
+[ext_resource type="Texture2D" uid="uid://du8jjb0ughv46" path="res://Resources/Art/rocket_plume/3.png" id="5_bwkv3"]
+[ext_resource type="Texture2D" uid="uid://dhut1nha44x7m" path="res://Resources/Art/rocket_plume/2.png" id="6_i7o4a"]
+[ext_resource type="Texture2D" uid="uid://bk20wlrdigcpe" path="res://Resources/Art/rocket_plume/1.png" id="7_ua2we"]
+[ext_resource type="PackedScene" uid="uid://dhdew4mlkjxct" path="res://Scenes/ship_interior.tscn" id="8_v7ts8"]
+[ext_resource type="PackedScene" uid="uid://gladf3eq8w5n" path="res://Scenes/arm.tscn" id="9_fou54"]
+[ext_resource type="Script" path="res://src/sword.gd" id="10_il2n6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8672g"]
+size = Vector2(67, 136)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpb3t"]
+atlas = ExtResource("2_knouc")
+region = Rect2(150, 365, 300, 340)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ieu2p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpb3t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_ctlx6"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bx214"]
+gradient = SubResource("Gradient_ctlx6")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pcycr"]
+size = Vector2(19.0047, 171.279)
+
+[node name="PlayerShip" type="RigidBody2D" groups=["player"]]
+position = Vector2(-4.66748, 1.26294)
+collision_mask = 21
+mass = 20.0
+script = ExtResource("1_a0hv5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5.5, 4)
+shape = SubResource("RectangleShape2D_8672g")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, 1)
+sprite_frames = SubResource("SpriteFrames_ieu2p")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-6.33252, -1.26294)
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("3_rfxn3")
+
+[node name="plume_4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-2.33252, 110.737)
+scale = Vector2(0.160003, 0.320002)
+texture = ExtResource("4_hj8k5")
+
+[node name="plume_3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-2.33252, 98.7371)
+scale = Vector2(0.200001, 0.200001)
+texture = ExtResource("5_bwkv3")
+
+[node name="plume_2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-2.33252, 98.7371)
+scale = Vector2(0.200001, 0.200001)
+texture = ExtResource("6_i7o4a")
+
+[node name="plume_1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-2.33252, 98.7371)
+scale = Vector2(0.200001, 0.200001)
+texture = ExtResource("7_ua2we")
+
+[node name="ShipInterior" parent="." instance=ExtResource("8_v7ts8")]
+visible = false
+z_index = 10
+position = Vector2(-0.33252, 28.7371)
+scale = Vector2(0.1, 0.1)
+
+[node name="LeftArm" parent="." instance=ExtResource("9_fou54")]
+position = Vector2(-200, 0)
+rotation = 0.00475759
+
+[node name="Sword" type="StaticBody2D" parent="LeftArm"]
+position = Vector2(1.59961, -14.2707)
+rotation = -0.00475759
+script = ExtResource("10_il2n6")
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftArm/Sword"]
+position = Vector2(-99, 13)
+rotation = -1.5708
+scale = Vector2(0.368797, 2.68053)
+texture = SubResource("GradientTexture2D_bx214")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArm/Sword"]
+position = Vector2(-99, 13)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_pcycr")
+
+[node name="RightArm" parent="." instance=ExtResource("9_fou54")]
+position = Vector2(200, 0)
+righty = true
+enabled = true
+
+[connection signal="enable_combat" from="ShipInterior" to="." method="_on_ship_interior_enable_combat"]
+[connection signal="enable_flight_controls" from="ShipInterior" to="." method="_on_ship_interior_enable_flight_controls"]
