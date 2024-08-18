@@ -88,4 +88,4 @@ func _on_ship_interior_enable_combat():
 	print('reza enable combat')
 	controlsDisabled = true
 	$ShipInterior.visible = false
-	_update_camera(true)
+	$Camera2D.set_target_zoom(Vector2(0.5, 0.5))
