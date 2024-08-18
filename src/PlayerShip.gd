@@ -77,7 +77,7 @@ func turn(isLeft: bool):
 		apply_torque_impulse(rotation_speed)
 
 func on_damage(damage):
-	print('im hit')
+	print('im hit!')
 
 func _on_ship_interior_enable_flight_controls():
 	print('enabling flight controls')
