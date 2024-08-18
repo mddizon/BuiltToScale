@@ -24,6 +24,7 @@ points = PackedVector2Array(8, 277, 481, 304, 1077, 685, 763, -616, 475, -930, -
 script = ExtResource("3_8rish")
 
 [node name="InteriorCharacter" parent="." instance=ExtResource("1_6ih0u")]
+position = Vector2(0, -675)
 motion_mode = 1
 speed = 30
 

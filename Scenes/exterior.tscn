@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ro3yhobq5dcd"]
+[gd_scene load_steps=20 format=3 uid="uid://ro3yhobq5dcd"]
 
 [ext_resource type="Script" path="res://src/exterior.gd" id="1_e06au"]
 [ext_resource type="Texture2D" uid="uid://60qok5adb74f" path="res://Resources/Art/space_render.jpg" id="2_6h1ja"]
@@ -11,11 +11,27 @@
 [ext_resource type="Texture2D" uid="uid://dhut1nha44x7m" path="res://Resources/Art/rocket_plume/2.png" id="6_vnjeq"]
 [ext_resource type="Texture2D" uid="uid://bk20wlrdigcpe" path="res://Resources/Art/rocket_plume/1.png" id="7_leqxl"]
 [ext_resource type="PackedScene" uid="uid://dhdew4mlkjxct" path="res://Scenes/ship_interior.tscn" id="8_s01qx"]
-[ext_resource type="PackedScene" uid="uid://gladf3eq8w5n" path="res://Scenes/arm.tscn" id="11_oxhuc"]
-[ext_resource type="PackedScene" path="res://Scenes/cannon.tscn" id="12_ifxdx"]
+[ext_resource type="Script" path="res://src/Arm.gd" id="11_tew7p"]
+[ext_resource type="PackedScene" uid="uid://cq2is3wafqarq" path="res://Scenes/cannon.tscn" id="12_ifxdx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8672g"]
 size = Vector2(67, 136)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t87di"]
+height = 128.0
+
+[sub_resource type="Gradient" id="Gradient_ds5qr"]
+colors = PackedColorArray(0, 0, 0, 1, 0.766844, 0, 0.264772, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eusu5"]
+gradient = SubResource("Gradient_ds5qr")
+
+[sub_resource type="Gradient" id="Gradient_rliu4"]
+offsets = PackedFloat32Array(0, 0.998628, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.0771443, 0.336799, 0.815052, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n2bgt"]
+gradient = SubResource("Gradient_rliu4")
 
 [node name="Exterior" type="Node2D"]
 script = ExtResource("1_e06au")
@@ -74,14 +90,52 @@ z_index = 10
 position = Vector2(-0.33252, 28.7371)
 scale = Vector2(0.1, 0.1)
 
-[node name="LeftArm" parent="PlayerShip" instance=ExtResource("11_oxhuc")]
-position = Vector2(-200, 0)
-rotation = 0.00475759
+[node name="RightArm" type="RigidBody2D" parent="PlayerShip" groups=["player"]]
+position = Vector2(-0.33252, -0.26294)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("11_tew7p")
 
-[node name="RightArm" parent="PlayerShip" instance=ExtResource("11_oxhuc")]
-position = Vector2(200, 0)
-righty = true
-enabled = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerShip/RightArm"]
+position = Vector2(64, 0)
+rotation = 1.57353
+shape = SubResource("CapsuleShape2D_t87di")
+
+[node name="shoulder" type="PinJoint2D" parent="PlayerShip/RightArm"]
+node_a = NodePath("../..")
+node_b = NodePath("..")
+
+[node name="hand" type="Node2D" parent="PlayerShip/RightArm"]
+position = Vector2(126.667, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerShip/RightArm"]
+position = Vector2(67.6675, -0.26294)
+rotation = 3.1394
+scale = Vector2(2.09347, 0.418117)
+texture = SubResource("GradientTexture2D_eusu5")
+
+[node name="LeftArm" type="RigidBody2D" parent="PlayerShip" groups=["player"]]
+position = Vector2(-0.33252, -0.26294)
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("11_tew7p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerShip/LeftArm"]
+position = Vector2(-68.3325, -0.26294)
+rotation = 1.56405
+shape = SubResource("CapsuleShape2D_t87di")
+
+[node name="shoulder" type="PinJoint2D" parent="PlayerShip/LeftArm"]
+node_a = NodePath("../..")
+node_b = NodePath("..")
+
+[node name="hand" type="Node2D" parent="PlayerShip/LeftArm"]
+position = Vector2(-129.333, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerShip/LeftArm"]
+position = Vector2(-72.3325, -1.26294)
+scale = Vector2(2.08, 0.359999)
+texture = SubResource("GradientTexture2D_n2bgt")
 
 [node name="Asteroid" parent="." instance=ExtResource("4_i7i7e")]
 position = Vector2(880, 253)
