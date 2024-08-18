@@ -29,11 +29,3 @@ func _ready():
 			var impuleScale = 500
 			var randomImpulse = Vector2(randf_range(-impuleScale, impuleScale), randf_range(-impuleScale, impuleScale))
 			instance.apply_impulse(randomImpulse)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
-func get_ship_position():
-	return get_node("PlayerShip").global_position

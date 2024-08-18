@@ -78,6 +78,8 @@ position = Vector2(880, 253)
 position = Vector2(-1449, -6)
 rotation = 1.57365
 
+[connection signal="enable_combat" from="PlayerShip/ShipInterior" to="PlayerShip" method="_on_ship_interior_enable_combat"]
+[connection signal="enable_flight_controls" from="PlayerShip/ShipInterior" to="PlayerShip" method="_on_ship_interior_enable_flight_controls"]
 [connection signal="engine_interacted" from="PlayerShip/ShipInterior" to="PlayerShip" method="_on_ship_interior_engine_interacted"]
 [connection signal="turn_left" from="PlayerShip/ShipInterior" to="PlayerShip" method="_on_ship_interior_turn_left"]
 [connection signal="turn_right" from="PlayerShip/ShipInterior" to="PlayerShip" method="_on_ship_interior_turn_right"]

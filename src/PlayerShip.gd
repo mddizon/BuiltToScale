@@ -15,7 +15,7 @@ signal interacted(action_name: String)
 ]
 
 var currentThrustIdx = 0
-var controlsDisabled = false;
+var controlsDisabled = true;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,6 +27,18 @@ func _process(_delta):
 	pass
 
 func _physics_process(_delta):
+	if not controlsDisabled:
+		if Input.is_action_pressed("up"):
+			burn_engine(false)
+		if Input.is_action_just_released("up"):
+			burn_engine(true)
+		if Input.is_action_just_pressed("secondary_action"):
+			controlsDisabled = true
+			_update_camera(true)
+		if Input.is_action_pressed("left"):
+			turn(true)
+		if Input.is_action_pressed("right"):
+			turn(false)
 
 	# Get the orientation vector of the rigitbody 
 	var orientation = -global_transform.y.normalized()
@@ -37,6 +49,24 @@ func _physics_process(_delta):
 
 func _on_ship_interior_engine_interacted(released):
 	_update_camera(released)
+
+func _on_ship_interior_turn_left(released):
+	_update_camera(released)
+	if not released:
+		turn(true)
+
+func _on_ship_interior_turn_right(released):
+	_update_camera(released)
+	if not released:
+		turn(false)
+
+func _update_camera(released):
+	if (released):
+		$Camera2D.set_target_zoom(zoom_level_exterior)
+	else:
+		$Camera2D.set_target_zoom(zoom_level_interact)
+
+func burn_engine(released: bool):
 	if (not released):
 		currentThrustIdx = 4 # (currentThrustIdx + 1) % len(thrusts)
 		# for i in range(4):
@@ -47,22 +77,22 @@ func _on_ship_interior_engine_interacted(released):
 		for i in range(4):
 			rocketPlumes[i].visible = false
 
-func _on_ship_interior_turn_left(released):
-	_update_camera(released)
-	if not released:
-		# get parent camera node
+func turn(isLeft: bool):
+	if isLeft:
 		apply_torque_impulse(-rotation_speed)
-
-func _on_ship_interior_turn_right(released):
-	_update_camera(released)
-	if not released:
+	else:
 		apply_torque_impulse(rotation_speed)
 
-func _update_camera(released):
-	if (released):
-		$Camera2D.set_target_zoom(zoom_level_exterior)
-	else:
-		$Camera2D.set_target_zoom(zoom_level_interact)
-		
 func on_damage(damage):
 	print('im hit!')
+
+func _on_ship_interior_enable_flight_controls():
+	print('enabling flight controls')
+	controlsDisabled = false
+	$Camera2D.set_target_zoom(Vector2(0.5, 0.5))
+
+func _on_ship_interior_enable_combat():
+	print('reza enable combat')
+	controlsDisabled = true
+	$ShipInterior.visible = false
+	_update_camera(true)
