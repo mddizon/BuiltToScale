@@ -1,16 +1,58 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd6vv0g2vw6ie"]
+[gd_scene load_steps=8 format=3 uid="uid://bd6vv0g2vw6ie"]
 
 [ext_resource type="Script" path="res://src/interior_character.gd" id="1_cdi26"]
-[ext_resource type="Texture2D" uid="uid://cqbidmh5p2s84" path="res://Resources/Art/red_character.png" id="2_vtp65"]
+[ext_resource type="Texture2D" uid="uid://cl33vqgfrb1gb" path="res://Resources/Art/Akimbo___sprite_sheets.png" id="2_27pil"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xnxyt"]
-radius = 22.0227
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cpgpg"]
+radius = 43.0
+height = 145.997
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5e3g"]
+atlas = ExtResource("2_27pil")
+region = Rect2(365, 74, 169, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p16pq"]
+atlas = ExtResource("2_27pil")
+region = Rect2(563, 74, 169, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duskg"]
+atlas = ExtResource("2_27pil")
+region = Rect2(761, 74, 169, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7shei"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5e3g")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p16pq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duskg")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [node name="InteriorCharacter" type="CharacterBody2D"]
+position = Vector2(865, 425)
+collision_layer = 256
+collision_mask = 256
 script = ExtResource("1_cdi26")
+speed = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_xnxyt")
+rotation = -1.57034
+shape = SubResource("CapsuleShape2D_cpgpg")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_vtp65")
+[node name="Animations" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7shei")
+animation = &"idle"
+frame_progress = 0.28823

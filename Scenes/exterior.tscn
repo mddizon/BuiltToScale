@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bk20wlrdigcpe" path="res://Resources/Art/rocket_plume/1.png" id="7_leqxl"]
 [ext_resource type="PackedScene" uid="uid://dhdew4mlkjxct" path="res://Scenes/ship_interior.tscn" id="8_s01qx"]
 [ext_resource type="Script" path="res://src/Arm.gd" id="11_tew7p"]
-[ext_resource type="PackedScene" path="res://Scenes/cannon.tscn" id="12_ifxdx"]
+[ext_resource type="PackedScene" uid="uid://cq2is3wafqarq" path="res://Scenes/cannon.tscn" id="12_ifxdx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8672g"]
 size = Vector2(67, 136)
@@ -21,11 +21,14 @@ size = Vector2(67, 136)
 height = 128.0
 
 [sub_resource type="Gradient" id="Gradient_ds5qr"]
+colors = PackedColorArray(0, 0, 0, 1, 0.766844, 0, 0.264772, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_eusu5"]
 gradient = SubResource("Gradient_ds5qr")
 
 [sub_resource type="Gradient" id="Gradient_rliu4"]
+offsets = PackedFloat32Array(0, 0.998628, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.0771443, 0.336799, 0.815052, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_n2bgt"]
 gradient = SubResource("Gradient_rliu4")

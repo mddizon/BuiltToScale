@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://nitaf88ntw5q"]
 
-[ext_resource type="AudioStream" uid="uid://eip78ils164" path="res://Resources/Sound/Music/Stream Loops 2024-05-29.ogg" id="1_ho1k8"]
 [ext_resource type="Script" path="res://src/audio_controller.gd" id="1_trxj7"]
+[ext_resource type="AudioStream" uid="uid://dvm8cseq6kveu" path="res://Resources/Sound/Music/gmtkmusic01-240817-1711.ogg" id="2_bemda"]
 
 [node name="AudioController" type="Node2D"]
 script = ExtResource("1_trxj7")
@@ -9,5 +9,5 @@ script = ExtResource("1_trxj7")
 [node name="UISounds" type="AudioStreamPlayer2D" parent="."]
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("1_ho1k8")
+stream = ExtResource("2_bemda")
 autoplay = true

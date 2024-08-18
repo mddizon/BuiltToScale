@@ -24,8 +24,6 @@ points = PackedVector2Array(8, 277, 481, 304, 1077, 685, 763, -616, 475, -930, -
 script = ExtResource("3_8rish")
 
 [node name="InteriorCharacter" parent="." instance=ExtResource("1_6ih0u")]
-collision_layer = 2
-collision_mask = 2
 motion_mode = 1
 speed = 30
 
@@ -36,7 +34,7 @@ position = Vector2(-691, -227)
 action_name = "Weapons Locker"
 
 [node name="NavigationLeft" parent="." instance=ExtResource("4_wpjgs")]
-position = Vector2(-154, -890)
+position = Vector2(-240, 136)
 action_name = "Turn Left"
 
 [node name="Engines" parent="." instance=ExtResource("4_wpjgs")]
@@ -44,11 +42,19 @@ position = Vector2(0, 135)
 action_name = "Engines"
 
 [node name="NavigationRight" parent="." instance=ExtResource("4_wpjgs")]
-position = Vector2(146, -894)
+position = Vector2(237, 139)
 action_name = "Turn Right"
 
-[connection signal="interacted" from="WeaponsLocker" to="." method="_on_weapons_locker_interacted"]
+[node name="Combat" parent="." instance=ExtResource("4_wpjgs")]
+position = Vector2(0, -336)
+
+[node name="Pilot" parent="." instance=ExtResource("4_wpjgs")]
+position = Vector2(0, -919)
+
 [connection signal="interacted" from="WeaponsLocker" to="." method="_on_interaction"]
+[connection signal="interacted" from="WeaponsLocker" to="." method="_on_weapons_locker_interacted"]
 [connection signal="interacted" from="NavigationLeft" to="." method="_on_navigation_left_interacted"]
 [connection signal="interacted" from="Engines" to="." method="_on_engines_interacted"]
 [connection signal="interacted" from="NavigationRight" to="." method="_on_navigation_right_interacted"]
+[connection signal="interacted" from="Combat" to="." method="_on_combat_interacted"]
+[connection signal="interacted" from="Pilot" to="." method="_on_pilot_interacted"]

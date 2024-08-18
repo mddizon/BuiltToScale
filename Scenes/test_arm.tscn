@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://4pq7ypsrqlm6"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+
+[node name="bicep" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(614, 92)
+rest = Transform2D(1, 0, 0, 1, 614, 92)
+
+[node name="forearm" type="Bone2D" parent="Skeleton2D/bicep"]
+position = Vector2(-195, 69)
+rest = Transform2D(1, 0, 0, 1, -195, 69)
+
+[node name="wrist" type="Bone2D" parent="Skeleton2D/bicep/forearm"]
+position = Vector2(-181, -54)
+rest = Transform2D(1, 0, 0, 1, -181, -54)
+
+[node name="hand" type="Bone2D" parent="Skeleton2D/bicep/forearm/wrist"]
+position = Vector2(-50, -17)
+rest = Transform2D(1, 0, 0, 1, -50, -17)
+
+[node name="phys_bi" type="PhysicalBone2D" parent="Skeleton2D"]
+position = Vector2(617, 92)
+bone2d_nodepath = NodePath("../bicep")
+simulate_physics = true
+
+[node name="shoulder" type="PinJoint2D" parent="Skeleton2D/phys_bi"]
+
+[node name="phys_fo" type="PhysicalBone2D" parent="Skeleton2D/phys_bi/shoulder"]
+bone2d_nodepath = NodePath("../../../bicep/forearm")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Skeleton2D/phys_bi/shoulder/phys_fo"]
+position = Vector2(-193, 69)
+
+[node name="phys_wr" type="PhysicalBone2D" parent="Skeleton2D/phys_bi/shoulder/phys_fo/PinJoint2D"]
+bone2d_nodepath = NodePath("../../../../../bicep/forearm/wrist")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Skeleton2D/phys_bi/shoulder/phys_fo/PinJoint2D/phys_wr"]
+position = Vector2(-187, -54)
+
+[node name="PhysicalBone2D" type="PhysicalBone2D" parent="Skeleton2D/phys_bi/shoulder/phys_fo/PinJoint2D/phys_wr/PinJoint2D"]
+bone2d_nodepath = NodePath("../../../../../../../bicep/forearm/wrist")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/phys_bi/shoulder/phys_fo"]
