@@ -14,6 +14,9 @@ signal interacted(action_name: String)
 	$plume_4
 ]
 
+@onready var leftArm = $LeftArm
+@onready var rightArm = $RightArm
+
 var currentThrustIdx = 0
 var controlsDisabled = false;
 
@@ -24,10 +27,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if Input.is_action_just_pressed("action"):
+		leftArm.enabled = not leftArm.enabled
+		rightArm.enabled = not rightArm.enabled
 	pass
 
 func _physics_process(_delta):
-
 	# Get the orientation vector of the rigitbody 
 	var orientation = -global_transform.y.normalized()
 	var force = orientation * thrusts[currentThrustIdx]

@@ -4,6 +4,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var scene = preload("res://Scenes/asteroid.tscn")
+	return
 	const numAsteroids = 10.0
 	const arenaRadius = 10000.0
 	for i in range(numAsteroids):
