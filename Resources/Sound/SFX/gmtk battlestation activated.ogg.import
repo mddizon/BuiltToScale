@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://8pt2r4bnp6fq"
+path="res://.godot/imported/gmtk battlestation activated.ogg-d514f2244815454337878984da994cfb.oggvorbisstr"
+
+[deps]
+
+source_file="res://Resources/Sound/SFX/gmtk battlestation activated.ogg"
+dest_files=["res://.godot/imported/gmtk battlestation activated.ogg-d514f2244815454337878984da994cfb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

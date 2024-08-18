@@ -30,6 +30,9 @@ func _process(_delta):
 	elif current_system == "pilot":
 		if Input.is_action_just_pressed("secondary_action"):
 			current_system = null
+	elif current_system == "combat":
+		if Input.is_action_just_pressed("secondary_action"):
+			current_system = null
 
 func _on_pilot_interacted(action_name):
 	current_system = "pilot"
