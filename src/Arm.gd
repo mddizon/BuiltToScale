@@ -34,7 +34,6 @@ func _physics_process(delta):
 	
 	var parentMouse = get_parent().get_local_mouse_position()
 	var parentAngle = Vector2.ZERO.angle_to_point(parentMouse)
-	print(parentAngle)
 
 	var b = 0.1
 	if (righty and (parentAngle < mouseAngleLowerLimit + b or parentAngle > mouseAngleUpperLimit - b)):
