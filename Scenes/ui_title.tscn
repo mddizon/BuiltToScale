@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://xdvb52housap"]
+[gd_scene load_steps=4 format=3 uid="uid://xdvb52housap"]
 
 [ext_resource type="Script" path="res://src/ui_title.gd" id="1_82tn2"]
 [ext_resource type="LabelSettings" uid="uid://dffgelpd4rgp8" path="res://Resources/title_font_settings.tres" id="1_le0jy"]
 [ext_resource type="Theme" uid="uid://w7lokxr7htxk" path="res://Resources/button_theme.tres" id="2_wvkh1"]
-[ext_resource type="PackedScene" uid="uid://cm6dk33upugkp" path="res://Scenes/physics_tester.tscn" id="4_438p5"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -57,18 +56,16 @@ layout_mode = 2
 theme = ExtResource("2_wvkh1")
 text = "Start Game"
 
-[node name="GoToShipButton" type="Button" parent="VFlowContainer"]
+[node name="SettingsButton" type="Button" parent="VFlowContainer"]
 layout_mode = 2
 theme = ExtResource("2_wvkh1")
-text = "Go To Ship"
+text = "Settings"
 
 [node name="CreditsButton" type="Button" parent="VFlowContainer"]
 layout_mode = 2
 theme = ExtResource("2_wvkh1")
 text = "Credits"
 
-[node name="PhysicsTester" parent="." instance=ExtResource("4_438p5")]
-
 [connection signal="pressed" from="VFlowContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
-[connection signal="pressed" from="VFlowContainer/GoToShipButton" to="." method="_on_go_to_ship_button_pressed"]
+[connection signal="pressed" from="VFlowContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="VFlowContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

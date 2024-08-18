@@ -21,6 +21,9 @@ func _on_navigation_right_interacted(action_name):
 	current_system = "right_nav"
 
 func _process(_delta):
+	if not visible:
+		return
+	
 	if current_system == null:
 		$InteriorCharacter.player_movement()
 	elif current_system == "weapons":

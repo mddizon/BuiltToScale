@@ -1,23 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhe88theexd5e"]
+[gd_scene load_steps=5 format=3 uid="uid://dhe88theexd5e"]
 
 [ext_resource type="LabelSettings" uid="uid://dffgelpd4rgp8" path="res://Resources/title_font_settings.tres" id="1_b1xa3"]
+[ext_resource type="Script" path="res://src/settings_panel.gd" id="1_c3kp3"]
 [ext_resource type="Theme" uid="uid://w7lokxr7htxk" path="res://Resources/button_theme.tres" id="2_bbhuj"]
+[ext_resource type="ButtonGroup" uid="uid://bcdttporywjgm" path="res://Resources/invert_zoom_button_group.tres" id="3_bil70"]
 
 [node name="Settings Panel" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1096.0
-offset_bottom = -175.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_c3kp3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -261.0
+offset_top = -175.0
+offset_right = 239.0
+offset_bottom = 316.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.255659, 0.255659, 0.255659, 1)
@@ -27,6 +36,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 55.0
+offset_right = -85.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -46,6 +57,8 @@ text = "Music
 
 [node name="MusicSlider" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
+min_value = -40.0
+max_value = 2.0
 
 [node name="SFXLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -53,12 +66,34 @@ text = "SFX Volume"
 
 [node name="SFXSlider" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
+min_value = -40.0
+max_value = 2.0
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 389.0
-offset_top = 229.0
-offset_right = 434.0
-offset_bottom = 260.0
+[node name="InvertControls" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Mouse Wheel Behavior"
+
+[node name="AwayOut" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_bbhuj")
+toggle_mode = true
+button_group = ExtResource("3_bil70")
+text = "Moving the wheel away from you zooms OUT"
+
+[node name="AwayIn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_bbhuj")
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("3_bil70")
+text = "Moving the wheel away from you zooms IN"
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 theme = ExtResource("2_bbhuj")
 text = "Back"
+
+[connection signal="value_changed" from="VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="toggled" from="VBoxContainer/AwayOut" to="." method="_on_away_out_toggled"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

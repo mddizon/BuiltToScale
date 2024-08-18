@@ -5,7 +5,10 @@ extends Node2D
 @onready var spaceCamera = $Exterior/PlayerShip/Camera2D
 @onready var spaceship = $Exterior/PlayerShip
 @onready var current_scene = "exterior"
-@onready var zoom_inputs = 3
+
+@export var zoom_inputs = 3
+@export var zoom_level_interior = Vector2(5, 5)
+@export var zoom_level_exterior = Vector2(0.5, 0.5)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,21 +17,33 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if (Input.is_action_just_pressed("zoom-out")):
-		if (GlobalGameState.current_zoom_inputs < 0):
-			GlobalGameState.current_zoom_inputs = 1
+		if GlobalGameState.invert_zoom:
+			_dec_zoom()
 		else:
-			GlobalGameState.current_zoom_inputs += 1
+			_inc_zoom()
 	elif (Input.is_action_just_pressed("zoom-in")):
-		if (GlobalGameState.current_zoom_inputs > 0):
-			GlobalGameState.current_zoom_inputs = -1
+		if GlobalGameState.invert_zoom:
+			_inc_zoom()
 		else:
-			GlobalGameState.current_zoom_inputs -= 1
+			_dec_zoom()
 
 	if (abs(GlobalGameState.current_zoom_inputs) >= zoom_inputs):
 		if (GlobalGameState.current_zoom_inputs > 0):
 			_handle_zoom("zoom-out")
 		else:
 			_handle_zoom("zoom-in")
+
+func _inc_zoom():
+	if (GlobalGameState.current_zoom_inputs < 0):
+		GlobalGameState.current_zoom_inputs = 1
+	else:
+		GlobalGameState.current_zoom_inputs += 1
+
+func _dec_zoom():
+	if (GlobalGameState.current_zoom_inputs > 0):
+		GlobalGameState.current_zoom_inputs = -1
+	else:
+		GlobalGameState.current_zoom_inputs -= 1
 
 func _handle_zoom(direction: String):
 	GlobalGameState.current_zoom_inputs = 0
@@ -47,12 +62,12 @@ func _handle_zoom(direction: String):
 
 func zoomToInterior():
 	interior.visible = true
-	spaceCamera.set_target_zoom(Vector2(5, 5))
+	spaceCamera.set_target_zoom(zoom_level_interior)
 	current_scene = "interior"
 
 func zoomToExterior():
 	interior.visible = false
-	spaceCamera.set_target_zoom(Vector2(0.5, 0.5))
+	spaceCamera.set_target_zoom(zoom_level_exterior)
 	current_scene = "exterior"
 
 func _on_button_pressed():

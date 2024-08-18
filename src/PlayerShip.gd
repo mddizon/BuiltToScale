@@ -4,6 +4,8 @@ signal interacted(action_name: String)
 
 @export var thrusts = [0, 10, 50, 100, 200]
 @export var rotation_speed = 100
+@export var zoom_level_interact = Vector2(2, 2);
+@export var zoom_level_exterior = Vector2(5, 5);
 
 @onready var rocketPlumes = [
 	$plume_1,
@@ -59,6 +61,6 @@ func _on_ship_interior_turn_right(released):
 
 func _update_camera(released):
 	if (released):
-		$Camera2D.set_target_zoom(Vector2(5, 5))
+		$Camera2D.set_target_zoom(zoom_level_exterior)
 	else:
-		$Camera2D.set_target_zoom(Vector2(3, 3))
+		$Camera2D.set_target_zoom(zoom_level_interact)
