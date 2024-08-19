@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhfag02s04yh1"]
+
+[ext_resource type="Script" path="res://src/test_behavior.gd" id="1_ejq73"]
+[ext_resource type="PackedScene" uid="uid://bfngtkh8a410v" path="res://Scenes/small_enemy.tscn" id="2_v4lu4"]
+[ext_resource type="Texture2D" uid="uid://ci2pjew43wf65" path="res://icon.svg" id="3_prk5g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f4mu6"]
+radius = 65.6201
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ejq73")
+
+[node name="Enemy" parent="." instance=ExtResource("2_v4lu4")]
+position = Vector2(877, 359)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("3_prk5g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_f4mu6")

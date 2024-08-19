@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfngtkh8a410v"]
+
+[ext_resource type="Script" path="res://Scenes/small_enemy.gd" id="1_g6wan"]
+[ext_resource type="Texture2D" uid="uid://ca1e10vb0do2b" path="res://Resources/Art/Bug_Blue_1.png" id="1_jnl3q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o5qbm"]
+radius = 22.0907
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l6iyq"]
+radius = 200.0
+
+[node name="Enemy" type="CharacterBody2D"]
+up_direction = Vector2(0, 1)
+script = ExtResource("1_g6wan")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0)
+width = 50.0
+default_color = Color(1, 0.219608, 0.392157, 0.392157)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jnl3q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o5qbm")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_l6iyq")
+
+[node name="LoadingTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FiringTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="LoadingTimer" to="." method="_on_loading_timer_timeout"]
+[connection signal="timeout" from="FiringTimer" to="." method="_on_firing_timer_timeout"]
