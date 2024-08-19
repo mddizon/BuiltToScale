@@ -1,10 +1,10 @@
 extends Node2D
 
 @onready var back_button_sounds = preload("res://Resources/Sound/SFX/back_button_randomizer.tres")
-@onready var click_button_sounds = preload("res://Resources/Sound/SFX/back_button_randomizer.tres")
+@onready var click_button_sounds = preload("res://Resources/Sound/SFX/click_button_randomizer.tres")
 @onready var lose_game_music = preload("res://Resources/Sound/SFX/gmtk lose.ogg")
 @onready var confirm_sound = preload("res://Resources/Sound/SFX/gmtk confirm selection.ogg")
-@onready var start_game = preload("res://Resources/Sound/SFX/gmtk vo akimbo we need you.ogg")
+@onready var start_game = preload("res://Resources/Sound/SFX/gmtk vo excellent.ogg")
 @onready var crazy_arms = preload("res://Resources/Sound/SFX/gmtk vo crazy arms.ogg")
 @onready var menu_music = preload("res://Resources/Sound/Music/gmtk menu theme.ogg")
 @onready var here_we_go = preload("res://Resources/Sound/SFX/gmtk vo start.ogg")
