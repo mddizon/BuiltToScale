@@ -31,13 +31,11 @@ simulate_physics = true
 bone2d_nodepath = NodePath("../../../bicep/forearm")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="Skeleton2D/phys_bi/shoulder/phys_fo"]
-position = Vector2(-193, 69)
 
 [node name="phys_wr" type="PhysicalBone2D" parent="Skeleton2D/phys_bi/shoulder/phys_fo/PinJoint2D"]
 bone2d_nodepath = NodePath("../../../../../bicep/forearm/wrist")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="Skeleton2D/phys_bi/shoulder/phys_fo/PinJoint2D/phys_wr"]
-position = Vector2(-187, -54)
 
 [node name="PhysicalBone2D" type="PhysicalBone2D" parent="Skeleton2D/phys_bi/shoulder/phys_fo/PinJoint2D/phys_wr/PinJoint2D"]
 bone2d_nodepath = NodePath("../../../../../../../bicep/forearm/wrist")

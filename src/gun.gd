@@ -7,7 +7,8 @@ extends WeaponBase
 @onready var projectile = preload("res://Scenes/player_projectile.tscn")
 @onready var debug = false
 @onready var sprite = $Sprite2D
-@onready var arm: Arm = get_parent() # TODO: this is delicate!
+# @onready var arm: Arm = get_parent() # TODO: this is delicate!
+var arm = null
 
 var remainingDelay = 0
 var angle = 0
@@ -15,6 +16,7 @@ var targetGlobalPos = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	arm = get_parent()
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
