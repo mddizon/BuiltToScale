@@ -3,6 +3,7 @@ extends Node2D
 @onready var back_button_sounds = preload("res://Resources/Sound/SFX/back_button_randomizer.tres")
 @onready var click_button_sounds = preload("res://Resources/Sound/SFX/back_button_randomizer.tres")
 @onready var lose_game_music = preload("res://Resources/Sound/SFX/gmtk lose.ogg")
+@onready var confirm_sound = preload("res://Resources/Sound/SFX/gmtk confirm selection.ogg")
 
 @onready var exterior_music = $ExteriorMusicPlayer
 @onready var interior_music = $InteriorMusicPlayer
@@ -12,6 +13,10 @@ extends Node2D
 
 func play_back_button():
 	$UISounds.stream = back_button_sounds
+	$UISounds.play()
+
+func play_confirm_button():
+	$UISounds.stream = confirm_sound
 	$UISounds.play()
 
 func play_click_button():

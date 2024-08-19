@@ -1,8 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://xdvb52housap"]
+[gd_scene load_steps=7 format=3 uid="uid://xdvb52housap"]
 
 [ext_resource type="Script" path="res://src/ui_title.gd" id="1_82tn2"]
 [ext_resource type="LabelSettings" uid="uid://dffgelpd4rgp8" path="res://Resources/title_font_settings.tres" id="1_le0jy"]
 [ext_resource type="Theme" uid="uid://w7lokxr7htxk" path="res://Resources/button_theme.tres" id="2_wvkh1"]
+[ext_resource type="Material" uid="uid://lutnrci1ncn8" path="res://Resources/glitch_shader_mat.tres" id="4_rstvr"]
+
+[sub_resource type="Gradient" id="Gradient_hn4fc"]
+offsets = PackedFloat32Array(0, 0.524664, 1)
+colors = PackedColorArray(0.0509804, 0.00784314, 0.129412, 1, 0.14902, 0.0784314, 0.278431, 1, 0.329412, 0.0509804, 0.431373, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nrct6"]
+gradient = SubResource("Gradient_hn4fc")
+fill_from = Vector2(0.0940171, 0.987179)
+fill_to = Vector2(0.512821, 0.132479)
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -13,15 +23,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_82tn2")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.236686, 0.594683, 0.648699, 1)
-metadata/_edit_use_anchors_ = true
+texture = SubResource("GradientTexture2D_nrct6")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -30,40 +39,59 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.5
-offset_top = -33.5
-offset_right = 128.5
-offset_bottom = 33.5
+offset_left = -688.0
+offset_top = -417.0
+offset_right = 689.0
+offset_bottom = 135.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "GMTK 2024"
+theme = ExtResource("2_wvkh1")
+text = "Armed And Dangerous"
 label_settings = ExtResource("1_le0jy")
+horizontal_alignment = 1
+autowrap_mode = 2
 
-[node name="VFlowContainer" type="HFlowContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="Label"]
+material = ExtResource("4_rstvr")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="VFlowContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -350.0
-offset_bottom = -235.0
+offset_left = 3.0
+offset_top = -313.0
+offset_right = 3.0
+offset_bottom = -198.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="StartGameButton" type="Button" parent="VFlowContainer"]
 layout_mode = 2
 theme = ExtResource("2_wvkh1")
+theme_override_font_sizes/font_size = 36
 text = "Start Game"
 
 [node name="SettingsButton" type="Button" parent="VFlowContainer"]
 layout_mode = 2
 theme = ExtResource("2_wvkh1")
+theme_override_font_sizes/font_size = 36
 text = "Settings"
 
 [node name="CreditsButton" type="Button" parent="VFlowContainer"]
 layout_mode = 2
 theme = ExtResource("2_wvkh1")
+theme_override_font_sizes/font_size = 36
 text = "Credits"
 
 [connection signal="pressed" from="VFlowContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
