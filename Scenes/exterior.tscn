@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ro3yhobq5dcd"]
+[gd_scene load_steps=9 format=3 uid="uid://ro3yhobq5dcd"]
 
 [ext_resource type="Script" path="res://src/exterior.gd" id="1_e06au"]
 [ext_resource type="Texture2D" uid="uid://dpp38dxxomfdo" path="res://Resources/Art/Nebula.png" id="2_6mohs"]
 [ext_resource type="PackedScene" uid="uid://nqjvarmir6ow" path="res://Scenes/player_ship.tscn" id="3_xdfxa"]
 [ext_resource type="PackedScene" uid="uid://kjdayayyunk7" path="res://Scenes/asteroid.tscn" id="4_i7i7e"]
 [ext_resource type="PackedScene" uid="uid://bfngtkh8a410v" path="res://Scenes/small_enemy.tscn" id="6_1d3ye"]
-[ext_resource type="PackedScene" uid="uid://beolkyhh6np0a" path="res://Scenes/missile_enemy.tscn" id="7_hxdqj"]
-[ext_resource type="PackedScene" uid="uid://cq2is3wafqarq" path="res://Scenes/cannon.tscn" id="12_ifxdx"]
+[ext_resource type="PackedScene" uid="uid://c5hd7i2hylyue" path="res://Scenes/big_enemy.tscn" id="6_i3pxv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8kfbu"]
 size = Vector2(12442, 73)
@@ -37,10 +36,6 @@ rotation_speed = 1500
 [node name="Asteroid" parent="." instance=ExtResource("4_i7i7e")]
 position = Vector2(880, 253)
 
-[node name="Cannon" parent="." groups=["enemy"] instance=ExtResource("12_ifxdx")]
-position = Vector2(-1445, 550)
-rotation = 1.57365
-
 [node name="Wall" type="StaticBody2D" parent="."]
 position = Vector2(6174, 34)
 collision_layer = 16
@@ -68,4 +63,5 @@ position = Vector2(-417, -471)
 [node name="Enemy2" parent="." instance=ExtResource("6_1d3ye")]
 position = Vector2(-957, -251)
 
-[node name="MissileEnemy" parent="." instance=ExtResource("7_hxdqj")]
+[node name="Node2D" parent="." instance=ExtResource("6_i3pxv")]
+position = Vector2(-151, -1261)

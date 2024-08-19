@@ -32,6 +32,7 @@ script = ExtResource("3_8rish")
 position = Vector2(0, -225)
 scale = Vector2(0.5, 0.5)
 motion_mode = 1
+speed = 50
 
 [node name="Camera2D" type="Camera2D" parent="InteriorCharacter"]
 
@@ -71,8 +72,8 @@ description = "Helm
 
 Fly the Ship"
 
-[connection signal="interacted" from="WeaponsLocker" to="." method="_on_interaction"]
 [connection signal="interacted" from="WeaponsLocker" to="." method="_on_weapons_locker_interacted"]
+[connection signal="interacted" from="WeaponsLocker" to="." method="_on_interaction"]
 [connection signal="interacted" from="Engines" to="." method="_on_engines_interacted"]
 [connection signal="interacted" from="Combat" to="." method="_on_combat_interacted"]
 [connection signal="interacted" from="Pilot" to="." method="_on_pilot_interacted"]

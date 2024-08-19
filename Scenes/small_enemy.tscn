@@ -49,7 +49,7 @@ hurtsPlayer = true
 position = Vector2(0, 42)
 
 [node name="Health" parent="." instance=ExtResource("4_3kwq2")]
-health = 100
+health = 10
 isEnemy = true
 
 [node name="Healthbar" parent="." instance=ExtResource("5_8w0i5")]
