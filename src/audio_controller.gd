@@ -4,15 +4,22 @@ extends Node2D
 @onready var click_button_sounds = preload("res://Resources/Sound/SFX/back_button_randomizer.tres")
 @onready var lose_game_music = preload("res://Resources/Sound/SFX/gmtk lose.ogg")
 @onready var confirm_sound = preload("res://Resources/Sound/SFX/gmtk confirm selection.ogg")
+@onready var start_game = preload("res://Resources/Sound/SFX/gmtk vo akimbo we need you.ogg")
+@onready var crazy_arms = preload("res://Resources/Sound/SFX/gmtk vo crazy arms.ogg")
 @onready var menu_music = preload("res://Resources/Sound/Music/gmtk menu theme.ogg")
+@onready var here_we_go = preload("res://Resources/Sound/SFX/gmtk vo start.ogg")
 
 @onready var exterior_music = $ExteriorMusicPlayer
 @onready var interior_music = $InteriorMusicPlayer
 @onready var animation_player = $AnimationPlayer
+@onready var game_sounds = $GameSounds
 
 @onready var mutex_animation_playing = false
 var max_music_volume = 0
 var max_sound_volume = 0
+
+func _ready():
+	SignalBus.change_mode.connect(_on_change_mode)
 
 func play_back_button():
 	$UISounds.stream = back_button_sounds
@@ -20,6 +27,10 @@ func play_back_button():
 
 func play_confirm_button():
 	$UISounds.stream = confirm_sound
+	$UISounds.play()
+
+func play_start_game_button():
+	$UISounds.stream = start_game
 	$UISounds.play()
 
 func play_click_button():
@@ -43,6 +54,7 @@ func set_music_volume(vol: float):
 
 func set_sfx_volume(vol: float):
 	max_sound_volume = vol
+	game_sounds.volume_db = vol
 	$UISounds.volume_db = vol
 	
 func get_music_volume():
@@ -72,3 +84,8 @@ func stop_music():
 func pause_music():
 	$ExteriorMusicPlayer.playing = false
 	$InteriorMusicPlayer.playing = false
+	
+func _on_change_mode(mode):
+	if mode == 'combat':
+		game_sounds.stream = crazy_arms
+		game_sounds.play()

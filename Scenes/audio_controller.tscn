@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/audio_controller.gd" id="1_trxj7"]
 [ext_resource type="AudioStream" uid="uid://cukxpyeap5itg" path="res://Resources/Sound/Music/gmtk action outside.ogg" id="2_eng4e"]
 [ext_resource type="AudioStream" uid="uid://b4hjm0q314fee" path="res://Resources/Sound/Music/gmtk action inside.ogg" id="3_xmlu0"]
-[ext_resource type="AudioStream" uid="uid://d1cuy0ild8bbp" path="res://Resources/Sound/Music/gmtk menu theme.ogg" id="4_64djm"]
+[ext_resource type="AudioStream" uid="uid://c0xp4d8d52exy" path="res://Resources/Sound/Music/gmtk menu theme without vo.ogg" id="4_vkokp"]
 
 [sub_resource type="Animation" id="Animation_60avb"]
 length = 0.001
@@ -111,8 +111,9 @@ libraries = {
 }
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_64djm")
-volume_db = -40.0
+stream = ExtResource("4_vkokp")
+
+[node name="GameSounds" type="AudioStreamPlayer" parent="."]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

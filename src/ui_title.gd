@@ -9,7 +9,7 @@ func _on_start_game_button_pressed():
 	GlobalGameState.player_health = 100
 	GlobalGameState.is_game_over = false	
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
-	AudioController.play_confirm_button()
+	AudioController.play_start_game_button()
 
 func _on_credits_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/credits.tscn")
