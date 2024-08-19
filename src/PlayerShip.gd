@@ -66,6 +66,7 @@ func burn_engine(released: bool):
 		# 	rocketPlumes[i].visible = i == currentThrustIdx
 		rocketPlumes[2].visible = true
 	else:
+		currentThrustIdx = 0
 		#all plumes off
 		for i in range(4):
 			rocketPlumes[i].visible = false
