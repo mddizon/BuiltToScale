@@ -47,4 +47,5 @@ func _on_pilot_interacted(action_name):
 func _on_combat_interacted(action_name):
 	AudioController.go_outside()
 	SignalBus.change_mode.emit('combat')
+	emit_signal("enable_combat")
 	current_system = "combat"

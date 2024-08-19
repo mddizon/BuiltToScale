@@ -66,6 +66,7 @@ func zoomToInterior():
 	AudioController.go_inside()
 	spaceCamera.set_target_zoom(zoom_level_interior)
 	current_scene = "interior"
+	spaceship.disableArms()
 
 func zoomToExterior():
 	interior.visible = false

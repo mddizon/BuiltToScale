@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dhut1nha44x7m" path="res://Resources/Art/rocket_plume/2.png" id="6_i7o4a"]
 [ext_resource type="Texture2D" uid="uid://bk20wlrdigcpe" path="res://Resources/Art/rocket_plume/1.png" id="7_ua2we"]
 [ext_resource type="PackedScene" uid="uid://dhdew4mlkjxct" path="res://Scenes/ship_interior.tscn" id="8_v7ts8"]
-[ext_resource type="PackedScene" path="res://Scenes/arm.tscn" id="9_fou54"]
+[ext_resource type="PackedScene" uid="uid://gladf3eq8w5n" path="res://Scenes/arm.tscn" id="9_fou54"]
 [ext_resource type="Script" path="res://src/sword.gd" id="10_il2n6"]
 [ext_resource type="Script" path="res://src/gun.gd" id="11_g5wqe"]
 
