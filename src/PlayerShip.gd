@@ -80,13 +80,15 @@ func on_damage(damage):
 	print('im hit')
 
 func enableArms():
-	add_child(leftArm)
-	add_child(rightArm)
+	if leftArm.get_parent() != self:
+		add_child(leftArm)
+	if rightArm.get_parent() != self:
+		add_child(rightArm)
 
 func disableArms():
-	if (leftArm.get_parent() == self):
+	if leftArm.get_parent() == self:
 		remove_child(leftArm)
-	if (rightArm.get_parent() == self):
+	if rightArm.get_parent() == self:
 		remove_child(rightArm)
 
 func _on_ship_interior_enable_flight_controls():
