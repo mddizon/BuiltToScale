@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dvbk8t00r7hmw"
+path="res://.godot/imported/gmtk vo excellent.ogg-05925e1ec2be56d536ad4b86919ab16a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Resources/Sound/SFX/gmtk vo excellent.ogg"
+dest_files=["res://.godot/imported/gmtk vo excellent.ogg-05925e1ec2be56d536ad4b86919ab16a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

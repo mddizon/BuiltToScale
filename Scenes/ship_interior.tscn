@@ -2,47 +2,49 @@
 
 [ext_resource type="PackedScene" uid="uid://bd6vv0g2vw6ie" path="res://Scenes/interior_character.tscn" id="1_6ih0u"]
 [ext_resource type="Script" path="res://src/ship_interior.gd" id="1_x326t"]
+[ext_resource type="Texture2D" uid="uid://chuxop4f4062p" path="res://Resources/Art/Hero Ship_sprites/HeroShip_interior.png" id="2_4yudv"]
 [ext_resource type="Script" path="res://src/interior_border.gd" id="3_8rish"]
 [ext_resource type="PackedScene" uid="uid://dbtoh2vrw0ta1" path="res://Scenes/interactable.tscn" id="4_wpjgs"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_aamvy"]
 
 [node name="ShipInterior" type="Node2D"]
 script = ExtResource("1_x326t")
 
-[node name="ShipFloor" type="Polygon2D" parent="."]
-color = Color(0.544288, 0.298503, 0.0982161, 1)
-texture = SubResource("CanvasTexture_aamvy")
-polygon = PackedVector2Array(1075, 691, 479, 313, -3, 278, -591, 364, -1028, 700, -720, -613, -453, -909, 6, -1083, 470, -933, 767, -610)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4yudv")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 256
 collision_mask = 256
 
 [node name="Border" type="Line2D" parent="StaticBody2D"]
-points = PackedVector2Array(8, 277, 481, 304, 1077, 685, 763, -616, 475, -930, -1, -1095, -466, -916, -715, -619, -1029, 691, -601, 364, 5, 274)
+position = Vector2(-5, -5)
+points = PackedVector2Array(6, -525, 250.718, -240.682, 248.154, 291.455, 171.227, 201.545, -178, 201, -251, 291, -254, -213, 6, -529)
 script = ExtResource("3_8rish")
 
 [node name="InteriorCharacter" parent="." instance=ExtResource("1_6ih0u")]
-position = Vector2(5, -656)
+position = Vector2(0, -225)
 motion_mode = 1
-speed = 30
+speed = 50
 
 [node name="Camera2D" type="Camera2D" parent="InteriorCharacter"]
 
 [node name="WeaponsLocker" parent="." instance=ExtResource("4_wpjgs")]
-position = Vector2(-691, -227)
+position = Vector2(-181, -25)
 action_name = "Weapons Locker"
+threshhold_distance = 20.0
 
 [node name="Engines" parent="." instance=ExtResource("4_wpjgs")]
-position = Vector2(0, 135)
+position = Vector2(-2, 153)
 action_name = "Engines"
+threshhold_distance = 30.0
 
 [node name="Combat" parent="." instance=ExtResource("4_wpjgs")]
-position = Vector2(0, -336)
+position = Vector2(0, -103)
+threshhold_distance = 10.0
 
 [node name="Pilot" parent="." instance=ExtResource("4_wpjgs")]
-position = Vector2(0, -919)
+position = Vector2(0, -368)
+threshhold_distance = 30.0
 
 [connection signal="interacted" from="WeaponsLocker" to="." method="_on_weapons_locker_interacted"]
 [connection signal="interacted" from="WeaponsLocker" to="." method="_on_interaction"]

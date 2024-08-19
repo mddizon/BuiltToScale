@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c1woucrusmopl"
+path="res://.godot/imported/gmtk vo crazy arms.ogg-0db16f285c4b1478671265821a008cdd.oggvorbisstr"
+
+[deps]
+
+source_file="res://Resources/Sound/SFX/gmtk vo crazy arms.ogg"
+dest_files=["res://.godot/imported/gmtk vo crazy arms.ogg-0db16f285c4b1478671265821a008cdd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

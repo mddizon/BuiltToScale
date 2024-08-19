@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://nqjvarmir6ow"]
+[gd_scene load_steps=17 format=3 uid="uid://crnlnylvk23i"]
 
 [ext_resource type="Script" path="res://src/PlayerShip.gd" id="1_a0hv5"]
 [ext_resource type="Texture2D" uid="uid://qjonxbcobeus" path="res://Resources/Art/Akimbo _ sprite sheets.png" id="2_knouc"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dhut1nha44x7m" path="res://Resources/Art/rocket_plume/2.png" id="6_i7o4a"]
 [ext_resource type="Texture2D" uid="uid://bk20wlrdigcpe" path="res://Resources/Art/rocket_plume/1.png" id="7_ua2we"]
 [ext_resource type="PackedScene" uid="uid://dhdew4mlkjxct" path="res://Scenes/ship_interior.tscn" id="8_v7ts8"]
-[ext_resource type="PackedScene" uid="uid://gladf3eq8w5n" path="res://Scenes/arm.tscn" id="9_fou54"]
+[ext_resource type="PackedScene" path="res://Scenes/arm.tscn" id="9_fou54"]
 [ext_resource type="Script" path="res://src/sword.gd" id="10_il2n6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8672g"]
@@ -83,8 +83,8 @@ texture = ExtResource("7_ua2we")
 [node name="ShipInterior" parent="." instance=ExtResource("8_v7ts8")]
 visible = false
 z_index = 10
-position = Vector2(-0.33252, 28.7371)
-scale = Vector2(0.1, 0.1)
+position = Vector2(-3, 4)
+scale = Vector2(0.3, 0.3)
 
 [node name="LeftArm" parent="." instance=ExtResource("9_fou54")]
 position = Vector2(-200, 0)

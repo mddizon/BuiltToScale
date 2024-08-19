@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bofs70b1hhlxq"
+path="res://.godot/imported/gmtk vo akimbo we need you.ogg-a9530b90d2e7267707948f43244f7d55.oggvorbisstr"
+
+[deps]
+
+source_file="res://Resources/Sound/SFX/gmtk vo akimbo we need you.ogg"
+dest_files=["res://.godot/imported/gmtk vo akimbo we need you.ogg-a9530b90d2e7267707948f43244f7d55.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

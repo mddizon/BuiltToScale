@@ -24,25 +24,19 @@ Move Around
 [img=32x32]res://Resources/Art/UI/mouse_right.png[/img] - Activate System (when near)
 """
 
-func _set_text(system):
-	print('change system' + system)
-	if system == 'navigation':
+func _set_text(_system):
+	print('change system' + _system)
+	if _system == 'navigation':
 		bbLabel.bbcode_text = navigation
-	if system == 'combat':
+	if _system == 'combat':
 		bbLabel.bbcode_text = combat
-	if system == 'interior':
+	if _system == 'interior':
 		bbLabel.bbcode_text = interior
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print('here')
 	SignalBus.change_mode.connect(_on_change_mode)
 	pass # Replace with function body.
 
 func _on_change_mode(mode: String):
-	print('mode')
 	system = mode
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
