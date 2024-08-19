@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://kjdayayyunk7"]
+[gd_scene load_steps=5 format=3 uid="uid://kjdayayyunk7"]
 
 [ext_resource type="Texture2D" uid="uid://c4yb4q1q6tk2f" path="res://Resources/Art/asteroid_placeholder.png" id="1_tgjab"]
 [ext_resource type="Script" path="res://src/asteroid.gd" id="1_xkxxc"]
+[ext_resource type="PackedScene" uid="uid://c305dj7kmix7v" path="res://Scenes/health.tscn" id="3_4gamu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5ejk7"]
 radius = 599.37
 
 [node name="Asteroid" type="RigidBody2D"]
 position = Vector2(761.364, 371.68)
+collision_layer = 16
+collision_mask = 29
 script = ExtResource("1_xkxxc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -19,3 +22,6 @@ texture = ExtResource("1_tgjab")
 position = Vector2(-96.364, 35.32)
 rotation = -0.49658
 shape = SubResource("CircleShape2D_5ejk7")
+
+[node name="Health" parent="." instance=ExtResource("3_4gamu")]
+isAsteroid = true

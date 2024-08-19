@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://nqjvarmir6ow"]
+[gd_scene load_steps=24 format=3 uid="uid://nqjvarmir6ow"]
 
 [ext_resource type="Script" path="res://src/PlayerShip.gd" id="1_a0hv5"]
 [ext_resource type="Texture2D" uid="uid://qjonxbcobeus" path="res://Resources/Art/Akimbo _ sprite sheets.png" id="2_knouc"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://gladf3eq8w5n" path="res://Scenes/arm.tscn" id="9_fou54"]
 [ext_resource type="Script" path="res://src/sword.gd" id="10_il2n6"]
 [ext_resource type="Script" path="res://src/gun.gd" id="11_g5wqe"]
+[ext_resource type="PackedScene" uid="uid://be2w4f443eyhp" path="res://Scenes/damage_source.tscn" id="11_iet6x"]
+[ext_resource type="PackedScene" uid="uid://c305dj7kmix7v" path="res://Scenes/health.tscn" id="12_ul2m7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8672g"]
 size = Vector2(67, 136)
@@ -38,6 +40,9 @@ gradient = SubResource("Gradient_ctlx6")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pcycr"]
 size = Vector2(19.0047, 171.279)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m341b"]
+size = Vector2(171, 20)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmd7j"]
 
 [sub_resource type="Gradient" id="Gradient_kk0xl"]
@@ -47,7 +52,7 @@ gradient = SubResource("Gradient_kk0xl")
 
 [node name="PlayerShip" type="RigidBody2D" groups=["player"]]
 position = Vector2(-4.66748, 1.26294)
-collision_mask = 21
+collision_mask = 53
 mass = 20.0
 script = ExtResource("1_a0hv5")
 
@@ -97,10 +102,13 @@ scale = Vector2(0.3, 0.3)
 [node name="LeftArm" parent="." instance=ExtResource("9_fou54")]
 position = Vector2(-200, 0)
 rotation = 0.00475759
+collision_mask = 36
 
 [node name="Sword" type="StaticBody2D" parent="LeftArm"]
 position = Vector2(1.59961, -14.2707)
 rotation = -0.00475759
+collision_layer = 8
+collision_mask = 36
 script = ExtResource("10_il2n6")
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftArm/Sword"]
@@ -114,8 +122,19 @@ position = Vector2(-99, 13)
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_pcycr")
 
+[node name="Area2D" type="Area2D" parent="LeftArm/Sword"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArm/Sword/Area2D"]
+position = Vector2(-98.5, 12)
+shape = SubResource("RectangleShape2D_m341b")
+
+[node name="DamageSource" parent="LeftArm/Sword/Area2D" instance=ExtResource("11_iet6x")]
+hurtsEnemy = true
+hurtsAsteroid = true
+
 [node name="RightArm" parent="." instance=ExtResource("9_fou54")]
 position = Vector2(200, 0)
+collision_mask = 36
 righty = true
 enabled = true
 
@@ -132,6 +151,10 @@ shape = SubResource("CircleShape2D_gmd7j")
 position = Vector2(59, 0)
 scale = Vector2(2.23438, 0.375)
 texture = SubResource("GradientTexture2D_f1g04")
+
+[node name="Health" parent="." instance=ExtResource("12_ul2m7")]
+health = 100
+isPlayer = true
 
 [connection signal="enable_combat" from="ShipInterior" to="." method="_on_ship_interior_enable_combat"]
 [connection signal="enable_flight_controls" from="ShipInterior" to="." method="_on_ship_interior_enable_flight_controls"]

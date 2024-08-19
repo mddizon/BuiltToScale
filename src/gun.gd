@@ -1,6 +1,6 @@
 extends WeaponBase
 
-@onready var projectile = preload("res://Scenes/projectile.tscn")
+@onready var projectile = preload("res://Scenes/player_projectile.tscn")
 @onready var debug = false
 @onready var sprite = $Sprite2D
 
