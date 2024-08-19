@@ -29,6 +29,10 @@ texture = ExtResource("2_6mohs")
 [node name="PlayerShip" parent="." instance=ExtResource("3_xdfxa")]
 position = Vector2(-305, 120)
 rotation = 6.30446
+linear_damp = 0.75
+angular_damp = 0.75
+thrusts = [0, 100, 500, 1000, 20000]
+rotation_speed = 1500
 
 [node name="Asteroid" parent="." instance=ExtResource("4_i7i7e")]
 position = Vector2(880, 253)

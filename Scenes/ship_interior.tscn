@@ -32,7 +32,6 @@ script = ExtResource("3_8rish")
 position = Vector2(0, -225)
 scale = Vector2(0.5, 0.5)
 motion_mode = 1
-speed = 50
 
 [node name="Camera2D" type="Camera2D" parent="InteriorCharacter"]
 

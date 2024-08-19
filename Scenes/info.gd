@@ -8,13 +8,15 @@ const navigation = """
 [img=32x32]res://Resources/Art/UI/keyboard_w.png[/img] - Engage Thruster
 [img=32x32]res://Resources/Art/UI/keyboard_a.png[/img] - Turn Left
 [img=32x32]res://Resources/Art/UI/keyboard_d.png[/img] - Turn Right
-[img=32x32]res://Resources/Art/UI/mouse_right.png[/img] - Back to Ship
+[img=32x32]res://Resources/Art/UI/keyboard_s.png[/img] - Back to Ship
 """
 
 const combat = """
 [i]Combat[/i]
 Move your mouse to swing weapons
-[img=32x32]res://Resources/Art/UI/mouse_right.png[/img] - Change active hand
+[img=32x32]res://Resources/Art/UI/mouse_left.png[/img] - Fire Laser Pistol
+[img=32x32]res://Resources/Art/UI/mouse_right.png[/img] - Change Active Hand
+[img=32x32]res://Resources/Art/UI/keyboard_s.png[/img] - Back to Ship
 """
 
 const interior = """
