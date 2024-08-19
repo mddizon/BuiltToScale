@@ -59,8 +59,8 @@ description = "Helm
 
 Fly the Ship"
 
-[connection signal="interacted" from="WeaponsLocker" to="." method="_on_interaction"]
 [connection signal="interacted" from="WeaponsLocker" to="." method="_on_weapons_locker_interacted"]
+[connection signal="interacted" from="WeaponsLocker" to="." method="_on_interaction"]
 [connection signal="interacted" from="Engines" to="." method="_on_engines_interacted"]
 [connection signal="interacted" from="Combat" to="." method="_on_combat_interacted"]
 [connection signal="interacted" from="Pilot" to="." method="_on_pilot_interacted"]
