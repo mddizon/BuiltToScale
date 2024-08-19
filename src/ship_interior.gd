@@ -21,6 +21,7 @@ func _process(_delta):
 		$InteriorCharacter.player_movement()
 	elif current_system == "weapons":
 		print("Weapons system")
+		current_system = null
 	elif current_system == "engines":
 		if Input.is_action_pressed("action"):
 			emit_signal("engine_interacted", false)
