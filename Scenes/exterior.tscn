@@ -17,6 +17,11 @@ size = Vector2(124, 10354)
 [node name="Exterior" type="Node2D"]
 script = ExtResource("1_e06au")
 
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(6168, 23)
+rotation = 0.0212747
+scale = Vector2(1, 1)
+
 [node name="Starfield" type="Sprite2D" parent="."]
 position = Vector2(-0.000244141, 0)
 scale = Vector2(4.80833, 4.80833)
