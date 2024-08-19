@@ -18,4 +18,7 @@ func die() -> void:
 func _on_body_entered(body):
 	if is_in_group("enemy") and body.is_in_group("player"):
 		SignalBus.player_damage_taken.emit(damage)
+	if is_in_group("player_projectile") and body.is_in_group("enemy"):
+		print("Enemy hit")
+		pass
 	die()
