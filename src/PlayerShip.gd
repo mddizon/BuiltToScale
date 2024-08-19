@@ -45,6 +45,9 @@ func _physics_process(_delta):
 		if Input.is_action_just_pressed("secondary_action"):
 			controlsDisabled = true
 			_update_camera(true)
+		if Input.is_action_just_pressed("down"):
+			SignalBus.change_mode.emit('interior')
+			controlsDisabled = true
 		if Input.is_action_pressed("left"):
 			turn(true)
 		if Input.is_action_pressed("right"):
@@ -90,24 +93,32 @@ func on_damage(damage):
 	print('im hit')
 
 func enableArms():
-	if leftArm.get_parent() != self:
-		add_child(leftArm)
-	if rightArm.get_parent() != self:
-		add_child(rightArm)
+	$LeftBicep.visible = true
+	$RightBicep.visible = true
+	# if leftArm.get_parent() != self:
+	# 	add_child(leftArm)
+	# if rightArm.get_parent() != self:
+	# 	add_child(rightArm)
+	leftArm.visible = true
+	rightArm.visible = true
+	rightArm.enabled = true
 
 func disableArms():
-	if leftArm.get_parent() == self:
-		remove_child(leftArm)
-	if rightArm.get_parent() == self:
-		remove_child(rightArm)
+	$LeftBicep.visible = false
+	$RightBicep.visible = false
+	#if leftArm.get_parent() == self:
+		#remove_child(leftArm)
+	#if rightArm.get_parent() == self:
+		#remove_child(rightArm)
+	#rightArm.disabled = true
+	#leftArm.disabled = true
 
 func _on_ship_interior_enable_flight_controls():
-	print('enabling flight controls')
 	controlsDisabled = false
 	$Camera2D.set_target_zoom(Vector2(0.5, 0.5))
+	disableArms()
 
 func _on_ship_interior_enable_combat():
-	print('reza enable combat')
 	controlsDisabled = true
 	$ShipInterior.visible = false
 	$Camera2D.set_target_zoom(Vector2(0.5, 0.5))

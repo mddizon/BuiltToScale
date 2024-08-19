@@ -13,6 +13,8 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	AudioController.start_music()
+	spaceCamera.set_target_zoom(zoom_level_interior)
+	SignalBus.change_mode.connect(_on_change_mode)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -76,3 +78,12 @@ func zoomToExterior():
 func _on_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/ui_title.tscn")
 	AudioController.play_back_button()
+
+func _on_change_mode(mode):
+	if (mode == 'interior'):
+		zoomToInterior()
+	elif (mode == 'exterior'):
+		zoomToExterior()
+	elif (mode == 'navigation'):
+		zoomToInterior()
+		pass

@@ -76,12 +76,12 @@ scale = Vector2(0.200001, 0.200001)
 texture = ExtResource("7_ua2we")
 
 [node name="ShipInterior" parent="." instance=ExtResource("8_v7ts8")]
-visible = false
 z_index = 10
 position = Vector2(-3, 4)
 scale = Vector2(0.3, 0.3)
 
 [node name="LeftBicep" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-65.3325, -9.26294)
 rotation = 3.13879
 scale = Vector2(1, 1)
@@ -90,6 +90,7 @@ centered = false
 offset = Vector2(-44.2758, -80.0271)
 
 [node name="RightBicep" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(59.6675, -10.2629)
 rotation = 3.1297
 texture = ExtResource("14_7mdad")
@@ -97,12 +98,14 @@ centered = false
 offset = Vector2(-115.333, -82.2629)
 
 [node name="LeftArm" parent="." instance=ExtResource("9_fou54")]
+visible = false
 position = Vector2(-200, 0)
 rotation = 0.00475759
 collision_mask = 36
 righty = false
 
 [node name="Sword" type="StaticBody2D" parent="LeftArm"]
+visible = false
 position = Vector2(1.59961, -14.2707)
 rotation = -0.00475759
 collision_layer = 8
@@ -131,9 +134,9 @@ hurtsEnemy = true
 hurtsAsteroid = true
 
 [node name="RightArm" parent="." instance=ExtResource("9_fou54")]
+visible = false
 position = Vector2(198.667, -0.26294)
 collision_mask = 36
-enabled = true
 
 [node name="Gun" type="StaticBody2D" parent="RightArm" node_paths=PackedStringArray("recoilTarget")]
 position = Vector2(2, -1)

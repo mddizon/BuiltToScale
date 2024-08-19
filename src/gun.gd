@@ -39,7 +39,7 @@ func _physics_process(delta):
 		var shipPos = get_parent().get_parent().global_position
 		sprite.rotation =  global_position.angle_to_point(targetGlobalPos)
 
-	if Input.is_action_just_pressed("action") and remainingDelay == 0:
+	if arm.enabled and Input.is_action_just_pressed("action") and remainingDelay == 0:
 		fireBullet()
 	
 	if debug:
