@@ -24,7 +24,6 @@ var controlsDisabled = true;
 func _ready():
 	angular_damp = 1
 	SignalBus.player_damage_taken.connect(on_damage)
-	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -80,6 +79,16 @@ func turn(isLeft: bool):
 func on_damage(damage):
 	print('im hit')
 
+func enableArms():
+	add_child(leftArm)
+	add_child(rightArm)
+
+func disableArms():
+	if (leftArm.get_parent() == self):
+		remove_child(leftArm)
+	if (rightArm.get_parent() == self):
+		remove_child(rightArm)
+
 func _on_ship_interior_enable_flight_controls():
 	print('enabling flight controls')
 	controlsDisabled = false
@@ -90,3 +99,4 @@ func _on_ship_interior_enable_combat():
 	controlsDisabled = true
 	$ShipInterior.visible = false
 	$Camera2D.set_target_zoom(Vector2(0.5, 0.5))
+	#enableArms()
