@@ -1,6 +1,8 @@
 extends WeaponBase
 
 @onready var projectile = preload("res://Scenes/projectile.tscn")
+@onready var debug = false
+@onready var sprite = $Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,14 +13,23 @@ func _process(delta):
 	pass
 
 func _physics_process(delta):
-	super._physics_process(delta)
-	if Input.is_action_just_pressed("action"):
-		fireBullet()
-	queue_redraw()
-		
-func fireBullet():
+	#super._physics_process(delta) # keeping this stable for calculations below
 	var mouse = get_local_mouse_position()
-	var angle = get_angle_to(mouse)
+	var meToMouse = position - mouse
+	var normalAngle = meToMouse.angle()
+	var angle = normalAngle - PI / 2
+	if (angle < -PI):
+		angle += 2 * PI
+	sprite.rotation = normalAngle
+
+	if Input.is_action_just_pressed("action"):
+		fireBullet(angle)
+	
+	if debug:
+		queue_redraw()
+		
+func fireBullet(angle):
+	
 	var newProjectile = projectile.instantiate()
 	newProjectile.rotation = angle
 	newProjectile.global_position = global_position
@@ -32,7 +43,9 @@ func fireBullet():
 	collider.set_collision_mask_value(4, false)
 
 func _draw():
+	if not debug:
+		return
+
 	draw_circle(Vector2.ZERO, 30, Color.GREEN)
-	var mouse = get_global_mouse_position()
-	var angle = global_position.angle_to(mouse)
-	draw_line(position, (Vector2.LEFT * 100).rotated(angle), Color.GREEN, 2)
+	var mouse = get_local_mouse_position()
+	draw_line(position, mouse, Color.GREEN, 2)
