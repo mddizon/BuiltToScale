@@ -42,9 +42,6 @@ func _physics_process(_delta):
 			burn_engine(false)
 		if Input.is_action_just_released("up"):
 			burn_engine(true)
-		if Input.is_action_just_pressed("secondary_action"):
-			controlsDisabled = true
-			_update_camera(true)
 		if Input.is_action_just_pressed("down"):
 			SignalBus.change_mode.emit('interior')
 			controlsDisabled = true

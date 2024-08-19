@@ -7,7 +7,7 @@ extends Node2D
 @onready var current_scene = "exterior"
 
 @export var zoom_inputs = 3
-@export var zoom_level_interior = Vector2(5, 5)
+@export var zoom_level_interior = Vector2(3, 3)
 @export var zoom_level_exterior = Vector2(0.5, 0.5)
 
 # Called when the node enters the scene tree for the first time.
@@ -32,9 +32,11 @@ func _process(_delta):
 
 	if (abs(GlobalGameState.current_zoom_inputs) >= zoom_inputs):
 		if (GlobalGameState.current_zoom_inputs > 0):
-			_handle_zoom("zoom-out")
+			#_handle_zoom("zoom-out")
+			pass
 		else:
-			_handle_zoom("zoom-in")
+			#_handle_zoom("zoom-in")
+			pass
 
 func _inc_zoom():
 	if (GlobalGameState.current_zoom_inputs < 0):

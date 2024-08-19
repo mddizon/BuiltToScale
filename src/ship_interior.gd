@@ -43,12 +43,14 @@ func _on_change_mode(mode):
 		current_system = null
 
 func _on_pilot_interacted(action_name):
-	current_system = "pilot"
-	SignalBus.change_mode.emit('navigation')
-	emit_signal("enable_flight_controls")
+	if not current_system == 'pilot':
+		current_system = "pilot"
+		SignalBus.change_mode.emit('navigation')
+		emit_signal("enable_flight_controls")
 
 func _on_combat_interacted(action_name):
-	AudioController.go_outside()
-	SignalBus.change_mode.emit('combat')
-	emit_signal("enable_combat")
-	current_system = "combat"
+	if not current_system == "combat":
+		AudioController.go_outside()
+		SignalBus.change_mode.emit('combat')
+		emit_signal("enable_combat")
+		current_system = "combat"
