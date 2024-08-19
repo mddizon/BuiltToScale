@@ -8,10 +8,14 @@ signal swap_right_weapon(weapon_name: String)
 var current_system = null : set = _set_system;
 
 func _on_weapons_locker_interacted(_action_name):
-	current_system = "weapons"
+	if not current_system == "weapons":
+		AudioController.play_game_sound('activated')
+		current_system = "weapons"
 
 func _on_engines_interacted(_action_name):
-	current_system = "engines"
+	if not current_system == "engines":
+		AudioController.play_game_sound('activated')
+		current_system = "engines"
 
 func _ready():
 	SignalBus.change_mode.connect(_on_change_mode)
@@ -44,6 +48,7 @@ func _on_change_mode(mode):
 
 func _on_pilot_interacted(action_name):
 	if not current_system == 'pilot':
+		AudioController.play_game_sound('activated')
 		current_system = "pilot"
 		SignalBus.change_mode.emit('navigation')
 		emit_signal("enable_flight_controls")
@@ -51,6 +56,7 @@ func _on_pilot_interacted(action_name):
 func _on_combat_interacted(action_name):
 	if not current_system == "combat":
 		AudioController.go_outside()
+		AudioController.play_game_sound('activated')
 		SignalBus.change_mode.emit('combat')
 		emit_signal("enable_combat")
 		current_system = "combat"

@@ -9,11 +9,13 @@ extends Node2D
 @onready var crazy_arms = preload("res://Resources/Sound/SFX/gmtk vo crazy arms.ogg")
 @onready var menu_music = preload("res://Resources/Sound/Music/gmtk menu theme.ogg")
 @onready var here_we_go = preload("res://Resources/Sound/SFX/gmtk vo start.ogg")
+@onready var activated = preload("res://Resources/Sound/SFX/gmtk battlestation activated.ogg")
 
 @onready var exterior_music = $ExteriorMusicPlayer
 @onready var interior_music = $InteriorMusicPlayer
 @onready var animation_player = $AnimationPlayer
 @onready var game_sounds = $GameSounds
+@onready var game_sounds_2 = $GameSoundsChannel2
 
 @onready var mutex_animation_playing = false
 var max_music_volume = 0
@@ -85,6 +87,11 @@ func stop_music():
 func pause_music():
 	$ExteriorMusicPlayer.playing = false
 	$InteriorMusicPlayer.playing = false
+
+func play_game_sound(sound_name):
+	if sound_name == 'activated':
+		game_sounds_2.stream = activated
+		game_sounds_2.play()
 	
 func _on_change_mode(mode):
 	if mode == 'combat':

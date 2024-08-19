@@ -22,6 +22,7 @@ signal interacted(action_name: String)
 
 var currentThrustIdx = 0
 var controlsDisabled = true;
+var combatEnabled = true;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,13 +43,17 @@ func _physics_process(_delta):
 			burn_engine(false)
 		if Input.is_action_just_released("up"):
 			burn_engine(true)
-		if Input.is_action_just_pressed("down"):
-			SignalBus.change_mode.emit('interior')
-			controlsDisabled = true
 		if Input.is_action_pressed("left"):
 			turn(true)
 		if Input.is_action_pressed("right"):
 			turn(false)
+	
+	if not controlsDisabled or combatEnabled:
+		if Input.is_action_just_pressed("down"):
+			SignalBus.change_mode.emit('interior')
+			combatEnabled = false
+			controlsDisabled = true
+			disableArms()
 
 	#Move Biceps here
 	if leftArm.enabled && $LeftArm:
@@ -92,31 +97,34 @@ func on_damage(damage):
 func enableArms():
 	$LeftBicep.visible = true
 	$RightBicep.visible = true
-	# if leftArm.get_parent() != self:
-	# 	add_child(leftArm)
-	# if rightArm.get_parent() != self:
-	# 	add_child(rightArm)
+	if leftArm.get_parent() != self:
+		add_child(leftArm)
+	if rightArm.get_parent() != self:
+		add_child(rightArm)
 	leftArm.visible = true
 	rightArm.visible = true
+	leftArm.enabled = false
 	rightArm.enabled = true
 
 func disableArms():
 	$LeftBicep.visible = false
 	$RightBicep.visible = false
-	#if leftArm.get_parent() == self:
-		#remove_child(leftArm)
-	#if rightArm.get_parent() == self:
-		#remove_child(rightArm)
+	if leftArm.get_parent() == self:
+		remove_child(leftArm)
+	if rightArm.get_parent() == self:
+		remove_child(rightArm)
 	#rightArm.disabled = true
 	#leftArm.disabled = true
 
 func _on_ship_interior_enable_flight_controls():
 	controlsDisabled = false
+	combatEnabled = false
 	$Camera2D.set_target_zoom(Vector2(0.5, 0.5))
 	disableArms()
 
 func _on_ship_interior_enable_combat():
 	controlsDisabled = true
+	combatEnabled = true
 	$ShipInterior.visible = false
 	$Camera2D.set_target_zoom(Vector2(0.5, 0.5))
 	enableArms()
