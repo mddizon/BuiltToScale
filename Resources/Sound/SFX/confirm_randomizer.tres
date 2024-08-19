@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://ci4uef42ogl3h"]
+
+[ext_resource type="AudioStream" uid="uid://dvbk8t00r7hmw" path="res://Resources/Sound/SFX/gmtk vo excellent.ogg" id="1_wb5v0"]
+[ext_resource type="AudioStream" uid="uid://b42xfccp8jja5" path="res://Resources/Sound/SFX/gmtk vo awesome.ogg" id="2_enpwx"]
+[ext_resource type="AudioStream" uid="uid://bsoi8e74xvkq2" path="res://Resources/Sound/SFX/gmtk vo start.ogg" id="3_dr5e0"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_wb5v0")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_enpwx")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_dr5e0")
+stream_2/weight = 1.0

@@ -1,9 +1,10 @@
 extends Node2D
 
 @onready var back_button_sounds = preload("res://Resources/Sound/SFX/back_button_randomizer.tres")
-@onready var click_button_sounds = preload("res://Resources/Sound/SFX/click_button_randomizer.tres")
+@onready var click_button_sounds = preload("res://Resources/Sound/SFX/click_sound_randomizer.tres")
 @onready var lose_game_music = preload("res://Resources/Sound/SFX/gmtk lose.ogg")
 @onready var confirm_sound = preload("res://Resources/Sound/SFX/gmtk confirm selection.ogg")
+@onready var confirm_sounds = preload("res://Resources/Sound/SFX/confirm_randomizer.tres")
 @onready var start_game = preload("res://Resources/Sound/SFX/gmtk vo excellent.ogg")
 @onready var crazy_arms = preload("res://Resources/Sound/SFX/gmtk vo crazy arms.ogg")
 @onready var menu_music = preload("res://Resources/Sound/Music/gmtk menu theme.ogg")
@@ -30,7 +31,7 @@ func play_confirm_button():
 	$UISounds.play()
 
 func play_start_game_button():
-	$UISounds.stream = start_game
+	$UISounds.stream = confirm_sounds
 	$UISounds.play()
 
 func play_click_button():
