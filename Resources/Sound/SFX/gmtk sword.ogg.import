@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cv14ykke34ads"
+path="res://.godot/imported/gmtk sword.ogg-d3ac78b12514d92adfce1273f615a3d3.oggvorbisstr"
+
+[deps]
+
+source_file="res://Resources/Sound/SFX/gmtk sword.ogg"
+dest_files=["res://.godot/imported/gmtk sword.ogg-d3ac78b12514d92adfce1273f615a3d3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

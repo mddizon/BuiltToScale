@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://nitaf88ntw5q"]
+[gd_scene load_steps=9 format=3 uid="uid://nitaf88ntw5q"]
 
 [ext_resource type="Script" path="res://src/audio_controller.gd" id="1_trxj7"]
 [ext_resource type="AudioStream" uid="uid://cukxpyeap5itg" path="res://Resources/Sound/Music/gmtk action outside.ogg" id="2_eng4e"]
 [ext_resource type="AudioStream" uid="uid://b4hjm0q314fee" path="res://Resources/Sound/Music/gmtk action inside.ogg" id="3_xmlu0"]
+[ext_resource type="AudioStream" uid="uid://d1cuy0ild8bbp" path="res://Resources/Sound/Music/gmtk menu theme.ogg" id="4_64djm"]
 
 [sub_resource type="Animation" id="Animation_5leff"]
 resource_name = "go_inside"
@@ -108,6 +109,9 @@ volume_db = -80.0
 libraries = {
 "": SubResource("AnimationLibrary_yvyu8")
 }
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_64djm")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

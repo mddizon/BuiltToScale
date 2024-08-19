@@ -2,6 +2,9 @@ extends Control
 
 @onready var settings = preload("res://Scenes/settings_panel.tscn")
 
+func _ready():
+	AudioController.start_menu()
+
 func _on_start_game_button_pressed():
 	GlobalGameState.player_health = 100
 	GlobalGameState.is_game_over = false	
