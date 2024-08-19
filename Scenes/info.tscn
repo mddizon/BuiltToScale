@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddsljll3fnvn1"]
+
+[ext_resource type="Script" path="res://Scenes/info.gd" id="1_8ocmn"]
+
+[node name="ColorRect2" type="ColorRect"]
+offset_left = 38.0
+offset_top = 849.0
+offset_right = 536.0
+offset_bottom = 1034.0
+color = Color(0.0509804, 0.00784314, 0.129412, 1)
+script = ExtResource("1_8ocmn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[i]Navigation[/i]
+[img=32x32]res://Resources/Art/UI/keyboard_w.png[/img] - Engage Thruster
+[img=32x32]res://Resources/Art/UI/keyboard_a.png[/img] - Turn Left
+[img=32x32]res://Resources/Art/UI/keyboard_d.png[/img] - Turn Right
+[img=32x32]res://Resources/Art/UI/mouse_right.png[/img] - Back to Ship"
+fit_content = true
+scroll_active = false

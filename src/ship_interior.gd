@@ -26,19 +26,24 @@ func _process(_delta):
 			emit_signal("engine_interacted", false)
 		elif Input.is_action_just_released("action"):
 			emit_signal("engine_interacted", true)
+			SignalBus.change_mode.emit('interior')
 			current_system = null
 	elif current_system == "pilot":
 		if Input.is_action_just_pressed("secondary_action"):
+			SignalBus.change_mode.emit('interior')
 			current_system = null
 	elif current_system == "combat":
 		if Input.is_action_just_pressed("secondary_action"):
 			AudioController.go_inside()
+			SignalBus.change_mode.emit('interior')
 			current_system = null
 
 func _on_pilot_interacted(action_name):
 	current_system = "pilot"
+	SignalBus.change_mode.emit('navigation')
 	emit_signal("enable_flight_controls")
 
 func _on_combat_interacted(action_name):
 	AudioController.go_outside()
+	SignalBus.change_mode.emit('combat')
 	current_system = "combat"

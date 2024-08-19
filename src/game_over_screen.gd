@@ -10,5 +10,6 @@ func _on_retry_pressed():
 
 func _on_back_pressed():
 	get_tree().change_scene_to_file("res://Scenes/ui_title.tscn");
+	AudioController.stop_music()
 	AudioController.play_back_button()
 

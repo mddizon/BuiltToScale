@@ -8,3 +8,4 @@ signal enemy_damage_taken
 signal zoom_change(exterior_to_interior: bool)
 signal win_game
 signal lose_game
+signal change_mode(system: String)
