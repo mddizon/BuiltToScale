@@ -1,9 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhe88theexd5e"]
 
-[ext_resource type="LabelSettings" uid="uid://dffgelpd4rgp8" path="res://Resources/title_font_settings.tres" id="1_b1xa3"]
 [ext_resource type="Script" path="res://src/settings_panel.gd" id="1_c3kp3"]
 [ext_resource type="Theme" uid="uid://w7lokxr7htxk" path="res://Resources/button_theme.tres" id="2_bbhuj"]
 [ext_resource type="ButtonGroup" uid="uid://bcdttporywjgm" path="res://Resources/invert_zoom_button_group.tres" id="3_bil70"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hhklb"]
+font_size = 60
+font_color = Color(1, 0.219608, 0.392157, 1)
+shadow_color = Color(0.176471, 0.886275, 0.901961, 1)
+shadow_offset = Vector2(4, 4)
 
 [node name="Settings Panel" type="Control"]
 layout_mode = 3
@@ -44,8 +49,9 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("2_bbhuj")
 text = "Settings"
-label_settings = ExtResource("1_b1xa3")
+label_settings = SubResource("LabelSettings_hhklb")
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2

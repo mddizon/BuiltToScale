@@ -11,6 +11,8 @@ extends Node2D
 @onready var animation_player = $AnimationPlayer
 
 @onready var mutex_animation_playing = false
+var max_music_volume = 0
+var max_sound_volume = 0
 
 func play_back_button():
 	$UISounds.stream = back_button_sounds
@@ -29,9 +31,18 @@ func play_lose_music():
 	$UISounds.play()
 
 func set_music_volume(vol: float):
+	max_music_volume = vol
 	$ExteriorMusicPlayer.volume_db = vol
+	$InteriorMusicPlayer.volume_db = vol
+	var inside_anim = $AnimationPlayer.get_animation("go_inside")
+	var outside_anim = $AnimationPlayer.get_animation("go_outside")
+	inside_anim.track_set_key_value(1, 1, max_music_volume)
+	inside_anim.track_set_key_value(0, 0, max_music_volume)
+	outside_anim.track_set_key_value(0, 1, max_music_volume)
+	outside_anim.track_set_key_value(1, 0, max_music_volume)
 
 func set_sfx_volume(vol: float):
+	max_sound_volume = vol
 	$UISounds.volume_db = vol
 	
 func get_music_volume():
