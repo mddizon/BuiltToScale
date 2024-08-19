@@ -26,7 +26,7 @@ texture = ExtResource("2_6h1ja")
 position = Vector2(880, 253)
 
 [node name="Cannon" parent="." groups=["enemy"] instance=ExtResource("12_ifxdx")]
-position = Vector2(-1449, -6)
+position = Vector2(-1445, 550)
 rotation = 1.57365
 
 [node name="Wall" type="StaticBody2D" parent="."]

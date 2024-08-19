@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://nqjvarmir6ow"]
+[gd_scene load_steps=19 format=3 uid="uid://nqjvarmir6ow"]
 
 [ext_resource type="Script" path="res://src/PlayerShip.gd" id="1_a0hv5"]
 [ext_resource type="Texture2D" uid="uid://qjonxbcobeus" path="res://Resources/Art/Akimbo _ sprite sheets.png" id="2_knouc"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dhdew4mlkjxct" path="res://Scenes/ship_interior.tscn" id="8_v7ts8"]
 [ext_resource type="PackedScene" uid="uid://gladf3eq8w5n" path="res://Scenes/arm.tscn" id="9_fou54"]
 [ext_resource type="Script" path="res://src/sword.gd" id="10_il2n6"]
+[ext_resource type="Script" path="res://src/gun.gd" id="11_g5wqe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8672g"]
 size = Vector2(67, 136)
@@ -36,6 +37,8 @@ gradient = SubResource("Gradient_ctlx6")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pcycr"]
 size = Vector2(19.0047, 171.279)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmd7j"]
 
 [node name="PlayerShip" type="RigidBody2D" groups=["player"]]
 position = Vector2(-4.66748, 1.26294)
@@ -110,6 +113,15 @@ shape = SubResource("RectangleShape2D_pcycr")
 position = Vector2(200, 0)
 righty = true
 enabled = true
+
+[node name="Gun" type="StaticBody2D" parent="RightArm"]
+position = Vector2(3.66748, 0.73706)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("11_g5wqe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightArm/Gun"]
+shape = SubResource("CircleShape2D_gmd7j")
 
 [connection signal="enable_combat" from="ShipInterior" to="." method="_on_ship_interior_enable_combat"]
 [connection signal="enable_flight_controls" from="ShipInterior" to="." method="_on_ship_interior_enable_flight_controls"]
