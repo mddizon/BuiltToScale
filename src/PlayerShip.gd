@@ -16,6 +16,8 @@ signal interacted(action_name: String)
 
 @onready var leftArm = $LeftArm
 @onready var rightArm = $RightArm
+@onready var leftBicep = $LeftBicep
+@onready var rightBicep = $RightBicep
 @onready var healthComponent = $Health
 
 var currentThrustIdx = 0
@@ -47,6 +49,12 @@ func _physics_process(_delta):
 			turn(true)
 		if Input.is_action_pressed("right"):
 			turn(false)
+
+	#Move Biceps here
+	if leftArm.enabled && $LeftArm:
+		leftBicep.rotation = global_position.angle_to_point($LeftArm.global_position) - rotation
+	if rightArm.enabled && $RightArm:
+		rightBicep.rotation = global_position.angle_to_point($RightArm.global_position) - deg_to_rad(180) - rotation
 
 	# Get the orientation vector of the rigitbody 
 	var orientation = -global_transform.y.normalized()

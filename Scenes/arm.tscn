@@ -1,13 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://gladf3eq8w5n"]
+[gd_scene load_steps=4 format=3 uid="uid://gladf3eq8w5n"]
 
 [ext_resource type="Script" path="res://src/new_arm.gd" id="1_elkdp"]
+[ext_resource type="Texture2D" uid="uid://bad228h6ei5vp" path="res://Resources/Art/Arms/Hand-Fist_L.png" id="2_mvaog"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ra2pr"]
-
-[sub_resource type="Gradient" id="Gradient_lxue2"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_5ehwg"]
-gradient = SubResource("Gradient_lxue2")
 
 [node name="RightArm" type="RigidBody2D"]
 position = Vector2(166.667, -0.26294)
@@ -20,5 +16,6 @@ script = ExtResource("1_elkdp")
 shape = SubResource("CircleShape2D_ra2pr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.353853, -0.333025)
-texture = SubResource("GradientTexture2D_5ehwg")
+texture = ExtResource("2_mvaog")

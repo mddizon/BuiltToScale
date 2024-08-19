@@ -35,8 +35,9 @@ func _physics_process(delta):
 		angle = normalAngle - PI / 2
 		if (angle < -PI):
 			angle += 2 * PI
-		sprite.rotation = normalAngle
 		targetGlobalPos = get_global_mouse_position()
+		var shipPos = get_parent().get_parent().global_position
+		sprite.rotation =  global_position.angle_to_point(targetGlobalPos)
 
 	if Input.is_action_just_pressed("action") and remainingDelay == 0:
 		fireBullet()
@@ -47,7 +48,7 @@ func _physics_process(delta):
 func fireBullet():
 	var newProjectile = projectile.instantiate()
 	newProjectile.rotation = global_position.angle_to_point(targetGlobalPos) - deg_to_rad(90)
-	newProjectile.global_position = global_position
+	newProjectile.global_position = $Sprite2D/Marker2D.global_position
 	newProjectile.add_to_group("player_projectile")
 	ship.get_parent().add_child.call_deferred(newProjectile)
 	var collider = newProjectile as Area2D
