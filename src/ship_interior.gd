@@ -32,6 +32,7 @@ func _process(_delta):
 			current_system = null
 	elif current_system == "combat":
 		if Input.is_action_just_pressed("secondary_action"):
+			AudioController.go_inside()
 			current_system = null
 
 func _on_pilot_interacted(action_name):
@@ -39,4 +40,5 @@ func _on_pilot_interacted(action_name):
 	emit_signal("enable_flight_controls")
 
 func _on_combat_interacted(action_name):
+	AudioController.go_outside()
 	current_system = "combat"
