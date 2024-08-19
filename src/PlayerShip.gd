@@ -16,6 +16,7 @@ signal interacted(action_name: String)
 
 @onready var leftArm = $LeftArm
 @onready var rightArm = $RightArm
+@onready var healthComponent = $Health
 
 var currentThrustIdx = 0
 var controlsDisabled = true;
@@ -24,6 +25,7 @@ var controlsDisabled = true;
 func _ready():
 	angular_damp = 1
 	SignalBus.player_damage_taken.connect(on_damage)
+	healthComponent.health = GlobalGameState.player_health
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
