@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bo2of27scyvid"]
+[gd_scene load_steps=5 format=3 uid="uid://flltnricw5vr"]
 
 [ext_resource type="Theme" uid="uid://w7lokxr7htxk" path="res://Resources/button_theme.tres" id="1_wbqab"]
 [ext_resource type="Script" path="res://src/healthbar.gd" id="2_7mgt6"]
