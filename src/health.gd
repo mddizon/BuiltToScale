@@ -1,5 +1,7 @@
 extends Node
 
+signal health_changed(new_value: int)
+
 @export var health = 1
 @export var isPlayer = false
 @export var isEnemy = false
@@ -12,7 +14,7 @@ extends Node
 func take_damage(damage: int, source: Node):
 	var previousHealth = currentHealth
 	currentHealth -= damage
-	SignalBus.damage_taken.emit(damage, currentHealth, previousHealth, source, self)
+	health_changed.emit(currentHealth)
 	if (isPlayer):
 		SignalBus.player_damage_taken.emit(damage)
 	if currentHealth <= 0:

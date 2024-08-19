@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3ii8k0jugtc2"]
+
+[ext_resource type="Script" path="res://Scenes/cannon_enemy.gd" id="1_a4n18"]
+
+[node name="BulletEmitter" type="Marker2D"]
+script = ExtResource("1_a4n18")
+bullet_speed = 100
+
+[node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="FiringTimer" type="Timer" parent="."]
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0)
+width = 50.0
+default_color = Color(0.176471, 0.886275, 0.901961, 0.807843)
+
+[node name="Barrel" type="Marker2D" parent="."]
+position = Vector2(0, 100)
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_loading_timer_timeout"]
+[connection signal="timeout" from="FiringTimer" to="." method="_on_firing_timer_timeout"]

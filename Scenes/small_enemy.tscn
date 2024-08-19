@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfngtkh8a410v"]
+[gd_scene load_steps=8 format=3 uid="uid://bfngtkh8a410v"]
 
 [ext_resource type="Script" path="res://Scenes/small_enemy.gd" id="1_g6wan"]
 [ext_resource type="Texture2D" uid="uid://dubhaaxp0hmkf" path="res://Resources/Art/Bug_Blue_1.png" id="1_jnl3q"]
 [ext_resource type="PackedScene" uid="uid://be2w4f443eyhp" path="res://Scenes/damage_source.tscn" id="3_vrcmp"]
 [ext_resource type="PackedScene" uid="uid://c305dj7kmix7v" path="res://Scenes/health.tscn" id="4_3kwq2"]
+[ext_resource type="PackedScene" uid="uid://flltnricw5vr" path="res://Scenes/healthbar.tscn" id="5_8w0i5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o5qbm"]
 radius = 22.0907
@@ -48,9 +49,17 @@ hurtsPlayer = true
 position = Vector2(0, 42)
 
 [node name="Health" parent="." instance=ExtResource("4_3kwq2")]
+health = 100
 isEnemy = true
+
+[node name="Healthbar" parent="." instance=ExtResource("5_8w0i5")]
+offset_left = -69.0
+offset_top = -72.0
+offset_right = 71.0
+offset_bottom = -49.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="LoadingTimer" to="." method="_on_loading_timer_timeout"]
 [connection signal="timeout" from="FiringTimer" to="." method="_on_firing_timer_timeout"]
+[connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]

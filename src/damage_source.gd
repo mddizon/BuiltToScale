@@ -13,7 +13,6 @@ func _ready():
 	if parent is Area2D:
 		parent.body_entered.connect(_on_body_entered)
 	if parent is RigidBody2D:
-		print("connected to rigid body")
 		parent.body_entered.connect(_on_body_entered)
 
 

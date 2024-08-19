@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5hd7i2hylyue"]
+
+[ext_resource type="Texture2D" uid="uid://lslhf2pkoxjy" path="res://Resources/Art/Bug_Red_1.png" id="1_2oy3f"]
+[ext_resource type="PackedScene" uid="uid://d3ii8k0jugtc2" path="res://Scenes/cannon_enemy.tscn" id="2_iwc32"]
+[ext_resource type="PackedScene" uid="uid://c305dj7kmix7v" path="res://Scenes/health.tscn" id="3_vbjfg"]
+[ext_resource type="PackedScene" uid="uid://flltnricw5vr" path="res://Scenes/healthbar.tscn" id="4_pgxlv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mmxjb"]
+radius = 114.0
+height = 270.0
+
+[node name="Node2D" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 57
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -139)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_mmxjb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(9.44074, 9.78604)
+texture = ExtResource("1_2oy3f")
+
+[node name="Emitter1" parent="." instance=ExtResource("2_iwc32")]
+position = Vector2(192, 193)
+
+[node name="Emitter2" parent="." instance=ExtResource("2_iwc32")]
+position = Vector2(-198, 199)
+
+[node name="Emitter3" parent="." instance=ExtResource("2_iwc32")]
+position = Vector2(242, 40)
+rotation = -0.471943
+
+[node name="Emitter4" parent="." instance=ExtResource("2_iwc32")]
+position = Vector2(-250, 55)
+rotation = 0.610985
+
+[node name="Health" parent="." instance=ExtResource("3_vbjfg")]
+
+[node name="Healthbar" parent="." instance=ExtResource("4_pgxlv")]
+offset_left = -117.0
+offset_top = -320.0
+offset_right = 102.0
+offset_bottom = -290.0
+metadata/_edit_use_anchors_ = true
