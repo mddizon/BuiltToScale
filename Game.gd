@@ -12,6 +12,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	AudioController.start_music()
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -62,6 +63,7 @@ func _handle_zoom(direction: String):
 
 func zoomToInterior():
 	interior.visible = true
+	AudioController.go_inside()
 	spaceCamera.set_target_zoom(zoom_level_interior)
 	current_scene = "interior"
 

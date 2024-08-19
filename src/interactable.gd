@@ -23,7 +23,7 @@ func _process(_delta):
 		modulate = Color(1, 1, 1, .5)
 	else:
 		modulate = Color(1, 1, 1, 1)
-	if player_near and Input.is_action_pressed("action"):
+	if player_near and Input.is_action_just_pressed("action"):
 		emit_signal("interacted", action_name)
 
 func is_player_near():

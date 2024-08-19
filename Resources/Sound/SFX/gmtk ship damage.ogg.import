@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dsk2g3reom8i6"
+path="res://.godot/imported/gmtk ship damage.ogg-38f97000406a06adc2078c93b54cb36a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Resources/Sound/SFX/gmtk ship damage.ogg"
+dest_files=["res://.godot/imported/gmtk ship damage.ogg-38f97000406a06adc2078c93b54cb36a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

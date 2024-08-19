@@ -1,13 +1,117 @@
-[gd_scene load_steps=3 format=3 uid="uid://nitaf88ntw5q"]
+[gd_scene load_steps=9 format=3 uid="uid://nitaf88ntw5q"]
 
 [ext_resource type="Script" path="res://src/audio_controller.gd" id="1_trxj7"]
-[ext_resource type="AudioStream" uid="uid://dvm8cseq6kveu" path="res://Resources/Sound/Music/gmtkmusic01-240817-1711.ogg" id="2_bemda"]
+[ext_resource type="AudioStream" uid="uid://cukxpyeap5itg" path="res://Resources/Sound/Music/gmtk action outside.ogg" id="2_eng4e"]
+[ext_resource type="AudioStream" uid="uid://b4hjm0q314fee" path="res://Resources/Sound/Music/gmtk action inside.ogg" id="3_xmlu0"]
+[ext_resource type="AudioStream" uid="uid://d1cuy0ild8bbp" path="res://Resources/Sound/Music/gmtk menu theme.ogg" id="4_64djm"]
+
+[sub_resource type="Animation" id="Animation_5leff"]
+resource_name = "go_inside"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExteriorMusicPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.138696),
+"update": 0,
+"values": [0.0, -80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InteriorMusicPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 12.996),
+"update": 0,
+"values": [-80.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_60avb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteriorMusicPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExteriorMusicPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xhlet"]
+resource_name = "go_outside"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExteriorMusicPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 10.1965),
+"update": 0,
+"values": [-80.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InteriorMusicPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 6.27667),
+"update": 0,
+"values": [0.0, -80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yvyu8"]
+_data = {
+"RESET": SubResource("Animation_60avb"),
+"go_inside": SubResource("Animation_5leff"),
+"go_outside": SubResource("Animation_xhlet")
+}
 
 [node name="AudioController" type="Node2D"]
 script = ExtResource("1_trxj7")
 
-[node name="UISounds" type="AudioStreamPlayer2D" parent="."]
+[node name="UISounds" type="AudioStreamPlayer" parent="."]
 
-[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_bemda")
-autoplay = true
+[node name="ExteriorMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_eng4e")
+
+[node name="InteriorMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xmlu0")
+volume_db = -80.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yvyu8")
+}
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_64djm")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
