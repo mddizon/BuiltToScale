@@ -1,24 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbtoh2vrw0ta1"]
+[gd_scene load_steps=4 format=3 uid="uid://dbtoh2vrw0ta1"]
 
 [ext_resource type="Texture2D" uid="uid://ci2pjew43wf65" path="res://icon.svg" id="1_37gvw"]
 [ext_resource type="Script" path="res://src/interactable.gd" id="2_f83wl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hpru7"]
+radius = 64.0703
 
 [node name="Interactable" type="Sprite2D"]
 texture = ExtResource("1_37gvw")
 script = ExtResource("2_f83wl")
 
-[node name="Label" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -144.0
-offset_top = 31.0
-offset_right = 17.0
-offset_bottom = 54.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer"]
+offset_left = 40.0
+offset_top = 710.0
+offset_right = 350.0
+offset_bottom = 809.0
+color = Color(0.0509804, 0.00784314, 0.129412, 0.541176)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Default Action Name"
-horizontal_alignment = 1
-vertical_alignment = 1
+bbcode_enabled = true
+text = "[b]Weapons System[/b]
+
+Change your weapons from here"
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_hpru7")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -12,7 +12,7 @@ script = ExtResource("1_goxpi")
 offset_top = -1.0
 offset_right = 971.0
 offset_bottom = 152.0
-color = Color(0.0509804, 0.00784314, 0.129412, 1)
+color = Color(0.0509804, 0.00784314, 0.129412, 0.541176)
 
 [node name="Hp" type="Label" parent="."]
 offset_left = 62.0
@@ -34,3 +34,5 @@ offset_bottom = 122.0
 position = Vector2(1687, 192)
 
 [node name="ColorRect2" parent="." instance=ExtResource("4_qqlox")]
+offset_right = 346.0
+color = Color(0.0509804, 0.00784314, 0.129412, 0.541176)
