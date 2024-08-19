@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends RigidBody2D
 
 @onready var projectile = preload("res://Scenes/projectile.tscn")
 
@@ -54,7 +54,7 @@ func shoot():
 	warn_indicator.visible = false
 	var newProjectile = projectile.instantiate()
 	newProjectile.rotation = global_rotation
-	newProjectile.global_position = global_position
+	newProjectile.global_position = $Marker2D.global_position
 	newProjectile.add_to_group("enemy")
 	get_parent().add_child.call_deferred(newProjectile)
 

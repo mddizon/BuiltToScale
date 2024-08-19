@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://nqjvarmir6ow" path="res://Scenes/player_ship.tscn" id="3_xdfxa"]
 [ext_resource type="PackedScene" uid="uid://kjdayayyunk7" path="res://Scenes/asteroid.tscn" id="4_i7i7e"]
 [ext_resource type="PackedScene" uid="uid://bfngtkh8a410v" path="res://Scenes/small_enemy.tscn" id="6_1d3ye"]
-[ext_resource type="PackedScene" path="res://Scenes/missile_enemy.tscn" id="7_hxdqj"]
+[ext_resource type="PackedScene" uid="uid://beolkyhh6np0a" path="res://Scenes/missile_enemy.tscn" id="7_hxdqj"]
 [ext_resource type="PackedScene" uid="uid://cq2is3wafqarq" path="res://Scenes/cannon.tscn" id="12_ifxdx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8kfbu"]

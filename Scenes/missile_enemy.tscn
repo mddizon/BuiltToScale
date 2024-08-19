@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpm36e5ildl34"]
+[gd_scene load_steps=8 format=3 uid="uid://beolkyhh6np0a"]
 
 [ext_resource type="Script" path="res://src/missile_enemy.gd" id="1_rod8g"]
 [ext_resource type="PackedScene" uid="uid://c305dj7kmix7v" path="res://Scenes/health.tscn" id="2_fl31k"]
