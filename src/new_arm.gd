@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name Arm
 
 @export var righty = false
 @export var enabled = false
