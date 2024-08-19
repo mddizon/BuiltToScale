@@ -7,7 +7,7 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	position += Vector2.UP.rotated(rotation) * speed * delta
+	position += Vector2.DOWN.rotated(rotation) * speed * delta
 
 func _on_life_timer_timeout():
 	die()

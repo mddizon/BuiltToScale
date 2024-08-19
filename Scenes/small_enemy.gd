@@ -51,6 +51,7 @@ func _on_state_change(new_state):
 	state = new_state
 
 func shoot():
+	warn_indicator.visible = false
 	var newProjectile = projectile.instantiate()
 	newProjectile.rotation = global_rotation
 	newProjectile.global_position = global_position
