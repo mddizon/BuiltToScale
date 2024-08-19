@@ -138,11 +138,12 @@ collision_mask = 36
 righty = true
 enabled = true
 
-[node name="Gun" type="StaticBody2D" parent="RightArm"]
+[node name="Gun" type="StaticBody2D" parent="RightArm" node_paths=PackedStringArray("recoilTarget")]
 position = Vector2(3.66748, 0.73706)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("11_g5wqe")
+recoilTarget = NodePath("../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightArm/Gun"]
 shape = SubResource("CircleShape2D_gmd7j")

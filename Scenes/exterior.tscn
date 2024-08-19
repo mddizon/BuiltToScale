@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://ro3yhobq5dcd"]
+[gd_scene load_steps=10 format=3 uid="uid://ro3yhobq5dcd"]
 
 [ext_resource type="Script" path="res://src/exterior.gd" id="1_e06au"]
 [ext_resource type="Texture2D" uid="uid://dpp38dxxomfdo" path="res://Resources/Art/Nebula.png" id="2_6mohs"]
 [ext_resource type="PackedScene" uid="uid://nqjvarmir6ow" path="res://Scenes/player_ship.tscn" id="3_xdfxa"]
 [ext_resource type="PackedScene" uid="uid://kjdayayyunk7" path="res://Scenes/asteroid.tscn" id="4_i7i7e"]
-[ext_resource type="PackedScene" path="res://Scenes/small_enemy.tscn" id="6_1d3ye"]
+[ext_resource type="PackedScene" uid="uid://bfngtkh8a410v" path="res://Scenes/small_enemy.tscn" id="6_1d3ye"]
+[ext_resource type="PackedScene" uid="uid://cpm36e5ildl34" path="res://Scenes/missile_enemy.tscn" id="7_hxdqj"]
 [ext_resource type="PackedScene" path="res://Scenes/cannon.tscn" id="12_ifxdx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8kfbu"]
@@ -58,3 +59,5 @@ position = Vector2(-417, -471)
 
 [node name="Enemy2" parent="." instance=ExtResource("6_1d3ye")]
 position = Vector2(-957, -251)
+
+[node name="MissileEnemy" parent="." instance=ExtResource("7_hxdqj")]

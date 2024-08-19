@@ -9,7 +9,7 @@ radius = 23.0
 
 [node name="Projectile" type="Area2D" groups=["bullet"]]
 collision_layer = 4
-collision_mask = 57
+collision_mask = 63
 script = ExtResource("1_6e6f8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -25,10 +25,6 @@ shape = SubResource("CircleShape2D_07ll8")
 
 [node name="DamageSource" parent="." instance=ExtResource("3_equ7u")]
 hurtsPlayer = true
-
-[node name="Line2D" type="Line2D" parent="."]
-visible = false
-points = PackedVector2Array(0, 49, 0, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]
