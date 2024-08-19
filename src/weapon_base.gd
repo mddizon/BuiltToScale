@@ -14,7 +14,6 @@ func _process(delta):
 
 func _physics_process(delta):
 	#Always rotate to point our rectangular body away from the ship
-	var shipPosition = ship.global_position
-	var direction = shipPosition - global_position
+	var direction = ship.global_position - global_position
 	var angle = direction.angle()
-	rotation = angle
+	global_rotation = angle
