@@ -14,6 +14,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	#super._physics_process(delta) # keeping this stable for calculations below
+	# might not need this anymore
 	var mouse = get_local_mouse_position()
 	var meToMouse = position - mouse
 	var normalAngle = meToMouse.angle()
@@ -31,7 +32,7 @@ func _physics_process(delta):
 func fireBullet(angle):
 	
 	var newProjectile = projectile.instantiate()
-	newProjectile.rotation = angle
+	newProjectile.rotation = global_position.angle_to_point(get_global_mouse_position()) - deg_to_rad(90)
 	newProjectile.global_position = global_position
 	newProjectile.add_to_group("player_projectile")
 	ship.get_parent().add_child.call_deferred(newProjectile)
