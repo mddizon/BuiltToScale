@@ -52,7 +52,7 @@ zoom = Vector2(0.5, 0.5)
 limit_left = -6070
 limit_top = -5193
 limit_right = 6168
-limit_bottom = 5166
+limit_bottom = 5146
 script = ExtResource("3_rfxn3")
 
 [node name="plume_4" type="Sprite2D" parent="."]
