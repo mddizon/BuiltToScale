@@ -58,13 +58,13 @@ func _physics_process(_delta):
 			disableArms()
 
 	#Move Biceps here
-	if $LeftArm:
-		leftBicep.rotation = global_position.angle_to_point($LeftArm.global_position) - rotation
-		leftForearm.look_at($LeftArm.global_position)
+	if combatEnabled:
+		leftBicep.rotation = global_position.angle_to_point(leftArm.global_position) - rotation
+		leftForearm.look_at(leftArm.global_position)
 		leftForearm.rotation -= (deg_to_rad(180) - rotation)
-	if $RightArm:
-		rightBicep.rotation = global_position.angle_to_point($RightArm.global_position) - deg_to_rad(180) - rotation
-		rightForearm.look_at($RightArm.global_position)
+	if combatEnabled:
+		rightBicep.rotation = global_position.angle_to_point(rightArm.global_position) - deg_to_rad(180) - rotation
+		rightForearm.look_at(rightArm.global_position)
 
 	# Get the orientation vector of the rigitbody 
 	var orientation = -global_transform.y.normalized()
