@@ -18,6 +18,8 @@ signal interacted(action_name: String)
 @onready var rightArm = $RightArm
 @onready var leftBicep = $LeftBicep
 @onready var rightBicep = $RightBicep
+@onready var leftForearm = $LeftBicep/LeftForearm
+@onready var rightForearm = $RightBicep/RightForearm
 @onready var healthComponent = $Health
 
 var currentThrustIdx = 0
@@ -56,10 +58,13 @@ func _physics_process(_delta):
 			disableArms()
 
 	#Move Biceps here
-	if leftArm.enabled && $LeftArm:
+	if $LeftArm:
 		leftBicep.rotation = global_position.angle_to_point($LeftArm.global_position) - rotation
-	if rightArm.enabled && $RightArm:
+		leftForearm.look_at($LeftArm.global_position)
+		leftForearm.rotation -= (deg_to_rad(180) - rotation)
+	if $RightArm:
 		rightBicep.rotation = global_position.angle_to_point($RightArm.global_position) - deg_to_rad(180) - rotation
+		rightForearm.look_at($RightArm.global_position)
 
 	# Get the orientation vector of the rigitbody 
 	var orientation = -global_transform.y.normalized()
@@ -97,6 +102,8 @@ func on_damage(damage):
 func enableArms():
 	$LeftBicep.visible = true
 	$RightBicep.visible = true
+	leftForearm.visible = true
+	rightForearm.visible = true
 	if leftArm.get_parent() != self:
 		add_child(leftArm)
 	if rightArm.get_parent() != self:
@@ -109,6 +116,8 @@ func enableArms():
 func disableArms():
 	$LeftBicep.visible = false
 	$RightBicep.visible = false
+	rightForearm.visible = false
+	leftForearm.visible = false
 	if leftArm.get_parent() == self:
 		remove_child(leftArm)
 	if rightArm.get_parent() == self:

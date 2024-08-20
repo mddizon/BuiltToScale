@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://nqjvarmir6ow"]
+[gd_scene load_steps=24 format=3 uid="uid://nqjvarmir6ow"]
 
 [ext_resource type="Script" path="res://src/PlayerShip.gd" id="1_a0hv5"]
 [ext_resource type="Texture2D" uid="uid://rsr148c88yag" path="res://Resources/Art/Hero Ship_sprites/Ship_.png" id="2_g3qkk"]
@@ -17,15 +17,17 @@
 [ext_resource type="PackedScene" uid="uid://c305dj7kmix7v" path="res://Scenes/health.tscn" id="12_ul2m7"]
 [ext_resource type="Texture2D" uid="uid://bl5ngwljc0oft" path="res://Resources/Art/Arms/Hand-Sword_L.png" id="13_6xylr"]
 [ext_resource type="Texture2D" uid="uid://cro37fxsm461x" path="res://Resources/Art/Arms/Hand-Pistol_R.png" id="15_w1scr"]
+[ext_resource type="Texture2D" uid="uid://d4nngypskva4i" path="res://Resources/Art/Arms/Arm-Lower_L.png" id="18_oor15"]
+[ext_resource type="Texture2D" uid="uid://bt7ovahpvo5h5" path="res://Resources/Art/Arms/Arm-Lower_R.png" id="19_3vp0i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8672g"]
 size = Vector2(67, 136)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pcycr"]
-size = Vector2(19.0047, 171.279)
+size = Vector2(172, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m341b"]
-size = Vector2(171, 20)
+size = Vector2(22, 172)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmd7j"]
 
@@ -88,6 +90,13 @@ texture = ExtResource("9_xxqxt")
 centered = false
 offset = Vector2(-44.2758, -80.0271)
 
+[node name="LeftForearm" type="Sprite2D" parent="LeftBicep"]
+visible = false
+position = Vector2(91.6315, 12.9939)
+rotation = -3.13879
+texture = ExtResource("18_oor15")
+offset = Vector2(-31, -4)
+
 [node name="RightBicep" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(59.6675, -10.2629)
@@ -96,37 +105,50 @@ texture = ExtResource("10_uutrx")
 centered = false
 offset = Vector2(-115.333, -82.2629)
 
-[node name="LeftArm" parent="." instance=ExtResource("9_fou54")]
+[node name="RightForearm" type="Sprite2D" parent="RightBicep"]
 visible = false
+position = Vector2(-86.3946, 4.70999)
+rotation = -3.24239
+texture = ExtResource("19_3vp0i")
+offset = Vector2(36, -5)
+
+[node name="Health" parent="." instance=ExtResource("12_ul2m7")]
+health = 100
+isPlayer = true
+
+[node name="LeftArm" parent="." instance=ExtResource("9_fou54")]
 position = Vector2(-200, 0)
-rotation = 0.00475759
 collision_mask = 36
 righty = false
 
-[node name="Sword" type="StaticBody2D" parent="LeftArm"]
-position = Vector2(1.59961, -14.2707)
-rotation = -0.00475759
+[node name="SwordSprite" type="Sprite2D" parent="LeftArm"]
+position = Vector2(3.99995, -0.0190312)
+rotation = -3.14159
+scale = Vector2(0.8305, 0.8)
+texture = ExtResource("13_6xylr")
+centered = false
+offset = Vector2(-222.757, -42.5)
+
+[node name="Sword" type="StaticBody2D" parent="LeftArm/SwordSprite"]
+position = Vector2(-6.02053, -12.5238)
 collision_layer = 8
 collision_mask = 36
 script = ExtResource("10_il2n6")
 
-[node name="Sprite2D" type="Sprite2D" parent="LeftArm/Sword"]
-position = Vector2(-79.6675, 13.2629)
-scale = Vector2(0.8305, 0.8)
-texture = ExtResource("13_6xylr")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArm/Sword"]
-position = Vector2(-99, 13)
-rotation = -1.5708
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArm/SwordSprite/Sword"]
+position = Vector2(-99.6484, 12.2629)
 shape = SubResource("RectangleShape2D_pcycr")
 
-[node name="Area2D" type="Area2D" parent="LeftArm/Sword"]
+[node name="Area2D" type="Area2D" parent="LeftArm/SwordSprite/Sword"]
+position = Vector2(-99.6675, 12.2629)
+rotation = 1.5708
+scale = Vector2(1, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArm/Sword/Area2D"]
-position = Vector2(-98.5, 12)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArm/SwordSprite/Sword/Area2D"]
+position = Vector2(-5.96046e-07, 0)
 shape = SubResource("RectangleShape2D_m341b")
 
-[node name="DamageSource" parent="LeftArm/Sword/Area2D" instance=ExtResource("11_iet6x")]
+[node name="DamageSource" parent="LeftArm/SwordSprite/Sword/Area2D" instance=ExtResource("11_iet6x")]
 hurtsEnemy = true
 hurtsAsteroid = true
 
@@ -154,10 +176,6 @@ offset = Vector2(-33, -86)
 
 [node name="Marker2D" type="Marker2D" parent="RightArm/Gun/Sprite2D"]
 position = Vector2(95.3325, -5.73706)
-
-[node name="Health" parent="." instance=ExtResource("12_ul2m7")]
-health = 100
-isPlayer = true
 
 [connection signal="enable_combat" from="ShipInterior" to="." method="_on_ship_interior_enable_combat"]
 [connection signal="enable_flight_controls" from="ShipInterior" to="." method="_on_ship_interior_enable_flight_controls"]

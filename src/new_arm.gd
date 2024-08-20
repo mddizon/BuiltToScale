@@ -51,6 +51,9 @@ func _physics_process(delta):
 		shipRelative.x = -shipRelative.x
 		var globalOffsetFromHand = ship.to_global(shipRelative) - global_position
 		apply_central_impulse(globalOffsetFromHand * armSpeedMultiplier)
+	
+	if enabled:
+		look_at(get_global_mouse_position())
 
 	if (drawDebug):
 		queue_redraw()

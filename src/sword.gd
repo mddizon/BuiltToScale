@@ -1,5 +1,9 @@
 extends WeaponBase
 
+# @onready var arm: Arm = get_parent() # TODO: this is delicate!
+var arm = null
+var targetGlobalPos = Vector2.ZERO
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
