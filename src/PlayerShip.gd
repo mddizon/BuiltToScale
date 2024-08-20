@@ -90,13 +90,15 @@ func burn_engine(released: bool):
 		currentThrustIdx = 4 # (currentThrustIdx + 1) % len(thrusts)
 		# for i in range(4):
 		# 	rocketPlumes[i].visible = i == currentThrustIdx
-		rocketPlumes[2].visible = true
+		#rocketPlumes[2].visible = true
+		$Plume.visible = true
 		AudioController.play_engine(true)
 	else:
 		currentThrustIdx = 0
-		#all plumes off
-		for i in range(4):
-			rocketPlumes[i].visible = false
+		##all plumes off
+		#for i in range(4):
+			#rocketPlumes[i].visible = false
+		$Plume.visible = false
 		AudioController.play_engine(false)
 
 func turn(isLeft: bool):
