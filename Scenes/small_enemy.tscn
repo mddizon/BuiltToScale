@@ -23,6 +23,7 @@ width = 50.0
 default_color = Color(0.176471, 0.886275, 0.901961, 0.807843)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
 texture = ExtResource("1_jnl3q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
