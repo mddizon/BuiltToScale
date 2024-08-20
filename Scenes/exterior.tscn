@@ -1,11 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ro3yhobq5dcd"]
+[gd_scene load_steps=6 format=3 uid="uid://ro3yhobq5dcd"]
 
 [ext_resource type="Script" path="res://src/exterior.gd" id="1_e06au"]
 [ext_resource type="Texture2D" uid="uid://dpp38dxxomfdo" path="res://Resources/Art/Nebula.png" id="2_6mohs"]
 [ext_resource type="PackedScene" uid="uid://nqjvarmir6ow" path="res://Scenes/player_ship.tscn" id="3_xdfxa"]
-[ext_resource type="PackedScene" uid="uid://kjdayayyunk7" path="res://Scenes/asteroid.tscn" id="4_i7i7e"]
-[ext_resource type="PackedScene" uid="uid://bfngtkh8a410v" path="res://Scenes/small_enemy.tscn" id="6_1d3ye"]
-[ext_resource type="PackedScene" uid="uid://c5hd7i2hylyue" path="res://Scenes/big_enemy.tscn" id="6_i3pxv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8kfbu"]
 size = Vector2(12442, 73)
@@ -16,25 +13,16 @@ size = Vector2(124, 10354)
 [node name="Exterior" type="Node2D"]
 script = ExtResource("1_e06au")
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(6168, 23)
-rotation = 0.0212747
-
 [node name="Starfield" type="Sprite2D" parent="."]
 position = Vector2(-0.000244141, 0)
 scale = Vector2(4.80833, 4.80833)
 texture = ExtResource("2_6mohs")
 
 [node name="PlayerShip" parent="." instance=ExtResource("3_xdfxa")]
-position = Vector2(-305, 120)
-rotation = 6.30446
 linear_damp = 0.75
 angular_damp = 0.75
 thrusts = [0, 100, 500, 1000, 20000]
 rotation_speed = 1500
-
-[node name="Asteroid" parent="." instance=ExtResource("4_i7i7e")]
-position = Vector2(880, 253)
 
 [node name="Wall" type="StaticBody2D" parent="."]
 position = Vector2(6174, 34)
@@ -57,11 +45,50 @@ shape = SubResource("RectangleShape2D_ppc1c")
 position = Vector2(-6100, -5266)
 shape = SubResource("RectangleShape2D_8kfbu")
 
-[node name="Enemy" parent="." instance=ExtResource("6_1d3ye")]
-position = Vector2(-417, -471)
+[node name="EnemySpawnLocations" type="Node2D" parent="."]
 
-[node name="Enemy2" parent="." instance=ExtResource("6_1d3ye")]
-position = Vector2(-957, -251)
+[node name="EnemySpawnMarker" type="Marker2D" parent="EnemySpawnLocations"]
+position = Vector2(-2014, -1487)
 
-[node name="Node2D" parent="." instance=ExtResource("6_i3pxv")]
-position = Vector2(-151, -1261)
+[node name="Marker2D" type="Marker2D" parent="EnemySpawnLocations"]
+position = Vector2(2569, -1427)
+
+[node name="Marker2D2" type="Marker2D" parent="EnemySpawnLocations"]
+position = Vector2(-1827, 2911)
+
+[node name="Marker2D3" type="Marker2D" parent="EnemySpawnLocations"]
+position = Vector2(2816, 2435)
+
+[node name="Marker2D4" type="Marker2D" parent="EnemySpawnLocations"]
+position = Vector2(-400, -685)
+
+[node name="AsteroidSpawnLocations" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="AsteroidSpawnLocations"]
+position = Vector2(0, -3403)
+
+[node name="Marker2D2" type="Marker2D" parent="AsteroidSpawnLocations"]
+position = Vector2(-3683, 51)
+
+[node name="Marker2D3" type="Marker2D" parent="AsteroidSpawnLocations"]
+position = Vector2(4064, 0)
+
+[node name="Marker2D4" type="Marker2D" parent="AsteroidSpawnLocations"]
+position = Vector2(0, 2692)
+
+[node name="Marker2D5" type="Marker2D" parent="AsteroidSpawnLocations"]
+position = Vector2(-1473, 711)
+
+[node name="BattleshipSpawnLocations" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="BattleshipSpawnLocations"]
+position = Vector2(5080, -4369)
+
+[node name="Marker2D2" type="Marker2D" parent="BattleshipSpawnLocations"]
+position = Vector2(-4851, -4013)
+
+[node name="Marker2D3" type="Marker2D" parent="BattleshipSpawnLocations"]
+position = Vector2(5080, 4038)
+
+[node name="Marker2D4" type="Marker2D" parent="BattleshipSpawnLocations"]
+position = Vector2(-5105, 4089)

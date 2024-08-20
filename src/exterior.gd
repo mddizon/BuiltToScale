@@ -1,9 +1,24 @@
 extends Node2D
 
+var enemy = preload("res://Scenes/small_enemy.tscn")
+var asteroid = preload("res://Scenes/asteroid.tscn")
+var big_enemy = preload("res://Scenes/big_enemy.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var scene = preload("res://Scenes/asteroid.tscn")
+	for i in $EnemySpawnLocations.get_children():
+		var dude = enemy.instantiate();
+		dude.position = i.position
+		add_child(dude)
+	for i in $AsteroidSpawnLocations.get_children():
+		var dude = asteroid.instantiate();
+		dude.position = i.position
+		add_child(dude)
+	for i in $BattleshipSpawnLocations.get_children():
+		var dude = asteroid.instantiate();
+		dude.position = i.position
+		add_child(dude)
 	return
 	const numAsteroids = 10.0
 	const arenaRadius = 10000.0
