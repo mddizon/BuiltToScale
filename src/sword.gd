@@ -18,3 +18,4 @@ func _process(delta):
 func _on_hit(body):
 	print("sword hit something")
 	AudioController.play_game_sound("sword_hit")
+	SignalBus.do_screen_shake.emit(true)

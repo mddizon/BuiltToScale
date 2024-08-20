@@ -11,3 +11,4 @@ signal win_game
 signal lose_game
 signal change_mode(system: String)
 signal weapon_picked(weapon: String, is_right: bool)
+signal do_screen_shake(isMajorHit: bool)
