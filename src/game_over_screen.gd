@@ -4,6 +4,7 @@ extends Control
 
 func _ready():
 	$AnimationPlayer.play("Lose")
+	AudioController.pause_music()
 	AudioController.play_lose_music()
 	AudioController.play_game_sound('not_good')
 
