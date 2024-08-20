@@ -1,13 +1,53 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfngtkh8a410v"]
+[gd_scene load_steps=12 format=3 uid="uid://bfngtkh8a410v"]
 
 [ext_resource type="Script" path="res://Scenes/small_enemy.gd" id="1_g6wan"]
-[ext_resource type="Texture2D" uid="uid://dubhaaxp0hmkf" path="res://Resources/Art/Bug_Blue_1.png" id="1_jnl3q"]
+[ext_resource type="Texture2D" uid="uid://bfwga700p5grj" path="res://Resources/Art/Skullbot_small/Skullbot_small1.png" id="2_q0xuc"]
+[ext_resource type="Texture2D" uid="uid://cpysr1qet8rhk" path="res://Resources/Art/Skullbot_small/Skullbot_small2.png" id="3_dv81k"]
 [ext_resource type="PackedScene" uid="uid://be2w4f443eyhp" path="res://Scenes/damage_source.tscn" id="3_vrcmp"]
+[ext_resource type="Texture2D" uid="uid://bpnrym7j3vdth" path="res://Resources/Art/Skullbot_small/Skullbot_small3.png" id="4_0my2q"]
 [ext_resource type="PackedScene" uid="uid://c305dj7kmix7v" path="res://Scenes/health.tscn" id="4_3kwq2"]
 [ext_resource type="PackedScene" uid="uid://flltnricw5vr" path="res://Scenes/healthbar.tscn" id="5_8w0i5"]
+[ext_resource type="Texture2D" uid="uid://dq7h2wbq6upua" path="res://Resources/Art/Skullbot_small/Skullbot_small4.png" id="5_ielal"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2q2or"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q0xuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dv81k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0my2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ielal")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q0xuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dv81k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0my2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ielal")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o5qbm"]
-radius = 22.0907
+radius = 105.171
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l6iyq"]
 radius = 200.0
@@ -21,7 +61,8 @@ gun_range = 20000
 rotation_speed = 1.0
 warn_length = 20000
 warn_width = 75
-num_bullets = 5
+damage = 5
+num_bullets = 3
 time_to_shoot = 5.0
 
 [node name="Line2D" type="Line2D" parent="."]
@@ -30,17 +71,21 @@ points = PackedVector2Array(0, 0)
 width = 50.0
 default_color = Color(0.176471, 0.886275, 0.901961, 0.807843)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
-texture = ExtResource("1_jnl3q")
+sprite_frames = SubResource("SpriteFrames_2q2or")
+animation = &"idle"
+frame_progress = 0.397997
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -98)
 shape = SubResource("CircleShape2D_o5qbm")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = false
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_l6iyq")
