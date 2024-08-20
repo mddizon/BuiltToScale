@@ -1,9 +1,10 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://w7lokxr7htxk"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://w7lokxr7htxk"]
 
 [ext_resource type="StyleBox" uid="uid://cqfu20afbk4eo" path="res://Resources/hover_button_style.tres" id="1_4fhia"]
 [ext_resource type="StyleBox" uid="uid://cd3aypruv8i6i" path="res://Resources/button_style.tres" id="2_d8xwb"]
 [ext_resource type="StyleBox" uid="uid://blpwu6p5522mv" path="res://Resources/pressed_button_style.tres" id="3_guq1d"]
 [ext_resource type="FontFile" uid="uid://q643ft2jd04w" path="res://Resources/Art/fonts/SyntheticText.ttf" id="4_jbgq1"]
+[ext_resource type="FontFile" uid="uid://b760b8tublx3s" path="res://Resources/Art/fonts/80s-retro-future.ttf" id="5_r2muk"]
 
 [sub_resource type="FontVariation" id="FontVariation_242hn"]
 base_font = ExtResource("4_jbgq1")
@@ -15,6 +16,7 @@ bg_color = Color(0.14902, 0.0784314, 0.278431, 1)
 bg_color = Color(1, 0.219608, 0.392157, 1)
 
 [resource]
+default_font = ExtResource("5_r2muk")
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
 Button/constants/outline_size = 10
 Button/fonts/font = ExtResource("4_jbgq1")

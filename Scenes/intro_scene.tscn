@@ -1,0 +1,183 @@
+[gd_scene load_steps=11 format=3 uid="uid://da433dbt2ndkb"]
+
+[ext_resource type="Script" path="res://src/intro_scene.gd" id="1_4l7mp"]
+[ext_resource type="Theme" uid="uid://w7lokxr7htxk" path="res://Resources/button_theme.tres" id="1_dt8iu"]
+[ext_resource type="FontFile" uid="uid://b760b8tublx3s" path="res://Resources/Art/fonts/80s-retro-future.ttf" id="3_e5i1k"]
+[ext_resource type="LabelSettings" uid="uid://2ryv5fdagtvy" path="res://Resources/new_title_font_settings.tres" id="3_ycfeg"]
+
+[sub_resource type="Gradient" id="Gradient_dqggr"]
+offsets = PackedFloat32Array(0, 0.342916, 0.841889, 1)
+colors = PackedColorArray(0.0509804, 0.00784314, 0.129412, 1, 0.14902, 0.0784314, 0.278431, 1, 1, 0.219608, 0.392157, 1, 1, 0.423529, 0.0666667, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yts7w"]
+gradient = SubResource("Gradient_dqggr")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0.551282, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x8yrv"]
+font = ExtResource("3_e5i1k")
+font_size = 32
+outline_size = 18
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_8q0hv"]
+resource_name = "intro"
+length = 18.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(6.5, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Button:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(9, 9.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_twt11"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Button:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_07j0g"]
+_data = {
+"RESET": SubResource("Animation_twt11"),
+"intro": SubResource("Animation_8q0hv")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4l7mp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_yts7w")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -4.0
+offset_top = 34.0
+offset_right = -4.0
+offset_bottom = 363.0
+grow_horizontal = 2
+theme = ExtResource("1_dt8iu")
+text = "It's 2024
+Akimbo
+"
+label_settings = ExtResource("3_ycfeg")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -282.0
+offset_top = -105.0
+offset_right = 273.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "The aliens are finally here. Your prototype BEEG suit and SMOL ship are ready. We didn't have time or resources to add weapons to the ship, so you and your beautiful arms need to be the weapon that saves us all..."
+label_settings = SubResource("LabelSettings_x8yrv")
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -221.0
+offset_right = 142.0
+offset_bottom = -132.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_dt8iu")
+theme_override_font_sizes/font_size = 32
+text = "Let's Rock"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_07j0g")
+}
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -10,6 +10,7 @@ extends Node2D
 @onready var menu_music = preload("res://Resources/Sound/Music/gmtk menu theme.ogg")
 @onready var here_we_go = preload("res://Resources/Sound/SFX/gmtk vo start.ogg")
 @onready var activated = preload("res://Resources/Sound/SFX/gmtk battlestation activated.ogg")
+@onready var intro = preload("res://Resources/Sound/SFX/gmtk vo its 2024 akimbo.ogg")
 
 @onready var exterior_music = $ExteriorMusicPlayer
 @onready var interior_music = $InteriorMusicPlayer
@@ -35,6 +36,10 @@ func play_confirm_button():
 func play_start_game_button():
 	$UISounds.stream = confirm_sounds
 	$UISounds.play()
+	
+func play_intro_sound():
+	game_sounds_2.stream = intro
+	game_sounds_2.play()
 
 func play_click_button():
 	$UISounds.stream = click_button_sounds
@@ -48,6 +53,7 @@ func set_music_volume(vol: float):
 	max_music_volume = vol
 	$ExteriorMusicPlayer.volume_db = vol
 	$InteriorMusicPlayer.volume_db = vol
+	$MusicPlayer.volume_db = vol
 	var inside_anim = $AnimationPlayer.get_animation("go_inside")
 	var outside_anim = $AnimationPlayer.get_animation("go_outside")
 	inside_anim.track_set_key_value(1, 1, max_music_volume)
