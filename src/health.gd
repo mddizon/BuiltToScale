@@ -31,6 +31,7 @@ func die():
 	particle.global_position = parent.global_position
 	particle.rotation = parent.global_rotation
 	particle.emitting = true
-	get_tree().current_scene.add_child(particle)
+	if not GlobalGameState.is_game_over:
+		get_tree().current_scene.add_child(particle)
 	
 	parent.queue_free()

@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var game_over_screen = preload("res://Scenes/game_over_screen.tscn")
+@onready var win_screen = preload("res://Scenes/win.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,3 +29,6 @@ func damage_taken(_damage: int):
 func _update_remaining():
 	GlobalGameState.num_enemies -= 1
 	$Remaining/Label2.text = str(GlobalGameState.num_enemies)
+	if GlobalGameState.num_enemies <= 0 and GlobalGameState.is_game_over == false:
+		GlobalGameState.is_game_over = true
+		get_tree().change_scene_to_packed(win_screen)
