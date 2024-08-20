@@ -24,7 +24,7 @@ func damage_taken(_damage: int):
 	if GlobalGameState.player_health <= 0 and GlobalGameState.is_game_over == false:
 		GlobalGameState.is_game_over = true
 		# load game over screen
-		get_tree().change_scene_to_packed(game_over_screen)
+		get_tree().call_deferred('change_scene_to_packed', game_over_screen)
 	#$GlitchScreen.material = glitch_material
 	
 func _update_remaining():
@@ -32,7 +32,7 @@ func _update_remaining():
 	$Remaining/Label2.text = str(GlobalGameState.num_enemies)
 	if GlobalGameState.num_enemies <= 0 and GlobalGameState.is_game_over == false:
 		GlobalGameState.is_game_over = true
-		get_tree().change_scene_to_packed(win_screen)
+		get_tree().call_deferred('change_scene_to_packed', win_screen)
 
 func _on_change_mode(mode):
 	if mode == 'weapons':

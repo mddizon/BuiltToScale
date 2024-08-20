@@ -1,8 +1,126 @@
-[gd_scene load_steps=4 format=3 uid="uid://wetjv8qole0u"]
+[gd_scene load_steps=9 format=3 uid="uid://wetjv8qole0u"]
 
 [ext_resource type="Theme" uid="uid://w7lokxr7htxk" path="res://Resources/button_theme.tres" id="1_osf6c"]
 [ext_resource type="Script" path="res://src/game_over_screen.gd" id="1_yhym7"]
 [ext_resource type="Material" uid="uid://lutnrci1ncn8" path="res://Resources/glitch_shader_mat.tres" id="2_4dr4i"]
+
+[sub_resource type="Gradient" id="Gradient_1l4n5"]
+offsets = PackedFloat32Array(0, 0.565006)
+colors = PackedColorArray(0.14902, 0.0784314, 0.278431, 1, 0.0509804, 0.00784314, 0.129412, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jlvtt"]
+gradient = SubResource("Gradient_1l4n5")
+fill_from = Vector2(0.286325, 0.034188)
+fill_to = Vector2(0.735043, 0.948718)
+
+[sub_resource type="Animation" id="Animation_3x7nv"]
+resource_name = "Lose"
+length = 5.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Retry:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(5, 5.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Back:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(5, 5.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a3abp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Retry:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Back:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oum5v"]
+_data = {
+"Lose": SubResource("Animation_3x7nv"),
+"RESET": SubResource("Animation_a3abp")
+}
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
@@ -13,24 +131,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yhym7")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0509804, 0.00784314, 0.129412, 1)
+texture = SubResource("GradientTexture2D_jlvtt")
 
 [node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -596.0
-offset_top = 274.0
-offset_right = 596.0
-offset_bottom = 450.0
+offset_left = -591.0
+offset_top = 201.0
+offset_right = 601.0
+offset_bottom = 377.0
 grow_horizontal = 2
 theme = ExtResource("1_osf6c")
 theme_override_colors/font_color = Color(1, 0.423529, 0.0666667, 1)
@@ -39,9 +158,23 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/shadow_outline_size = 1
 theme_override_font_sizes/font_size = 216
-text = "You Lose"
+text = "You Lost"
+
+[node name="Label2" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 681.0
+offset_top = 439.0
+offset_right = 1245.0
+offset_bottom = 641.0
+theme = ExtResource("1_osf6c")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Don't give up hope! Only the alien's bullets hit you, the [color=#2de2e6]blue lines[/color] are only a warning! [color=#ff6c11]Take a deep breath, you're not in any immediate danger.[/color]"
+autowrap_mode = 2
 
 [node name="Retry" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -60,6 +193,7 @@ text = "Play Again
 "
 
 [node name="Back" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -87,5 +221,11 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oum5v")
+}
+
 [connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

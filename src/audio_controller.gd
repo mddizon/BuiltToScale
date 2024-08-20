@@ -13,6 +13,8 @@ extends Node2D
 @onready var activated = preload("res://Resources/Sound/SFX/gmtk battlestation activated.ogg")
 @onready var intro = preload("res://Resources/Sound/SFX/gmtk vo its 2024 akimbo.ogg")
 @onready var thank_you = preload("res://Resources/Sound/SFX/gmtk vo thank you for saving us.ogg")
+@onready var need_you = preload("res://Resources/Sound/SFX/gmtk vo akimbo we need you.ogg")
+@onready var not_good = preload("res://Resources/Sound/SFX/gmtk vo not good.ogg")
 
 @onready var ship_damage = preload("res://Resources/Sound/SFX/gmtk ship damage.ogg")
 @onready var ship_engine = preload("res://Resources/Sound/SFX/gmtk ship engine.ogg") # continous?
@@ -122,6 +124,10 @@ func play_game_sound(sound_name):
 		game_sounds_2.stream = activated
 	if sound_name == 'thank_you':
 		game_sounds_2.stream = thank_you
+	if sound_name == 'not_good':
+		game_sounds_2.stream = not_good
+	if sound_name == 'need_you':
+		game_sounds_2.stream = need_you
 	if sound_name == 'ship_damage':
 		game_sounds_2.stream = ship_damage
 	if sound_name == 'sword_hit':

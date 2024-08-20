@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://nvmp1h0pkc02"]
+
+[ext_resource type="FontFile" uid="uid://b760b8tublx3s" path="res://Resources/Art/fonts/80s-retro-future.ttf" id="1_ksd3x"]
+
+[resource]
+font = ExtResource("1_ksd3x")
+font_size = 32
+outline_size = 18
+outline_color = Color(0, 0, 0, 1)

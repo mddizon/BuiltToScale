@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://da433dbt2ndkb"]
+[gd_scene load_steps=10 format=3 uid="uid://da433dbt2ndkb"]
 
 [ext_resource type="Script" path="res://src/intro_scene.gd" id="1_4l7mp"]
 [ext_resource type="Theme" uid="uid://w7lokxr7htxk" path="res://Resources/button_theme.tres" id="1_dt8iu"]
-[ext_resource type="FontFile" uid="uid://b760b8tublx3s" path="res://Resources/Art/fonts/80s-retro-future.ttf" id="3_e5i1k"]
 [ext_resource type="LabelSettings" uid="uid://2ryv5fdagtvy" path="res://Resources/new_title_font_settings.tres" id="3_ycfeg"]
+[ext_resource type="LabelSettings" uid="uid://nvmp1h0pkc02" path="res://Resources/lore.tres" id="4_toxta"]
 
 [sub_resource type="Gradient" id="Gradient_dqggr"]
 offsets = PackedFloat32Array(0, 0.342916, 0.841889, 1)
@@ -13,12 +13,6 @@ colors = PackedColorArray(0.0509804, 0.00784314, 0.129412, 1, 0.14902, 0.0784314
 gradient = SubResource("Gradient_dqggr")
 fill_from = Vector2(1, 1)
 fill_to = Vector2(0.551282, 0)
-
-[sub_resource type="LabelSettings" id="LabelSettings_x8yrv"]
-font = ExtResource("3_e5i1k")
-font_size = 32
-outline_size = 18
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_twt11"]
 length = 0.001
@@ -154,7 +148,7 @@ offset_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "The aliens are finally here. Your prototype BEEG suit and SMOL ship are ready. We didn't have time or resources to add weapons to the ship, so you and your beautiful arms need to be the weapon that saves us all..."
-label_settings = SubResource("LabelSettings_x8yrv")
+label_settings = ExtResource("4_toxta")
 autowrap_mode = 2
 
 [node name="Button" type="Button" parent="."]
