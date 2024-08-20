@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://4n21qan3n81s"]
+[gd_scene load_steps=6 format=3 uid="uid://4n21qan3n81s"]
 
 [ext_resource type="Script" path="res://src/projectile.gd" id="1_575ha"]
+[ext_resource type="PackedScene" uid="uid://bdebru3ubkfw0" path="res://Scenes/muzzle_flash.tscn" id="2_0f1p1"]
 [ext_resource type="Texture2D" uid="uid://cqbidmh5p2s84" path="res://Resources/Art/red_character.png" id="2_w3658"]
 [ext_resource type="PackedScene" uid="uid://be2w4f443eyhp" path="res://Scenes/damage_source.tscn" id="3_aqrwt"]
 
@@ -11,6 +12,7 @@ radius = 23.0
 collision_layer = 8
 collision_mask = 63
 script = ExtResource("1_575ha")
+spawn_particle = ExtResource("2_0f1p1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_w3658")

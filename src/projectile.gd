@@ -2,8 +2,16 @@ extends Area2D
 
 @export var speed = 1000
 @export var damage = 1
+@export var spawn_particle: PackedScene
 
 func _ready():
+	#Instantiate the spawn particle
+	var particle = spawn_particle.instantiate()
+	particle.global_position = global_position
+	particle.rotation = global_rotation
+	particle.emitting = true
+	get_tree().current_scene.add_child(particle)
+
 	pass
 
 func _physics_process(delta):

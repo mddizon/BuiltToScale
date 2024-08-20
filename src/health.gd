@@ -6,6 +6,7 @@ signal health_changed(new_value: int)
 @export var isPlayer = false
 @export var isEnemy = false
 @export var isAsteroid = false
+@export var deathParticle: PackedScene
 
 @onready var currentHealth = health
 
@@ -21,4 +22,12 @@ func take_damage(damage: int, source: Node):
 		die()
 	
 func die():
-	get_parent().queue_free()
+	var parent = get_parent()
+	#play particle effect
+	var particle = deathParticle.instantiate()
+	particle.global_position = parent.global_position
+	particle.rotation = parent.global_rotation
+	particle.emitting = true
+	get_tree().current_scene.add_child(particle)
+	
+	parent.queue_free()

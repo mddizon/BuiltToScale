@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://wwjuh336fp22"]
+
+[sub_resource type="Gradient" id="Gradient_pa62m"]
+colors = PackedColorArray(0.937255, 0.521569, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6f5xn"]
+gradient = SubResource("Gradient_pa62m")
+
+[sub_resource type="Gradient" id="Gradient_y84tr"]
+colors = PackedColorArray(1, 1, 0.0392157, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xakwx"]
+gradient = SubResource("Gradient_y84tr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e7g4t"]
+lifetime_randomness = 0.36
+particle_flag_disable_z = true
+angle_max = 360.0
+spread = 180.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, 98, 0)
+damping_min = 100.0
+damping_max = 200.0
+scale_min = 5.0
+scale_max = 20.0
+color = Color(1, 0.603922, 0.423529, 1)
+color_ramp = SubResource("GradientTexture1D_xakwx")
+color_initial_ramp = SubResource("GradientTexture1D_6f5xn")
+
+[node name="EnemyDeathParticle" type="GPUParticles2D"]
+position = Vector2(668, 255)
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_e7g4t")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
