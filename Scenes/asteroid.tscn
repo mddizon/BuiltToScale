@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://kjdayayyunk7"]
+[gd_scene load_steps=6 format=3 uid="uid://kjdayayyunk7"]
 
-[ext_resource type="Texture2D" uid="uid://c4yb4q1q6tk2f" path="res://Resources/Art/asteroid_placeholder.png" id="1_tgjab"]
 [ext_resource type="Script" path="res://src/asteroid.gd" id="1_xkxxc"]
+[ext_resource type="Texture2D" uid="uid://sw23q0gket7e" path="res://Resources/Art/Asteroid/PixelStarshipsPackage_Asteroids_01.png" id="2_dbo06"]
 [ext_resource type="PackedScene" uid="uid://c305dj7kmix7v" path="res://Scenes/health.tscn" id="3_4gamu"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5ejk7"]
-radius = 599.37
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg7jg"]
+atlas = ExtResource("2_dbo06")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tthgu"]
+size = Vector2(320.593, 655.324)
 
 [node name="Asteroid" type="RigidBody2D"]
 position = Vector2(761.364, 371.68)
@@ -16,12 +20,14 @@ script = ExtResource("1_xkxxc")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-58.364, -10.68)
 rotation = 0.954946
-texture = ExtResource("1_tgjab")
+scale = Vector2(4.06014, 4.06014)
+texture = SubResource("AtlasTexture_dg7jg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-96.364, 35.32)
+position = Vector2(-55.364, -20.68)
 rotation = -0.49658
-shape = SubResource("CircleShape2D_5ejk7")
+scale = Vector2(2.66604, 1.17436)
+shape = SubResource("RectangleShape2D_tthgu")
 
 [node name="Health" parent="." instance=ExtResource("3_4gamu")]
 isAsteroid = true
