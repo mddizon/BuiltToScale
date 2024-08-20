@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/projectile.gd" id="1_6e6f8"]
 [ext_resource type="PackedScene" uid="uid://bdebru3ubkfw0" path="res://Scenes/muzzle_flash.tscn" id="2_10xcr"]
-[ext_resource type="Texture2D" uid="uid://cqbidmh5p2s84" path="res://Resources/Art/red_character.png" id="2_yiv82"]
+[ext_resource type="Texture2D" uid="uid://dfwa6000q1upo" path="res://Resources/Art/Skullbot_small/Pistol_Laser2.png" id="3_7wpbb"]
 [ext_resource type="PackedScene" uid="uid://be2w4f443eyhp" path="res://Scenes/damage_source.tscn" id="3_equ7u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_07ll8"]
@@ -16,7 +16,7 @@ damage = 20
 spawn_particle = ExtResource("2_10xcr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_yiv82")
+texture = ExtResource("3_7wpbb")
 
 [node name="LifeTimer" type="Timer" parent="."]
 wait_time = 3.0
