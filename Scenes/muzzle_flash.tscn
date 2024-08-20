@@ -24,6 +24,7 @@ scale_curve = SubResource("CurveTexture_ditgk")
 alpha_curve = SubResource("CurveTexture_xq7m5")
 
 [node name="MuzzleFlash" type="GPUParticles2D"]
+z_index = 5
 position = Vector2(870, 345)
 emitting = false
 amount = 1
