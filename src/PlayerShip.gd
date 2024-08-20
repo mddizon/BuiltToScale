@@ -169,5 +169,5 @@ func _make_new_weapon(weapon, is_right):
 		return sword.instantiate()
 	elif (weapon == 'blaster'):
 		var gun = gun.instantiate()
-		gun.is_right = true
+		gun.is_right = is_right
 		return gun
