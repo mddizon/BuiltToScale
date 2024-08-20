@@ -114,9 +114,12 @@ libraries = {
 stream = ExtResource("4_vkokp")
 
 [node name="GameSounds" type="AudioStreamPlayer" parent="."]
+max_polyphony = 8
 
-[node name="GameSoundsChannel2" type="AudioStreamPlayer2D" parent="."]
-max_polyphony = 12
+[node name="EngineSounds" type="AudioStreamPlayer" parent="."]
+
+[node name="GameSounds2" type="AudioStreamPlayer" parent="."]
+max_polyphony = 8
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

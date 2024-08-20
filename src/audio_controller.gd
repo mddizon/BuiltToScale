@@ -29,14 +29,17 @@ extends Node2D
 @onready var interior_music = $InteriorMusicPlayer
 @onready var animation_player = $AnimationPlayer
 @onready var game_sounds = $GameSounds
-@onready var game_sounds_2 = $GameSoundsChannel2
+@onready var game_sounds_2 = $GameSounds2
+@onready var engine_sounds = $EngineSounds
 
 @onready var mutex_animation_playing = false
 var max_music_volume = 0
 var max_sound_volume = 0
+@export var engine_max_volume = -20
 
 func _ready():
 	SignalBus.change_mode.connect(_on_change_mode)
+	engine_sounds.volume_db = engine_max_volume
 
 func play_back_button():
 	$UISounds.stream = back_button_sounds
@@ -82,6 +85,8 @@ func set_sfx_volume(vol: float):
 	max_sound_volume = vol
 	game_sounds.volume_db = vol
 	game_sounds_2.volume_db = vol
+	engine_sounds.volume_db = vol
+	engine_sounds.volume_db = min(engine_max_volume, vol)
 	$UISounds.volume_db = vol
 	
 func get_music_volume():
@@ -113,15 +118,12 @@ func pause_music():
 	$InteriorMusicPlayer.playing = false
 
 func play_game_sound(sound_name):
-	AudioStreamPolyphonic.play_game_sound(sound_name)
 	if sound_name == 'activated':
 		game_sounds_2.stream = activated
 	if sound_name == 'thank_you':
 		game_sounds_2.stream = thank_you
 	if sound_name == 'ship_damage':
 		game_sounds_2.stream = ship_damage
-	if sound_name == 'ship_engine':
-		game_sounds_2.stream = ship_engine
 	if sound_name == 'sword_hit':
 		game_sounds_2.stream = sword_hit
 	if sound_name == 'gun_fire':
@@ -133,14 +135,26 @@ func play_game_sound(sound_name):
 	if sound_name == 'collision_asteroid':
 		game_sounds_2.stream = collision_asteroid
 	if sound_name == 'collision_ship':
-		game_sounds_2.stream = collision_ship
+		game_sounds_2.stream = collision_asteroid
 	if sound_name == 'footstep':
 		game_sounds_2.stream = footstep
 	if sound_name == 'growing_scream':
 		game_sounds_2.stream = growing_scream
 	game_sounds_2.play()
-	
+
 func _on_change_mode(mode):
 	if mode == 'combat':
 		game_sounds.stream = crazy_arms
 		game_sounds.play()
+
+var is_engine_playing = false
+func play_engine(on: bool):
+	if on:
+		if not is_engine_playing:
+			engine_sounds.stream = ship_engine
+			engine_sounds.play()
+			is_engine_playing = true
+	else:
+		if is_engine_playing:
+			engine_sounds.stop()
+			is_engine_playing = false
