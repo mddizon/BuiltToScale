@@ -10,6 +10,7 @@ func _ready():
 
 func shoot():
 	# create a new projectile instance and give it the cannon position
+	AudioController.play_game_sound("enemy_laser")
 	var newProjectile = projectile.instantiate()
 	newProjectile.rotation = global_rotation
 	newProjectile.global_position = global_position

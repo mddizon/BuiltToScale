@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://src/user_interface.gd" id="1_goxpi"]
 [ext_resource type="PackedScene" uid="uid://flltnricw5vr" path="res://Scenes/healthbar.tscn" id="2_b2qaa"]
 [ext_resource type="Theme" uid="uid://w7lokxr7htxk" path="res://Resources/button_theme.tres" id="2_ypw2i"]
-[ext_resource type="PackedScene" uid="uid://ddsljll3fnvn1" path="res://Scenes/info.tscn" id="4_qqlox"]
+[ext_resource type="PackedScene" path="res://Scenes/info.tscn" id="4_qqlox"]
 [ext_resource type="FontFile" uid="uid://b760b8tublx3s" path="res://Resources/Art/fonts/80s-retro-future.ttf" id="5_aieg1"]
 [ext_resource type="FontFile" uid="uid://q643ft2jd04w" path="res://Resources/Art/fonts/SyntheticText.ttf" id="6_k5ath"]
-[ext_resource type="PackedScene" uid="uid://bc51t7ypiba6o" path="res://Scenes/weapon_picker.tscn" id="7_qnst6"]
+[ext_resource type="PackedScene" path="res://Scenes/weapon_picker.tscn" id="7_qnst6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_36ncf"]
 font = ExtResource("5_aieg1")
