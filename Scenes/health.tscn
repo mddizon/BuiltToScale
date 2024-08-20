@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c305dj7kmix7v"]
+[gd_scene load_steps=3 format=3 uid="uid://c305dj7kmix7v"]
 
 [ext_resource type="Script" path="res://src/health.gd" id="1_gjjqp"]
+[ext_resource type="PackedScene" uid="uid://wwjuh336fp22" path="res://Scenes/enemy_death_particle.tscn" id="2_35x5p"]
 
 [node name="Health" type="Node"]
 script = ExtResource("1_gjjqp")
+deathParticle = ExtResource("2_35x5p")
