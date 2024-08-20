@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://co4s6fljbk88i"]
+
+[node name="ExplosionRed" type="AnimatedSprite2D"]

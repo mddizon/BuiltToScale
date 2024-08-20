@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c305dj7kmix7v"]
+[gd_scene load_steps=4 format=3 uid="uid://c305dj7kmix7v"]
 
 [ext_resource type="Script" path="res://src/health.gd" id="1_gjjqp"]
 [ext_resource type="PackedScene" uid="uid://wwjuh336fp22" path="res://Scenes/enemy_death_particle.tscn" id="2_35x5p"]
+[ext_resource type="PackedScene" uid="uid://c15ji2re65t6b" path="res://Scenes/explosion_blue.tscn" id="3_1i1ig"]
 
 [node name="Health" type="Node"]
 script = ExtResource("1_gjjqp")
 deathParticle = ExtResource("2_35x5p")
+deathAnimation = ExtResource("3_1i1ig")
