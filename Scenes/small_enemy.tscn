@@ -25,6 +25,7 @@ num_bullets = 5
 time_to_shoot = 5.0
 
 [node name="Line2D" type="Line2D" parent="."]
+z_index = -2
 points = PackedVector2Array(0, 0)
 width = 50.0
 default_color = Color(0.176471, 0.886275, 0.901961, 0.807843)

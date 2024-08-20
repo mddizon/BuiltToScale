@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1441exhem2wy"]
+
+[sub_resource type="Curve" id="Curve_er7nd"]
+_data = [Vector2(0.133333, 1), 0.0, 0.0, 0, 0, Vector2(0.846667, 0.868132), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.87339, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xq7m5"]
+curve = SubResource("Curve_er7nd")
+
+[sub_resource type="Curve" id="Curve_v8g1k"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ditgk"]
+curve = SubResource("Curve_v8g1k")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1aomf"]
+particle_flag_disable_z = true
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_min = 100.0
+scale_max = 100.0
+scale_curve = SubResource("CurveTexture_ditgk")
+alpha_curve = SubResource("CurveTexture_xq7m5")
+
+[node name="HitFlash" type="GPUParticles2D"]
+position = Vector2(870, 345)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_1aomf")
+lifetime = 0.25
+one_shot = true

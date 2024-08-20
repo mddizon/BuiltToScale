@@ -24,10 +24,10 @@
 size = Vector2(67, 136)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pcycr"]
-size = Vector2(172, 18)
+size = Vector2(338.265, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m341b"]
-size = Vector2(22, 172)
+size = Vector2(36.2625, 311.739)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmd7j"]
 
@@ -38,13 +38,13 @@ max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_a0hv5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5.5, 4)
-shape = SubResource("RectangleShape2D_8672g")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3, 1)
 texture = ExtResource("2_g3qkk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5.5, 4)
+shape = SubResource("RectangleShape2D_8672g")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-6.33252, -1.26294)
@@ -73,16 +73,16 @@ position = Vector2(-2.33252, 98.7371)
 scale = Vector2(0.200001, 0.200001)
 texture = ExtResource("6_i7o4a")
 
+[node name="ShipInterior" parent="." instance=ExtResource("8_v7ts8")]
+z_index = 10
+position = Vector2(-3, 4)
+scale = Vector2(0.3, 0.3)
+
 [node name="plume_1" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(-2.33252, 98.7371)
 scale = Vector2(0.200001, 0.200001)
 texture = ExtResource("7_ua2we")
-
-[node name="ShipInterior" parent="." instance=ExtResource("8_v7ts8")]
-z_index = 10
-position = Vector2(-3, 4)
-scale = Vector2(0.3, 0.3)
 
 [node name="LeftBicep" type="Sprite2D" parent="."]
 visible = false
@@ -119,14 +119,13 @@ health = 100
 isPlayer = true
 
 [node name="LeftArm" parent="." instance=ExtResource("9_fou54")]
-position = Vector2(-200, 0)
+position = Vector2(-213, 0)
 collision_mask = 36
 righty = false
 
 [node name="SwordSprite" type="Sprite2D" parent="LeftArm"]
-position = Vector2(3.99995, -0.0190312)
+position = Vector2(122, 0)
 rotation = -3.14159
-scale = Vector2(0.8305, 0.8)
 texture = ExtResource("13_6xylr")
 centered = false
 offset = Vector2(-222.757, -42.5)
@@ -138,17 +137,19 @@ collision_mask = 36
 script = ExtResource("10_il2n6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArm/SwordSprite/Sword"]
-position = Vector2(-99.6484, 12.2629)
+position = Vector2(-40.9795, 11.5049)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_pcycr")
 
 [node name="Area2D" type="Area2D" parent="LeftArm/SwordSprite/Sword"]
-position = Vector2(-99.6675, 12.2629)
+position = Vector2(-97.9795, 10.505)
 rotation = 1.5708
 collision_layer = 8
 collision_mask = 52
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArm/SwordSprite/Sword/Area2D"]
-position = Vector2(-5.96046e-07, 0)
+position = Vector2(1.99962, -39.1306)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_m341b")
 
 [node name="DamageSource" parent="LeftArm/SwordSprite/Sword/Area2D" instance=ExtResource("11_iet6x")]
@@ -156,7 +157,6 @@ hurtsEnemy = true
 hurtsAsteroid = true
 
 [node name="RightArm" parent="." instance=ExtResource("9_fou54")]
-visible = false
 position = Vector2(198.667, -0.26294)
 collision_mask = 36
 
