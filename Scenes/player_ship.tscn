@@ -106,6 +106,7 @@ health = 100
 isPlayer = true
 
 [node name="LeftArm" parent="." instance=ExtResource("9_fou54")]
+visible = false
 position = Vector2(-213, 0)
 collision_mask = 36
 righty = false
@@ -113,6 +114,7 @@ righty = false
 [node name="SwordSprite" parent="LeftArm" instance=ExtResource("15_g01lr")]
 
 [node name="RightArm" parent="." instance=ExtResource("9_fou54")]
+visible = false
 position = Vector2(198.667, -0.26294)
 collision_mask = 36
 
