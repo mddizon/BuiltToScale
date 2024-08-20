@@ -66,22 +66,55 @@ position = Vector2(2816, 2435)
 [node name="Marker2D4" type="Marker2D" parent="EnemySpawnLocations"]
 position = Vector2(-400, -685)
 
+[node name="Marker2D5" type="Marker2D" parent="EnemySpawnLocations"]
+position = Vector2(-3570, -1367)
+
+[node name="Marker2D6" type="Marker2D" parent="EnemySpawnLocations"]
+position = Vector2(3727, -1125)
+
+[node name="Marker2D7" type="Marker2D" parent="EnemySpawnLocations"]
+position = Vector2(1460, -3111)
+
+[node name="Marker2D8" type="Marker2D" parent="EnemySpawnLocations"]
+position = Vector2(-2169, -3071)
+
+[node name="Marker2D9" type="Marker2D" parent="EnemySpawnLocations"]
+position = Vector2(1490, 3118)
+
+[node name="Marker2D10" type="Marker2D" parent="EnemySpawnLocations"]
+position = Vector2(-4296, 971)
+
+[node name="Marker2D11" type="Marker2D" parent="EnemySpawnLocations"]
+position = Vector2(-133, 1596)
+
+[node name="Marker2D12" type="Marker2D" parent="EnemySpawnLocations"]
+position = Vector2(5390, 1273)
+
 [node name="AsteroidSpawnLocations" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="AsteroidSpawnLocations"]
 position = Vector2(0, -3403)
 
 [node name="Marker2D2" type="Marker2D" parent="AsteroidSpawnLocations"]
-position = Vector2(-3683, 51)
+position = Vector2(-3562, -2439)
 
 [node name="Marker2D3" type="Marker2D" parent="AsteroidSpawnLocations"]
-position = Vector2(4064, 0)
+position = Vector2(4860, -1935)
 
 [node name="Marker2D4" type="Marker2D" parent="AsteroidSpawnLocations"]
-position = Vector2(0, 2692)
+position = Vector2(847, 1966)
 
 [node name="Marker2D5" type="Marker2D" parent="AsteroidSpawnLocations"]
-position = Vector2(-1473, 711)
+position = Vector2(-3136, 892)
+
+[node name="Marker2D6" type="Marker2D" parent="AsteroidSpawnLocations"]
+position = Vector2(-1168, 1950)
+
+[node name="Marker2D7" type="Marker2D" parent="AsteroidSpawnLocations"]
+position = Vector2(2657, 1178)
+
+[node name="Marker2D8" type="Marker2D" parent="AsteroidSpawnLocations"]
+position = Vector2(2983, -3150)
 
 [node name="BattleshipSpawnLocations" type="Node2D" parent="."]
 
