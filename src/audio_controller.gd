@@ -3,6 +3,7 @@ extends Node2D
 @onready var back_button_sounds = preload("res://Resources/Sound/SFX/back_button_randomizer.tres")
 @onready var click_button_sounds = preload("res://Resources/Sound/SFX/click_sound_randomizer.tres")
 @onready var lose_game_music = preload("res://Resources/Sound/SFX/gmtk lose.ogg")
+@onready var win_music = preload("res://Resources/Sound/SFX/gmtk win.ogg")
 @onready var confirm_sound = preload("res://Resources/Sound/SFX/gmtk confirm selection.ogg")
 @onready var confirm_sounds = preload("res://Resources/Sound/SFX/confirm_randomizer.tres")
 @onready var start_game = preload("res://Resources/Sound/SFX/gmtk vo excellent.ogg")
@@ -11,6 +12,7 @@ extends Node2D
 @onready var here_we_go = preload("res://Resources/Sound/SFX/gmtk vo start.ogg")
 @onready var activated = preload("res://Resources/Sound/SFX/gmtk battlestation activated.ogg")
 @onready var intro = preload("res://Resources/Sound/SFX/gmtk vo its 2024 akimbo.ogg")
+@onready var thank_you = preload("res://Resources/Sound/SFX/gmtk vo thank you for saving us.ogg")
 
 @onready var exterior_music = $ExteriorMusicPlayer
 @onready var interior_music = $InteriorMusicPlayer
@@ -47,6 +49,10 @@ func play_click_button():
 	
 func play_lose_music():
 	$UISounds.stream = lose_game_music
+	$UISounds.play()
+
+func play_win_music():
+	$UISounds.stream = win_music
 	$UISounds.play()
 
 func set_music_volume(vol: float):
@@ -97,7 +103,9 @@ func pause_music():
 func play_game_sound(sound_name):
 	if sound_name == 'activated':
 		game_sounds_2.stream = activated
-		game_sounds_2.play()
+	if sound_name == 'thank_you':
+		game_sounds_2.stream = thank_you
+	game_sounds_2.play()
 	
 func _on_change_mode(mode):
 	if mode == 'combat':

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b2i5n42ctejrk"
+path="res://.godot/imported/gmtk vo thank you for saving us.ogg-d05d859e68abdeb0869b8ce00fd44324.oggvorbisstr"
+
+[deps]
+
+source_file="res://Resources/Sound/SFX/gmtk vo thank you for saving us.ogg"
+dest_files=["res://.godot/imported/gmtk vo thank you for saving us.ogg-d05d859e68abdeb0869b8ce00fd44324.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

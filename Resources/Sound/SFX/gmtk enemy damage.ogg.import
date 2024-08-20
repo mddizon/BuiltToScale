@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c131tlxlw0jhn"
+path="res://.godot/imported/gmtk enemy damage.ogg-45f6907dec50e7882c1a545b4f0708c3.oggvorbisstr"
+
+[deps]
+
+source_file="res://Resources/Sound/SFX/gmtk enemy damage.ogg"
+dest_files=["res://.godot/imported/gmtk enemy damage.ogg-45f6907dec50e7882c1a545b4f0708c3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
