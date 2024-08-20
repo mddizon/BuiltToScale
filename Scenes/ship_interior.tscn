@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhdew4mlkjxct"]
+[gd_scene load_steps=9 format=3 uid="uid://dhdew4mlkjxct"]
 
 [ext_resource type="PackedScene" uid="uid://bd6vv0g2vw6ie" path="res://Scenes/interior_character.tscn" id="1_6ih0u"]
 [ext_resource type="Script" path="res://src/ship_interior.gd" id="1_x326t"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://src/interior_border.gd" id="3_8rish"]
 [ext_resource type="PackedScene" uid="uid://dbtoh2vrw0ta1" path="res://Scenes/interactable.tscn" id="4_wpjgs"]
 [ext_resource type="Texture2D" uid="uid://dqeo6hnw40h7v" path="res://Resources/Art/HeroShip_interior/Weapon Station.png" id="6_bjvpg"]
-[ext_resource type="Texture2D" uid="uid://dxgidrl5vpihx" path="res://Resources/Art/HeroShip_interior/Station 3.png" id="7_5yujo"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_ns6fb"]
 
@@ -25,11 +24,11 @@ collision_mask = 256
 [node name="Border" type="Line2D" parent="StaticBody2D"]
 visible = false
 position = Vector2(-5, -5)
-points = PackedVector2Array(6, -525, 250.718, -240.682, 248.154, 291.455, 171.227, 201.545, -178, 201, -251, 291, -254, -213, 6, -529)
+points = PackedVector2Array(134, -371, 250.718, -240.682, 246, 111, 213, 92, -186, 91, -250, 107, -254, -213, -119.497, -373.122, 119, -374)
 script = ExtResource("3_8rish")
 
 [node name="InteriorCharacter" parent="." groups=["player"] instance=ExtResource("1_6ih0u")]
-position = Vector2(0, -225)
+position = Vector2(1, -180)
 scale = Vector2(0.5, 0.5)
 motion_mode = 1
 
@@ -44,16 +43,6 @@ threshhold_distance = 20.0
 description = "Arms Locker
 
 Swap Weapons"
-
-[node name="Engines" parent="." instance=ExtResource("4_wpjgs")]
-position = Vector2(1, 101)
-rotation = -3.13852
-texture = ExtResource("7_5yujo")
-action_name = "Engines"
-threshhold_distance = 30.0
-description = "Engines
-
-Adjust Thrust Speed"
 
 [node name="Combat" parent="." instance=ExtResource("4_wpjgs")]
 position = Vector2(0, -103)
@@ -71,8 +60,7 @@ description = "Helm
 
 Fly the Ship"
 
-[connection signal="interacted" from="WeaponsLocker" to="." method="_on_interaction"]
 [connection signal="interacted" from="WeaponsLocker" to="." method="_on_weapons_locker_interacted"]
-[connection signal="interacted" from="Engines" to="." method="_on_engines_interacted"]
+[connection signal="interacted" from="WeaponsLocker" to="." method="_on_interaction"]
 [connection signal="interacted" from="Combat" to="." method="_on_combat_interacted"]
 [connection signal="interacted" from="Pilot" to="." method="_on_pilot_interacted"]
