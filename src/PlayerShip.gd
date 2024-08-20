@@ -65,7 +65,7 @@ func _physics_process(_delta):
 	if combatEnabled:
 		leftBicep.rotation = global_position.angle_to_point(leftArm.global_position) - rotation
 		leftForearm.look_at(leftArm.global_position)
-		leftForearm.rotation -= (deg_to_rad(180) - rotation)
+		leftForearm.rotation -= deg_to_rad(180)
 	if combatEnabled:
 		rightBicep.rotation = global_position.angle_to_point(rightArm.global_position) - deg_to_rad(180) - rotation
 		rightForearm.look_at(rightArm.global_position)

@@ -9,19 +9,19 @@ func player_movement():
 		$Animations.animation = "walk"
 		$Animations.play()
 	if Input.is_action_pressed("left"):
-		rotation = deg_to_rad(-90)
+		global_rotation = deg_to_rad(-90)
 		velocity.x = -speed
 		velocity.y = 0
 	elif Input.is_action_pressed("right"):
-		rotation = deg_to_rad(90)
+		global_rotation = deg_to_rad(90)
 		velocity.x = speed
 		velocity.y = 0
 	elif Input.is_action_pressed("up"):
-		rotation = deg_to_rad(0)
+		global_rotation = deg_to_rad(0)
 		velocity.x = 0
 		velocity.y = -speed
 	elif Input.is_action_pressed("down"):
-		rotation = deg_to_rad(180)
+		global_rotation = deg_to_rad(180)
 		velocity.x = 0
 		velocity.y = speed
 	else:
