@@ -13,8 +13,25 @@ script = ExtResource("1_able4")
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 369.0
-offset_bottom = 253.0
+offset_bottom = 330.0
 color = Color(0.14902, 0.0784314, 0.278431, 0.545098)
+
+[node name="Button" type="Button" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.5
+offset_top = -78.0
+offset_right = 46.5
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.16112, 1.16112)
+theme = ExtResource("1_uxu71")
+text = "Confirm"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -48,6 +65,14 @@ toggle_mode = true
 button_group = ExtResource("2_p6nsg")
 text = "Blaster"
 
+[node name="Shield" type="Button" parent="HBoxContainer/Left"]
+layout_mode = 2
+theme = ExtResource("1_uxu71")
+toggle_mode = true
+button_group = ExtResource("2_p6nsg")
+text = "Shield
+"
+
 [node name="Right" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
@@ -71,25 +96,17 @@ button_pressed = true
 button_group = ExtResource("3_gnn4m")
 text = "Blaster"
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 136.0
-offset_top = 191.0
-offset_right = 229.0
-offset_bottom = 222.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(1.16112, 1.16112)
+[node name="Shield" type="Button" parent="HBoxContainer/Right"]
+layout_mode = 2
 theme = ExtResource("1_uxu71")
-text = "Confirm"
+toggle_mode = true
+button_group = ExtResource("3_gnn4m")
+text = "Shield"
 
+[connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Left/Sword" to="." method="_on_sword_pressed" binds= [false]]
 [connection signal="pressed" from="HBoxContainer/Left/Blaster" to="." method="_on_blaster_pressed" binds= [false]]
+[connection signal="pressed" from="HBoxContainer/Left/Shield" to="." method="_on_shield_pressed" binds= [false]]
 [connection signal="pressed" from="HBoxContainer/Right/Sword" to="." method="_on_sword_pressed" binds= [true]]
 [connection signal="pressed" from="HBoxContainer/Right/Blaster" to="." method="_on_blaster_pressed" binds= [true]]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Right/Shield" to="." method="_on_shield_pressed" binds= [true]]

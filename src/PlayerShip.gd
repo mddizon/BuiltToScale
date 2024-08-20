@@ -4,6 +4,7 @@ signal interacted(action_name: String)
 
 @onready var sword = preload("res://Scenes/sword.tscn")
 @onready var gun = preload("res://Scenes/gun.tscn")
+@onready var shield = preload("res://Scenes/shield.tscn")
 
 @export var thrusts = [0, 100, 500, 1000, 2000]
 @export var rotation_speed = 1000
@@ -178,3 +179,7 @@ func _make_new_weapon(weapon, is_right):
 		var gun = gun.instantiate()
 		gun.is_right = is_right
 		return gun
+	elif (weapon == 'shield'):
+		var shield = shield.instantiate()
+		shield.is_right = is_right
+		return shield
