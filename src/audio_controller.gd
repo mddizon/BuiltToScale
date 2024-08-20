@@ -103,8 +103,8 @@ func go_outside():
 
 func start_music():
 	$MusicPlayer.stop()
-	#$ExteriorMusicPlayer.play()
-	#$InteriorMusicPlayer.play()
+	$ExteriorMusicPlayer.play()
+	$InteriorMusicPlayer.play()
 
 func start_menu():
 	$MusicPlayer.play()
