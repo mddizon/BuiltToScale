@@ -143,6 +143,7 @@ func disableArms():
 	#rightArm.disabled = true
 	#leftArm.disabled = true
 
+
 func _on_ship_interior_enable_flight_controls():
 	controlsDisabled = false
 	combatEnabled = false

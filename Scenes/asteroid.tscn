@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://kjdayayyunk7"]
+[gd_scene load_steps=5 format=3 uid="uid://kjdayayyunk7"]
 
 [ext_resource type="Script" path="res://src/asteroid.gd" id="1_xkxxc"]
 [ext_resource type="Texture2D" uid="uid://sw23q0gket7e" path="res://Resources/Art/Asteroid/PixelStarshipsPackage_Asteroids_01.png" id="2_dbo06"]
@@ -7,9 +7,6 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_dg7jg"]
 atlas = ExtResource("2_dbo06")
 region = Rect2(256, 256, 256, 256)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tthgu"]
-size = Vector2(320.593, 655.324)
 
 [node name="Asteroid" type="RigidBody2D"]
 position = Vector2(761.364, 371.68)
@@ -23,11 +20,9 @@ rotation = 0.954946
 scale = Vector2(4.06014, 4.06014)
 texture = SubResource("AtlasTexture_dg7jg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-55.364, -20.68)
-rotation = -0.49658
-scale = Vector2(2.66604, 1.17436)
-shape = SubResource("RectangleShape2D_tthgu")
-
 [node name="Health" parent="." instance=ExtResource("3_4gamu")]
 isAsteroid = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-116.364, -446.68)
+polygon = PackedVector2Array(6, -22, 109, -3, 208, -48, 310, -21, 375, 107, 461, 204, 556, 349, 583, 465, 586, 527, 547, 609, 247, 679, 185, 694, 158, 753, 143, 873, 55, 925, -41, 939, -102, 977, -151, 925, -123, 823, -63, 771, -91, 750, -161, 753, -242, 712, -304, 593, -313, 513, -384, 439, -457, 427, -510, 335, -485, 251, -373, 218, -286, 193, -197, 122, -101, 140, -49, 167, -70, 92, -49, 7)
