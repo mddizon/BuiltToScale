@@ -31,9 +31,7 @@ func _process(delta: float):
 
 	# Screen shake
 	if (trauma > 0):
-		print("trauma ", trauma)
 		trauma = max(0, trauma - (trauma_decay * delta))
-		print("trauma ", trauma)
 		# Calculate the screen shake
 		var shake = pow(trauma, 3)
 		# Set the camera's offset to a random value within the shake range
@@ -41,7 +39,6 @@ func _process(delta: float):
 		var x = noise.get_noise_1d(noise_x) * shake
 		var y = noise.get_noise_1d(noise_x * 7) * shake
 		var rot = noise.get_noise_1d(noise_x * 11) * shake
-		print("shake ", x, y, rot)
 		offset = Vector2(x, y)
 		rotation = rot
 		# Apply the offset to the camera's position
