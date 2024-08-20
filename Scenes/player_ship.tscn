@@ -34,6 +34,8 @@ size = Vector2(22, 172)
 [node name="PlayerShip" type="RigidBody2D" groups=["player"]]
 collision_mask = 53
 mass = 20.0
+max_contacts_reported = 1
+contact_monitor = true
 script = ExtResource("1_a0hv5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

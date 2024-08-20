@@ -31,6 +31,9 @@ func _ready():
 	angular_damp = 1
 	SignalBus.player_damage_taken.connect(on_damage)
 	healthComponent.health = GlobalGameState.player_health
+	body_entered.connect(_on_body_entered)
+	contact_monitor = true
+	max_contacts_reported = 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -96,8 +99,13 @@ func turn(isLeft: bool):
 	else:
 		apply_torque_impulse(rotation_speed)
 
+func _on_body_entered(body):
+	print("player hit something!")
+	SignalBus.player_collision.emit(body)
+
 func on_damage(damage):
 	print('im hit')
+	
 
 func enableArms():
 	$LeftBicep.visible = true
