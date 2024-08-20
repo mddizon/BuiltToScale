@@ -2,6 +2,9 @@ extends RigidBody2D
 
 signal interacted(action_name: String)
 
+@onready var sword = preload("res://Scenes/sword.tscn")
+@onready var gun = preload("res://Scenes/gun.tscn")
+
 @export var thrusts = [0, 100, 500, 1000, 2000]
 @export var rotation_speed = 1000
 @export var zoom_level_interact = Vector2(2, 2);
@@ -151,3 +154,20 @@ func _on_ship_interior_enable_combat():
 func _on_weapon_picked(weapon, is_right):
 	print('weapon_picked')
 	print(weapon + str(is_right))
+	var new_weapon = _make_new_weapon(weapon, is_right)
+	if is_right:
+		var arm = rightArm.get_child(2)
+		rightArm.remove_child(arm)
+		rightArm.call_deferred('add_child', new_weapon)
+	else:
+		var arm = leftArm.get_child(2)
+		leftArm.remove_child(arm)
+		leftArm.call_deferred('add_child', new_weapon)
+	
+func _make_new_weapon(weapon, is_right):
+	if (weapon == 'sword'):
+		return sword.instantiate()
+	elif (weapon == 'blaster'):
+		var gun = gun.instantiate()
+		gun.is_right = true
+		return gun

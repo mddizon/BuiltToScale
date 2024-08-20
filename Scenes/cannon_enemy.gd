@@ -30,7 +30,6 @@ func _ready():
 	pass
 
 func _on_state_change(new_state):
-	print(state + ' -> ' + new_state)
 	if new_state == state:
 		return
 	elif new_state == 'loading':
@@ -42,7 +41,6 @@ func _on_state_change(new_state):
 	state = new_state
 
 func shoot():
-	print('shooting')
 	warn_indicator.visible = false
 	var newProjectile = projectile.instantiate()
 	newProjectile.rotation = global_rotation

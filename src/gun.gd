@@ -3,6 +3,7 @@ extends WeaponBase
 @export var recoil = 500
 @export var fireRate = 0.2
 @export var recoilTarget: RigidBody2D
+@export var is_right: bool
 
 @onready var projectile = preload("res://Scenes/player_projectile.tscn")
 @onready var debug = false
@@ -39,6 +40,8 @@ func _physics_process(delta):
 		var shipPos = get_parent().get_parent().global_position
 		#sprite.rotation =  global_position.angle_to_point(targetGlobalPos)
 		sprite.look_at(targetGlobalPos)
+		if not is_right:
+			sprite.rotation -= deg_to_rad(180)
 
 	if Input.is_action_just_pressed("action") and remainingDelay == 0:
 		fireBullet()

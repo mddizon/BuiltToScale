@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://nqjvarmir6ow"]
+[gd_scene load_steps=16 format=3 uid="uid://nqjvarmir6ow"]
 
 [ext_resource type="Script" path="res://src/PlayerShip.gd" id="1_a0hv5"]
 [ext_resource type="Texture2D" uid="uid://rsr148c88yag" path="res://Resources/Art/Hero Ship_sprites/Ship_.png" id="2_g3qkk"]
@@ -12,8 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://8qmwne47ei7c" path="res://Resources/Art/Arms/Arm-Upper_R.png" id="9_xxqxt"]
 [ext_resource type="Texture2D" uid="uid://cw2jn754yp6pk" path="res://Resources/Art/Arms/Arm-Upper_L.png" id="10_uutrx"]
 [ext_resource type="PackedScene" uid="uid://c305dj7kmix7v" path="res://Scenes/health.tscn" id="12_ul2m7"]
-[ext_resource type="PackedScene" uid="uid://cy44dmb8r8xyl" path="res://Scenes/sword.tscn" id="15_g01lr"]
-[ext_resource type="PackedScene" uid="uid://bhnkjip4nrjme" path="res://Scenes/gun.tscn" id="16_h2ocm"]
 [ext_resource type="Texture2D" uid="uid://d4nngypskva4i" path="res://Resources/Art/Arms/Arm-Lower_L.png" id="18_oor15"]
 [ext_resource type="Texture2D" uid="uid://bt7ovahpvo5h5" path="res://Resources/Art/Arms/Arm-Lower_R.png" id="19_3vp0i"]
 
@@ -106,19 +104,13 @@ health = 100
 isPlayer = true
 
 [node name="LeftArm" parent="." instance=ExtResource("9_fou54")]
-visible = false
 position = Vector2(-213, 0)
 collision_mask = 36
 righty = false
 
-[node name="Sword" parent="LeftArm" instance=ExtResource("15_g01lr")]
-
 [node name="RightArm" parent="." instance=ExtResource("9_fou54")]
-visible = false
 position = Vector2(198.667, -0.26294)
 collision_mask = 36
-
-[node name="Gun" parent="RightArm" instance=ExtResource("16_h2ocm")]
 
 [connection signal="enable_combat" from="ShipInterior" to="." method="_on_ship_interior_enable_combat"]
 [connection signal="enable_flight_controls" from="ShipInterior" to="." method="_on_ship_interior_enable_flight_controls"]
