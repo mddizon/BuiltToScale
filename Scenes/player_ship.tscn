@@ -145,7 +145,6 @@ shape = SubResource("RectangleShape2D_pcycr")
 [node name="Area2D" type="Area2D" parent="LeftArm/SwordSprite/Sword"]
 position = Vector2(-99.6675, 12.2629)
 rotation = 1.5708
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArm/SwordSprite/Sword/Area2D"]
 position = Vector2(-5.96046e-07, 0)

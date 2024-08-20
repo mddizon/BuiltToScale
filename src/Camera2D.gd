@@ -6,9 +6,9 @@ var zoom_speed: float = 5.0 # Higher values result in faster zooming
 
 var trauma = 0
 @export var trauma_decay = 3
-@export var impact_trauma = 5
-@export var damage_trauma = 5
-@export var max_trauma = 5
+@export var impact_trauma = 4
+@export var damage_trauma = 3
+@export var max_trauma = 4
 
 @onready var noise = FastNoiseLite.new()
 var noise_x = 0
@@ -22,6 +22,7 @@ func _ready():
 
 	noise.noise_type = FastNoiseLite.TYPE_SIMPLEX
 	noise.seed = randi()
+	noise.frequency = 0.5
 	noise.fractal_octaves = 2
 
 func _process(delta: float):
