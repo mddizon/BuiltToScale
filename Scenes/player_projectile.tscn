@@ -26,6 +26,7 @@ autostart = true
 shape = SubResource("CircleShape2D_07ll8")
 
 [node name="DamageSource" parent="." instance=ExtResource("3_aqrwt")]
+damage = 2
 hurtsEnemy = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
