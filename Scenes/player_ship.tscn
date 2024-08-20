@@ -542,7 +542,7 @@ offset = Vector2(36, -5)
 [node name="Health" parent="." instance=ExtResource("12_ul2m7")]
 health = 100
 isPlayer = true
-deathAnimationScale = 8
+deathAnimationScale = 10
 
 [node name="LeftArm" parent="." instance=ExtResource("9_fou54")]
 visible = false

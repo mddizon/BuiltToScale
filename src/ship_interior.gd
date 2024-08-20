@@ -7,7 +7,7 @@ signal swap_right_weapon(weapon_name: String)
 
 var current_system = null: set = _set_system;
 
-const swole_anim_duration = 1.2
+const swole_anim_duration = 0.6
 const swole_anim_scale = 4
 var swole_anim_progress = -1.0
 var saved_char_scale = Vector2(1, 1)

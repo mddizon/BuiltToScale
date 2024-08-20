@@ -24,9 +24,10 @@ func take_damage(damage: int, source: Node):
 	if currentHealth <= 0:
 		die()
 		
-	var parent = get_parent()
 
-	#play animation if present
+	#good for debugging
+	#var parent = get_parent()
+	# #play animation if present
 	# if (deathAnimation != null):
 	# 	var animation = deathAnimation.instantiate()
 	# 	if not GlobalGameState.is_game_over:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5hd7i2hylyue"]
+[gd_scene load_steps=10 format=3 uid="uid://c5hd7i2hylyue"]
 
 [ext_resource type="Script" path="res://src/big_enemy.gd" id="1_mo8in"]
 [ext_resource type="PackedScene" uid="uid://d3ii8k0jugtc2" path="res://Scenes/cannon_enemy.tscn" id="2_iwc32"]
 [ext_resource type="Texture2D" uid="uid://baua04fpmc6cr" path="res://Resources/Art/Skullbot_Prime/Skullbot_Prime.png" id="2_t88gl"]
 [ext_resource type="PackedScene" uid="uid://c305dj7kmix7v" path="res://Scenes/health.tscn" id="3_vbjfg"]
+[ext_resource type="PackedScene" uid="uid://b8hyaqv5818i3" path="res://Scenes/prime_explosion.tscn" id="4_hjyor"]
 [ext_resource type="PackedScene" uid="uid://flltnricw5vr" path="res://Scenes/healthbar.tscn" id="4_pgxlv"]
 [ext_resource type="PackedScene" uid="uid://buby07xlcgad4" path="res://Scenes/weakspot.tscn" id="6_rc4gq"]
 
@@ -26,6 +27,8 @@ texture = ExtResource("2_t88gl")
 
 [node name="Health" parent="." instance=ExtResource("3_vbjfg")]
 health = 2
+deathAnimation = ExtResource("4_hjyor")
+deathAnimationScale = 28
 
 [node name="Healthbar" parent="." instance=ExtResource("4_pgxlv")]
 offset_left = -104.96

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://buby07xlcgad4"]
+[gd_scene load_steps=7 format=3 uid="uid://buby07xlcgad4"]
 
 [ext_resource type="Script" path="res://src/weakspot.gd" id="1_aa3yc"]
 [ext_resource type="Texture2D" uid="uid://egy43dld6ml0" path="res://Resources/Art/Skullbot_Prime/Prime_Weakspots.png" id="1_ll0hq"]
 [ext_resource type="PackedScene" uid="uid://c305dj7kmix7v" path="res://Scenes/health.tscn" id="3_8516h"]
 [ext_resource type="PackedScene" uid="uid://flltnricw5vr" path="res://Scenes/healthbar.tscn" id="4_6m6pe"]
+[ext_resource type="PackedScene" uid="uid://306oqrtb1m56" path="res://Scenes/red_explosion.tscn" id="4_v2xw1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a8x6f"]
 radius = 63.1981
@@ -23,6 +24,8 @@ shape = SubResource("CircleShape2D_a8x6f")
 health = 20
 isEnemy = true
 isPart = true
+deathAnimation = ExtResource("4_v2xw1")
+deathAnimationScale = 5
 
 [node name="Healthbar" parent="." instance=ExtResource("4_6m6pe")]
 offset_left = -95.0
