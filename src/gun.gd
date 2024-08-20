@@ -37,7 +37,8 @@ func _physics_process(delta):
 			angle += 2 * PI
 		targetGlobalPos = get_global_mouse_position()
 		var shipPos = get_parent().get_parent().global_position
-		sprite.rotation =  global_position.angle_to_point(targetGlobalPos)
+		#sprite.rotation =  global_position.angle_to_point(targetGlobalPos)
+		sprite.look_at(targetGlobalPos)
 
 	if Input.is_action_just_pressed("action") and remainingDelay == 0:
 		fireBullet()
