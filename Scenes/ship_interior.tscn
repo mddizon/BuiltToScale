@@ -6,10 +6,9 @@
 [ext_resource type="Script" path="res://src/interior_border.gd" id="3_8rish"]
 [ext_resource type="PackedScene" uid="uid://dbtoh2vrw0ta1" path="res://Scenes/interactable.tscn" id="4_wpjgs"]
 [ext_resource type="Texture2D" uid="uid://dqeo6hnw40h7v" path="res://Resources/Art/HeroShip_interior/Weapon Station.png" id="6_bjvpg"]
+[ext_resource type="Texture2D" uid="uid://dikjhbsvkpbma" path="res://Resources/Art/HeroShip_interior/Station 1.png" id="7_c0tq8"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_ns6fb"]
-
-[sub_resource type="ImageTexture" id="ImageTexture_un1lh"]
 
 [node name="ShipInterior" type="Node2D"]
 script = ExtResource("1_x326t")
@@ -53,14 +52,14 @@ description = "Grow
 Arm the Ship"
 
 [node name="Pilot" parent="." instance=ExtResource("4_wpjgs")]
-position = Vector2(-2, -330)
-texture = SubResource("ImageTexture_un1lh")
+position = Vector2(-2, -300)
+texture = ExtResource("7_c0tq8")
 threshhold_distance = 30.0
 description = "Helm
 
 Fly the Ship"
 
-[connection signal="interacted" from="WeaponsLocker" to="." method="_on_weapons_locker_interacted"]
 [connection signal="interacted" from="WeaponsLocker" to="." method="_on_interaction"]
+[connection signal="interacted" from="WeaponsLocker" to="." method="_on_weapons_locker_interacted"]
 [connection signal="interacted" from="Combat" to="." method="_on_combat_interacted"]
 [connection signal="interacted" from="Pilot" to="." method="_on_pilot_interacted"]
