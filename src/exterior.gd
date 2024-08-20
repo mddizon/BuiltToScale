@@ -25,8 +25,8 @@ func _ready():
 			add_child(dude)
 	for i in $BattleshipSpawnLocations.get_children():
 		if randf() < battleship_spawn_chance:
-			total += 1
 			var dude = big_enemy.instantiate();
+			total += 1
 			dude.position = i.position
 			add_child(dude)
 	GlobalGameState.num_enemies = total

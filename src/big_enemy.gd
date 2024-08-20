@@ -12,7 +12,8 @@ func _ready():
 func _process(delta):
 	pass
 
-
-func _on_health_health_changed(new_value):
-	healthbar.health = new_value
-	pass # Replace with function body.
+func _on_weakspot_died():
+	$Health.take_damage(1, self)
+	healthbar.health -= 1
+	if healthbar.health <= 0:
+		SignalBus.enemy_died.emit()

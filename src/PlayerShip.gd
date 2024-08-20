@@ -91,11 +91,13 @@ func burn_engine(released: bool):
 		# for i in range(4):
 		# 	rocketPlumes[i].visible = i == currentThrustIdx
 		rocketPlumes[2].visible = true
+		AudioController.play_engine(true)
 	else:
 		currentThrustIdx = 0
 		#all plumes off
 		for i in range(4):
 			rocketPlumes[i].visible = false
+		AudioController.play_engine(false)
 
 func turn(isLeft: bool):
 	if isLeft:
@@ -105,9 +107,11 @@ func turn(isLeft: bool):
 
 func _on_body_entered(body):
 	print("player hit something!")
+	AudioController.play_game_sound('collision_ship')
 	SignalBus.player_collision.emit(body)
 
 func on_damage(damage):
+	AudioController.play_game_sound('ship_damage')
 	print('im hit')
 	
 

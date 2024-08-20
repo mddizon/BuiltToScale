@@ -14,18 +14,32 @@ extends Node2D
 @onready var intro = preload("res://Resources/Sound/SFX/gmtk vo its 2024 akimbo.ogg")
 @onready var thank_you = preload("res://Resources/Sound/SFX/gmtk vo thank you for saving us.ogg")
 
+@onready var ship_damage = preload("res://Resources/Sound/SFX/gmtk ship damage.ogg")
+@onready var ship_engine = preload("res://Resources/Sound/SFX/gmtk ship engine.ogg") # continous?
+@onready var sword_hit = preload("res://Resources/Sound/SFX/gmtk sword.ogg")
+@onready var gun_fire = preload("res://Resources/Sound/SFX/gmtk gun.ogg")
+@onready var enemy_laser = preload("res://Resources/Sound/SFX/gmtk enemy laser.ogg")
+@onready var enemy_damage = preload("res://Resources/Sound/SFX/gmtk enemy damage.ogg")
+@onready var collision_asteroid = preload("res://Resources/Sound/SFX/gmtk collision asteroid.ogg")
+@onready var collision_ship = preload("res://Resources/Sound/SFX/gmtk collision ship.ogg")
+@onready var footstep = preload("res://Resources/Sound/SFX/gmtk footstep.ogg")
+@onready var growing_scream = preload("res://Resources/Sound/SFX/gmtk growing scream.ogg")
+
 @onready var exterior_music = $ExteriorMusicPlayer
 @onready var interior_music = $InteriorMusicPlayer
 @onready var animation_player = $AnimationPlayer
 @onready var game_sounds = $GameSounds
-@onready var game_sounds_2 = $GameSoundsChannel2
+@onready var game_sounds_2 = $GameSounds2
+@onready var engine_sounds = $EngineSounds
 
 @onready var mutex_animation_playing = false
 var max_music_volume = 0
 var max_sound_volume = 0
+@export var engine_max_volume = -20
 
 func _ready():
 	SignalBus.change_mode.connect(_on_change_mode)
+	engine_sounds.volume_db = engine_max_volume
 
 func play_back_button():
 	$UISounds.stream = back_button_sounds
@@ -70,6 +84,9 @@ func set_music_volume(vol: float):
 func set_sfx_volume(vol: float):
 	max_sound_volume = vol
 	game_sounds.volume_db = vol
+	game_sounds_2.volume_db = vol
+	engine_sounds.volume_db = vol
+	engine_sounds.volume_db = min(engine_max_volume, vol)
 	$UISounds.volume_db = vol
 	
 func get_music_volume():
@@ -86,8 +103,8 @@ func go_outside():
 
 func start_music():
 	$MusicPlayer.stop()
-	$ExteriorMusicPlayer.play()
-	$InteriorMusicPlayer.play()
+	#$ExteriorMusicPlayer.play()
+	#$InteriorMusicPlayer.play()
 
 func start_menu():
 	$MusicPlayer.play()
@@ -105,9 +122,39 @@ func play_game_sound(sound_name):
 		game_sounds_2.stream = activated
 	if sound_name == 'thank_you':
 		game_sounds_2.stream = thank_you
+	if sound_name == 'ship_damage':
+		game_sounds_2.stream = ship_damage
+	if sound_name == 'sword_hit':
+		game_sounds_2.stream = sword_hit
+	if sound_name == 'gun_fire':
+		game_sounds_2.stream = gun_fire
+	if sound_name == 'enemy_laser':
+		game_sounds_2.stream = enemy_laser
+	if sound_name == 'enemy_damage':
+		game_sounds_2.stream = enemy_damage
+	if sound_name == 'collision_asteroid':
+		game_sounds_2.stream = collision_asteroid
+	if sound_name == 'collision_ship':
+		game_sounds_2.stream = collision_asteroid
+	if sound_name == 'footstep':
+		game_sounds_2.stream = footstep
+	if sound_name == 'growing_scream':
+		game_sounds_2.stream = growing_scream
 	game_sounds_2.play()
-	
+
 func _on_change_mode(mode):
 	if mode == 'combat':
 		game_sounds.stream = crazy_arms
 		game_sounds.play()
+
+var is_engine_playing = false
+func play_engine(on: bool):
+	if on:
+		if not is_engine_playing:
+			engine_sounds.stream = ship_engine
+			engine_sounds.play()
+			is_engine_playing = true
+	else:
+		if is_engine_playing:
+			engine_sounds.stop()
+			is_engine_playing = false

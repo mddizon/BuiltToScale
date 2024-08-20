@@ -48,6 +48,7 @@ func _physics_process(delta):
 		queue_redraw()
 		
 func fireBullet():
+	AudioController.play_game_sound("gun_fire")
 	var newProjectile = projectile.instantiate()
 	newProjectile.rotation = global_position.angle_to_point(targetGlobalPos) - deg_to_rad(90)
 	newProjectile.global_position = $Sprite2D/Marker2D.global_position

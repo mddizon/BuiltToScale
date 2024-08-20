@@ -25,14 +25,13 @@ script = ExtResource("1_mo8in")
 texture = ExtResource("2_t88gl")
 
 [node name="Health" parent="." instance=ExtResource("3_vbjfg")]
-health = 20
-isEnemy = true
+health = 2
 
 [node name="Healthbar" parent="." instance=ExtResource("4_pgxlv")]
-offset_left = -119.0
-offset_top = -802.0
-offset_right = 100.0
-offset_bottom = -772.0
+offset_left = -104.96
+offset_top = 740.437
+offset_right = 114.04
+offset_bottom = 770.437
 metadata/_edit_use_anchors_ = true
 
 [node name="Weakspot" parent="." instance=ExtResource("6_rc4gq")]
@@ -81,3 +80,6 @@ position = Vector2(-13.257, -266.035)
 shape = SubResource("RectangleShape2D_imre1")
 
 [connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]
+[connection signal="died" from="Weakspot" to="." method="_on_weakspot_died"]
+[connection signal="died" from="Weakspot2" to="." method="_on_weakspot_died"]
+[connection signal="died" from="Weakspot3" to="." method="_on_weakspot_died"]

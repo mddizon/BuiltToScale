@@ -6,6 +6,7 @@ signal health_changed(new_value: int)
 @export var isPlayer = false
 @export var isEnemy = false
 @export var isAsteroid = false
+@export var isPart = false
 @export var deathParticle: PackedScene
 
 @onready var currentHealth = health
@@ -22,7 +23,7 @@ func take_damage(damage: int, source: Node):
 		die()
 	
 func die():
-	if isEnemy:
+	if isEnemy and not isPart:
 		SignalBus.enemy_died.emit()
 	get_parent().queue_free()
 	var parent = get_parent()
