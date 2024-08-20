@@ -1,10 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3ii8k0jugtc2"]
+[gd_scene load_steps=3 format=3 uid="uid://d3ii8k0jugtc2"]
 
+[ext_resource type="Texture2D" uid="uid://dsorjqstqkeas" path="res://Resources/Art/Skullbot_Prime/Skull_Turret.png" id="1_3o42c"]
 [ext_resource type="Script" path="res://Scenes/cannon_enemy.gd" id="1_a4n18"]
 
-[node name="BulletEmitter" type="Marker2D"]
+[node name="BulletEmitter" type="Sprite2D"]
+position = Vector2(2, -1)
+rotation = -1.5708
+texture = ExtResource("1_3o42c")
+centered = false
+offset = Vector2(-78.5723, -39.2861)
 script = ExtResource("1_a4n18")
 bullet_speed = 100
+warn_length = 20000
 
 [node name="CooldownTimer" type="Timer" parent="."]
 one_shot = true
@@ -13,6 +20,7 @@ autostart = true
 [node name="FiringTimer" type="Timer" parent="."]
 
 [node name="Line2D" type="Line2D" parent="."]
+z_index = -1
 points = PackedVector2Array(0, 0)
 width = 50.0
 default_color = Color(0.176471, 0.886275, 0.901961, 0.807843)

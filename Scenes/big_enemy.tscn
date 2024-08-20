@@ -1,52 +1,83 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5hd7i2hylyue"]
+[gd_scene load_steps=9 format=3 uid="uid://c5hd7i2hylyue"]
 
-[ext_resource type="Texture2D" uid="uid://lslhf2pkoxjy" path="res://Resources/Art/Bug_Red_1.png" id="1_2oy3f"]
 [ext_resource type="Script" path="res://src/big_enemy.gd" id="1_mo8in"]
 [ext_resource type="PackedScene" uid="uid://d3ii8k0jugtc2" path="res://Scenes/cannon_enemy.tscn" id="2_iwc32"]
+[ext_resource type="Texture2D" uid="uid://baua04fpmc6cr" path="res://Resources/Art/Skullbot_Prime/Skullbot_Prime.png" id="2_t88gl"]
 [ext_resource type="PackedScene" uid="uid://c305dj7kmix7v" path="res://Scenes/health.tscn" id="3_vbjfg"]
 [ext_resource type="PackedScene" uid="uid://flltnricw5vr" path="res://Scenes/healthbar.tscn" id="4_pgxlv"]
+[ext_resource type="PackedScene" uid="uid://buby07xlcgad4" path="res://Scenes/weakspot.tscn" id="6_rc4gq"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mmxjb"]
-radius = 114.0
-height = 270.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uk8sn"]
+radius = 131.999
+height = 992.041
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imre1"]
+size = Vector2(430.369, 355.813)
 
 [node name="Node2D" type="RigidBody2D"]
+position = Vector2(1032, 547)
+rotation = -1.56669
 collision_layer = 4
 collision_mask = 57
 script = ExtResource("1_mo8in")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, -139)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_mmxjb")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(9.44074, 9.78604)
-texture = ExtResource("1_2oy3f")
-
-[node name="Emitter1" parent="." instance=ExtResource("2_iwc32")]
-position = Vector2(192, 193)
-
-[node name="Emitter2" parent="." instance=ExtResource("2_iwc32")]
-position = Vector2(-198, 199)
-
-[node name="Emitter3" parent="." instance=ExtResource("2_iwc32")]
-position = Vector2(242, 40)
-rotation = -0.471943
-
-[node name="Emitter4" parent="." instance=ExtResource("2_iwc32")]
-position = Vector2(-250, 55)
-rotation = 0.610985
-
-[node name="Healthbar" parent="." instance=ExtResource("4_pgxlv")]
-offset_left = -117.0
-offset_top = -320.0
-offset_right = 102.0
-offset_bottom = -290.0
-metadata/_edit_use_anchors_ = true
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("2_t88gl")
 
 [node name="Health" parent="." instance=ExtResource("3_vbjfg")]
 health = 20
 isEnemy = true
+
+[node name="Healthbar" parent="." instance=ExtResource("4_pgxlv")]
+offset_left = -119.0
+offset_top = -802.0
+offset_right = 100.0
+offset_bottom = -772.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Weakspot" parent="." instance=ExtResource("6_rc4gq")]
+position = Vector2(2, -490)
+
+[node name="Weakspot2" parent="." instance=ExtResource("6_rc4gq")]
+position = Vector2(205, 19)
+
+[node name="Weakspot3" parent="." instance=ExtResource("6_rc4gq")]
+position = Vector2(-209, 29)
+
+[node name="BulletEmitter" parent="." instance=ExtResource("2_iwc32")]
+position = Vector2(219.143, 278.103)
+rotation = -2.00873
+
+[node name="BulletEmitter2" parent="." instance=ExtResource("2_iwc32")]
+position = Vector2(-211.706, -659.137)
+rotation = -2.76743
+
+[node name="BulletEmitter3" parent="." instance=ExtResource("2_iwc32")]
+position = Vector2(210.311, -655.868)
+rotation = -3.58421
+
+[node name="BulletEmitter4" parent="." instance=ExtResource("2_iwc32")]
+position = Vector2(-252.065, -258.968)
+rotation = 0.648784
+
+[node name="BulletEmitter5" parent="." instance=ExtResource("2_iwc32")]
+position = Vector2(-211.829, 285.871)
+rotation = -4.19581
+
+[node name="BulletEmitter6" parent="." instance=ExtResource("2_iwc32")]
+position = Vector2(266.948, -257.097)
+rotation = -1.21212
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.82061, 199.994)
+shape = SubResource("CapsuleShape2D_uk8sn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(6.89862, 303.134)
+shape = SubResource("RectangleShape2D_imre1")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(-13.257, -266.035)
+shape = SubResource("RectangleShape2D_imre1")
 
 [connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]

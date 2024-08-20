@@ -1,4 +1,4 @@
-extends Marker2D
+extends Sprite2D
 
 @onready var projectile = preload("res://Scenes/projectile.tscn")
 
@@ -43,7 +43,7 @@ func _on_state_change(new_state):
 func shoot():
 	warn_indicator.visible = false
 	var newProjectile = projectile.instantiate()
-	newProjectile.rotation = global_rotation
+	newProjectile.rotation = rotation
 	newProjectile.global_position = global_position
 	newProjectile.position = position
 	newProjectile.add_to_group("enemy")

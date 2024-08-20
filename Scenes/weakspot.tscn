@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://buby07xlcgad4"]
+
+[ext_resource type="Script" path="res://src/weakspot.gd" id="1_aa3yc"]
+[ext_resource type="Texture2D" uid="uid://egy43dld6ml0" path="res://Resources/Art/Skullbot_Prime/Prime_Weakspots.png" id="1_ll0hq"]
+[ext_resource type="PackedScene" uid="uid://c305dj7kmix7v" path="res://Scenes/health.tscn" id="3_8516h"]
+[ext_resource type="PackedScene" uid="uid://flltnricw5vr" path="res://Scenes/healthbar.tscn" id="4_6m6pe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8x6f"]
+radius = 63.1981
+
+[node name="Weakspot" type="RigidBody2D"]
+script = ExtResource("1_aa3yc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ll0hq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_a8x6f")
+
+[node name="Health" parent="." instance=ExtResource("3_8516h")]
+health = 20
+isEnemy = true
+
+[node name="Healthbar" parent="." instance=ExtResource("4_6m6pe")]
+offset_left = -95.0
+offset_top = -125.0
+offset_right = 95.0
+offset_bottom = -94.0
