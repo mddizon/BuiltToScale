@@ -74,6 +74,7 @@ func zoomToInterior():
 
 func zoomToExterior():
 	interior.visible = false
+	AudioController.go_outside()
 	spaceCamera.set_target_zoom(zoom_level_exterior)
 	current_scene = "exterior"
 
@@ -87,5 +88,5 @@ func _on_change_mode(mode):
 	elif (mode == 'exterior'):
 		zoomToExterior()
 	elif (mode == 'navigation'):
-		zoomToInterior()
+		zoomToExterior()
 		pass
