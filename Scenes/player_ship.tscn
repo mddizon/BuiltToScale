@@ -39,7 +39,6 @@ contact_monitor = true
 script = ExtResource("1_a0hv5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3, 1)
 texture = ExtResource("2_g3qkk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -75,7 +74,6 @@ texture = ExtResource("6_i7o4a")
 
 [node name="ShipInterior" parent="." instance=ExtResource("8_v7ts8")]
 z_index = 10
-position = Vector2(-3, 4)
 scale = Vector2(0.3, 0.3)
 
 [node name="plume_1" type="Sprite2D" parent="."]
