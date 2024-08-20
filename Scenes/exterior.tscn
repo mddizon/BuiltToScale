@@ -12,6 +12,9 @@ size = Vector2(124, 10354)
 
 [node name="Exterior" type="Node2D"]
 script = ExtResource("1_e06au")
+enemy_spawn_chance = 0.1
+asteroid_spawn_chance = 0.1
+battleship_spawn_chance = 0.1
 
 [node name="Starfield" type="Sprite2D" parent="."]
 position = Vector2(-0.000244141, 0)

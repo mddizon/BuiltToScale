@@ -6,9 +6,10 @@ extends CanvasLayer
 func _ready():
 	SignalBus.player_damage_taken.connect(damage_taken)
 	$Healthbar.init_health(GlobalGameState.player_health)
+	SignalBus.enemy_died.connect(_update_remaining)
+	$Remaining/Label2.text = str(GlobalGameState.num_enemies)
 	#var shader_material = ShaderMaterial.new()
 	#shader_material.set_shader_param("screen_texture", get_viewport().get_texture())
-
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,5 +23,8 @@ func damage_taken(_damage: int):
 		GlobalGameState.is_game_over = true
 		# load game over screen
 		get_tree().change_scene_to_packed(game_over_screen)
-	
 	#$GlitchScreen.material = glitch_material
+	
+func _update_remaining():
+	GlobalGameState.num_enemies -= 1
+	$Remaining/Label2.text = str(GlobalGameState.num_enemies)

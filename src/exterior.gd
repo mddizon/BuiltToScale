@@ -1,8 +1,8 @@
 extends Node2D
 
-@export var enemy_spawn_chance = 1
-@export var asteroid_spawn_chance = 1
-@export var battleship_spawn_chance = 1
+@export var enemy_spawn_chance = 1.0
+@export var asteroid_spawn_chance = 1.0
+@export var battleship_spawn_chance = 1.0
 
 var enemy = preload("res://Scenes/small_enemy.tscn")
 var asteroid = preload("res://Scenes/asteroid.tscn")
@@ -10,9 +10,11 @@ var big_enemy = preload("res://Scenes/big_enemy.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var total = 0
 	var scene = preload("res://Scenes/asteroid.tscn")
 	for i in $EnemySpawnLocations.get_children():
 		if randf() < enemy_spawn_chance:
+			total += 1
 			var dude = enemy.instantiate();
 			dude.position = i.position
 			add_child(dude)
@@ -23,9 +25,11 @@ func _ready():
 			add_child(dude)
 	for i in $BattleshipSpawnLocations.get_children():
 		if randf() < battleship_spawn_chance:
+			total += 1
 			var dude = big_enemy.instantiate();
 			dude.position = i.position
 			add_child(dude)
+	GlobalGameState.num_enemies = total
 	return
 	const numAsteroids = 10.0
 	const arenaRadius = 10000.0

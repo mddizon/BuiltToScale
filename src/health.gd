@@ -21,4 +21,6 @@ func take_damage(damage: int, source: Node):
 		die()
 	
 func die():
+	if isEnemy:
+		SignalBus.enemy_died.emit()
 	get_parent().queue_free()
