@@ -10,7 +10,7 @@ var current_system = null: set = _set_system;
 const swole_anim_duration = 0.6
 const swole_anim_scale = 4
 var swole_anim_progress = -1.0
-var saved_char_scale = Vector2(1, 1)
+var saved_char_scale = Vector2(0.5, 0.5)
 
 func _on_weapons_locker_interacted(_action_name):
 	if not current_system == "weapons":
@@ -68,12 +68,12 @@ func _on_pilot_interacted(action_name):
 		emit_signal("enable_flight_controls")
 
 func _on_combat_interacted(action_name):
-	if not current_system == "combat":
+	if not current_system == "combat" and not swole_anim_progress >= 0:
 		AudioController.go_outside()
 		AudioController.play_game_sound('activated')
 
 		#wait for the first part of the swole anim
-		saved_char_scale = $InteriorCharacter.scale
+		#saved_char_scale = $InteriorCharacter.scale
 		$InteriorCharacter.rotation = rotation
 		swole_anim_progress = 0 # start the scale
 		AudioController.play_game_sound('growing_scream')
