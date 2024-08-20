@@ -25,6 +25,7 @@ func take_damage(damage: int, source: Node):
 func die():
 	if isEnemy and not isPart:
 		SignalBus.enemy_died.emit()
+		AudioController.play_game_sound("enemy_damage")
 	get_parent().queue_free()
 	var parent = get_parent()
 	#play particle effect

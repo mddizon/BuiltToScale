@@ -21,8 +21,7 @@ gun_range = 20000
 rotation_speed = 1.0
 warn_length = 20000
 warn_width = 75
-damage = 5
-num_bullets = 3
+num_bullets = 5
 time_to_shoot = 5.0
 
 [node name="Line2D" type="Line2D" parent="."]
