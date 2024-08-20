@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 @onready var sprite = $Sprite2D
-@onready var collider = $CollisionShape2D
+@onready var collider = $CollisionPolygon2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
