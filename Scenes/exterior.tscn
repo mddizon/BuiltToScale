@@ -19,6 +19,10 @@ scale = Vector2(4.80833, 4.80833)
 texture = ExtResource("2_6mohs")
 
 [node name="PlayerShip" parent="." instance=ExtResource("3_xdfxa")]
+position = Vector2(-305, 120)
+rotation = 6.30446
+continuous_cd = 2
+max_contacts_reported = 3
 linear_damp = 0.75
 angular_damp = 0.75
 thrusts = [0, 100, 500, 1000, 20000]
