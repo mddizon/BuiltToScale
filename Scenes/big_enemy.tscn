@@ -26,17 +26,34 @@ texture = ExtResource("1_2oy3f")
 
 [node name="Emitter1" parent="." instance=ExtResource("2_iwc32")]
 position = Vector2(192, 193)
+vision_length = 500
+gun_range = 500
+warn_length = 500
+warn_width = 75
+damage = 100
 
 [node name="Emitter2" parent="." instance=ExtResource("2_iwc32")]
 position = Vector2(-198, 199)
+vision_length = 500
+gun_range = 500
+warn_length = 500
+warn_width = 75
 
 [node name="Emitter3" parent="." instance=ExtResource("2_iwc32")]
 position = Vector2(242, 40)
 rotation = -0.471943
+vision_length = 500
+gun_range = 500
+warn_length = 500
+warn_width = 75
 
 [node name="Emitter4" parent="." instance=ExtResource("2_iwc32")]
 position = Vector2(-250, 55)
 rotation = 0.610985
+vision_length = 500
+gun_range = 500
+warn_length = 500
+warn_width = 75
 
 [node name="Healthbar" parent="." instance=ExtResource("4_pgxlv")]
 offset_left = -117.0

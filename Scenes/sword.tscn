@@ -40,5 +40,6 @@ position = Vector2(1.99962, -39.1306)
 shape = SubResource("RectangleShape2D_m341b")
 
 [node name="DamageSource" parent="Sword/Area2D" instance=ExtResource("3_wlou1")]
+damage = 3
 hurtsEnemy = true
 hurtsAsteroid = true
