@@ -1,5 +1,9 @@
 extends Node2D
 
+@export var enemy_spawn_chance = 1
+@export var asteroid_spawn_chance = 1
+@export var battleship_spawn_chance = 1
+
 var enemy = preload("res://Scenes/small_enemy.tscn")
 var asteroid = preload("res://Scenes/asteroid.tscn")
 var big_enemy = preload("res://Scenes/big_enemy.tscn")
@@ -8,17 +12,20 @@ var big_enemy = preload("res://Scenes/big_enemy.tscn")
 func _ready():
 	var scene = preload("res://Scenes/asteroid.tscn")
 	for i in $EnemySpawnLocations.get_children():
-		var dude = enemy.instantiate();
-		dude.position = i.position
-		add_child(dude)
+		if randf() < enemy_spawn_chance:
+			var dude = enemy.instantiate();
+			dude.position = i.position
+			add_child(dude)
 	for i in $AsteroidSpawnLocations.get_children():
-		var dude = asteroid.instantiate();
-		dude.position = i.position
-		add_child(dude)
+		if randf() < asteroid_spawn_chance:
+			var dude = asteroid.instantiate();
+			dude.position = i.position
+			add_child(dude)
 	for i in $BattleshipSpawnLocations.get_children():
-		var dude = asteroid.instantiate();
-		dude.position = i.position
-		add_child(dude)
+		if randf() < battleship_spawn_chance:
+			var dude = big_enemy.instantiate();
+			dude.position = i.position
+			add_child(dude)
 	return
 	const numAsteroids = 10.0
 	const arenaRadius = 10000.0
