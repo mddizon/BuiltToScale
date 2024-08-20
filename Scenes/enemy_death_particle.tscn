@@ -28,6 +28,7 @@ color_ramp = SubResource("GradientTexture1D_xakwx")
 color_initial_ramp = SubResource("GradientTexture1D_6f5xn")
 
 [node name="EnemyDeathParticle" type="GPUParticles2D"]
+z_index = 5
 position = Vector2(668, 255)
 emitting = false
 amount = 100

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://nqjvarmir6ow"]
+[gd_scene load_steps=18 format=3 uid="uid://nqjvarmir6ow"]
 
 [ext_resource type="Script" path="res://src/PlayerShip.gd" id="1_a0hv5"]
 [ext_resource type="Texture2D" uid="uid://rsr148c88yag" path="res://Resources/Art/Hero Ship_sprites/Ship_.png" id="2_g3qkk"]
@@ -10,26 +10,15 @@
 [ext_resource type="PackedScene" uid="uid://dhdew4mlkjxct" path="res://Scenes/ship_interior.tscn" id="8_v7ts8"]
 [ext_resource type="PackedScene" uid="uid://gladf3eq8w5n" path="res://Scenes/arm.tscn" id="9_fou54"]
 [ext_resource type="Texture2D" uid="uid://8qmwne47ei7c" path="res://Resources/Art/Arms/Arm-Upper_R.png" id="9_xxqxt"]
-[ext_resource type="Script" path="res://src/sword.gd" id="10_il2n6"]
 [ext_resource type="Texture2D" uid="uid://cw2jn754yp6pk" path="res://Resources/Art/Arms/Arm-Upper_L.png" id="10_uutrx"]
-[ext_resource type="Script" path="res://src/gun.gd" id="11_g5wqe"]
-[ext_resource type="PackedScene" uid="uid://be2w4f443eyhp" path="res://Scenes/damage_source.tscn" id="11_iet6x"]
 [ext_resource type="PackedScene" uid="uid://c305dj7kmix7v" path="res://Scenes/health.tscn" id="12_ul2m7"]
-[ext_resource type="Texture2D" uid="uid://bl5ngwljc0oft" path="res://Resources/Art/Arms/Hand-Sword_L.png" id="13_6xylr"]
-[ext_resource type="Texture2D" uid="uid://cro37fxsm461x" path="res://Resources/Art/Arms/Hand-Pistol_R.png" id="15_w1scr"]
+[ext_resource type="PackedScene" uid="uid://cy44dmb8r8xyl" path="res://Scenes/sword.tscn" id="15_g01lr"]
+[ext_resource type="PackedScene" uid="uid://bhnkjip4nrjme" path="res://Scenes/gun.tscn" id="16_h2ocm"]
 [ext_resource type="Texture2D" uid="uid://d4nngypskva4i" path="res://Resources/Art/Arms/Arm-Lower_L.png" id="18_oor15"]
 [ext_resource type="Texture2D" uid="uid://bt7ovahpvo5h5" path="res://Resources/Art/Arms/Arm-Lower_R.png" id="19_3vp0i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8672g"]
 size = Vector2(67, 136)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pcycr"]
-size = Vector2(338.265, 18)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m341b"]
-size = Vector2(36.2625, 311.739)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_gmd7j"]
 
 [node name="PlayerShip" type="RigidBody2D" groups=["player"]]
 collision_mask = 53
@@ -39,7 +28,6 @@ contact_monitor = true
 script = ExtResource("1_a0hv5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3, 1)
 texture = ExtResource("2_g3qkk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -75,7 +63,6 @@ texture = ExtResource("6_i7o4a")
 
 [node name="ShipInterior" parent="." instance=ExtResource("8_v7ts8")]
 z_index = 10
-position = Vector2(-3, 4)
 scale = Vector2(0.3, 0.3)
 
 [node name="plume_1" type="Sprite2D" parent="."]
@@ -119,64 +106,19 @@ health = 100
 isPlayer = true
 
 [node name="LeftArm" parent="." instance=ExtResource("9_fou54")]
+visible = false
 position = Vector2(-213, 0)
 collision_mask = 36
 righty = false
 
-[node name="SwordSprite" type="Sprite2D" parent="LeftArm"]
-position = Vector2(122, 0)
-rotation = -3.14159
-texture = ExtResource("13_6xylr")
-centered = false
-offset = Vector2(-222.757, -42.5)
-
-[node name="Sword" type="StaticBody2D" parent="LeftArm/SwordSprite"]
-position = Vector2(-6.02053, -12.5238)
-collision_layer = 8
-collision_mask = 36
-script = ExtResource("10_il2n6")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArm/SwordSprite/Sword"]
-position = Vector2(-40.9795, 11.5049)
-shape = SubResource("RectangleShape2D_pcycr")
-
-[node name="Area2D" type="Area2D" parent="LeftArm/SwordSprite/Sword"]
-position = Vector2(-97.9795, 10.505)
-rotation = 1.5708
-collision_layer = 8
-collision_mask = 52
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArm/SwordSprite/Sword/Area2D"]
-position = Vector2(1.99962, -39.1306)
-shape = SubResource("RectangleShape2D_m341b")
-
-[node name="DamageSource" parent="LeftArm/SwordSprite/Sword/Area2D" instance=ExtResource("11_iet6x")]
-hurtsEnemy = true
-hurtsAsteroid = true
+[node name="Sword" parent="LeftArm" instance=ExtResource("15_g01lr")]
 
 [node name="RightArm" parent="." instance=ExtResource("9_fou54")]
+visible = false
 position = Vector2(198.667, -0.26294)
 collision_mask = 36
 
-[node name="Gun" type="StaticBody2D" parent="RightArm" node_paths=PackedStringArray("recoilTarget")]
-position = Vector2(2, -1)
-collision_layer = 0
-collision_mask = 0
-script = ExtResource("11_g5wqe")
-recoilTarget = NodePath("../..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightArm/Gun"]
-position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_gmd7j")
-
-[node name="Sprite2D" type="Sprite2D" parent="RightArm/Gun"]
-position = Vector2(0, -1)
-texture = ExtResource("15_w1scr")
-centered = false
-offset = Vector2(-33, -86)
-
-[node name="Marker2D" type="Marker2D" parent="RightArm/Gun/Sprite2D"]
-position = Vector2(95.3325, -5.73706)
+[node name="Gun" parent="RightArm" instance=ExtResource("16_h2ocm")]
 
 [connection signal="enable_combat" from="ShipInterior" to="." method="_on_ship_interior_enable_combat"]
 [connection signal="enable_flight_controls" from="ShipInterior" to="." method="_on_ship_interior_enable_flight_controls"]
