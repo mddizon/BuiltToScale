@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckwys12xpqdun"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oty3v"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="ExplosionRed" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_oty3v")
+animation = &"new_animation"
+speed_scale = 2.0

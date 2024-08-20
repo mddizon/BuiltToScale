@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ro3yhobq5dcd"]
+[gd_scene load_steps=7 format=3 uid="uid://ro3yhobq5dcd"]
 
 [ext_resource type="Script" path="res://src/exterior.gd" id="1_e06au"]
 [ext_resource type="Texture2D" uid="uid://dpp38dxxomfdo" path="res://Resources/Art/Nebula.png" id="2_6mohs"]
 [ext_resource type="PackedScene" uid="uid://nqjvarmir6ow" path="res://Scenes/player_ship.tscn" id="3_xdfxa"]
+[ext_resource type="PackedScene" uid="uid://c15ji2re65t6b" path="res://Scenes/explosion_blue.tscn" id="4_4n5kf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8kfbu"]
 size = Vector2(12442, 73)
@@ -132,3 +133,5 @@ position = Vector2(5080, 4038)
 
 [node name="Marker2D4" type="Marker2D" parent="BattleshipSpawnLocations"]
 position = Vector2(-5105, 4089)
+
+[node name="Explosion" parent="." instance=ExtResource("4_4n5kf")]

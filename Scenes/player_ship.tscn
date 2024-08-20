@@ -464,7 +464,6 @@ scale = Vector2(10.5186, 10.4517)
 sprite_frames = SubResource("SpriteFrames_dmtfw")
 animation = &"new_animation"
 autoplay = "new_animation"
-frame_progress = 0.107956
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_g3qkk")
@@ -543,6 +542,7 @@ offset = Vector2(36, -5)
 [node name="Health" parent="." instance=ExtResource("12_ul2m7")]
 health = 100
 isPlayer = true
+deathAnimationScale = 10
 
 [node name="LeftArm" parent="." instance=ExtResource("9_fou54")]
 visible = false
