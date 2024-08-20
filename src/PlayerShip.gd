@@ -137,6 +137,7 @@ func disableArms():
 func _on_ship_interior_enable_flight_controls():
 	controlsDisabled = false
 	combatEnabled = false
+	$ShipInterior.visible = false
 	$Camera2D.set_target_zoom(Vector2(0.5, 0.5))
 	disableArms()
 

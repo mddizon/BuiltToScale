@@ -138,7 +138,6 @@ script = ExtResource("10_il2n6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArm/SwordSprite/Sword"]
 position = Vector2(-40.9795, 11.5049)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_pcycr")
 
 [node name="Area2D" type="Area2D" parent="LeftArm/SwordSprite/Sword"]
@@ -149,7 +148,6 @@ collision_mask = 52
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArm/SwordSprite/Sword/Area2D"]
 position = Vector2(1.99962, -39.1306)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_m341b")
 
 [node name="DamageSource" parent="LeftArm/SwordSprite/Sword/Area2D" instance=ExtResource("11_iet6x")]
