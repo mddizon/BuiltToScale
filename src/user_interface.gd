@@ -9,6 +9,7 @@ func _ready():
 	$Healthbar.init_health(GlobalGameState.player_health)
 	SignalBus.enemy_died.connect(_update_remaining)
 	$Remaining/Label2.text = str(GlobalGameState.num_enemies)
+	SignalBus.change_mode.connect(_on_change_mode)
 	#var shader_material = ShaderMaterial.new()
 	#shader_material.set_shader_param("screen_texture", get_viewport().get_texture())
 	pass # Replace with function body.
@@ -32,3 +33,9 @@ func _update_remaining():
 	if GlobalGameState.num_enemies <= 0 and GlobalGameState.is_game_over == false:
 		GlobalGameState.is_game_over = true
 		get_tree().change_scene_to_packed(win_screen)
+
+func _on_change_mode(mode):
+	if mode == 'weapons':
+		$WeaponPicker.visible = true
+	else:
+		$WeaponPicker.visible = false

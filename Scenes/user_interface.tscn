@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d348lg2dx6dqf"]
+[gd_scene load_steps=10 format=3 uid="uid://d348lg2dx6dqf"]
 
 [ext_resource type="Script" path="res://src/user_interface.gd" id="1_goxpi"]
 [ext_resource type="PackedScene" uid="uid://flltnricw5vr" path="res://Scenes/healthbar.tscn" id="2_b2qaa"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ddsljll3fnvn1" path="res://Scenes/info.tscn" id="4_qqlox"]
 [ext_resource type="FontFile" uid="uid://b760b8tublx3s" path="res://Resources/Art/fonts/80s-retro-future.ttf" id="5_aieg1"]
 [ext_resource type="FontFile" uid="uid://q643ft2jd04w" path="res://Resources/Art/fonts/SyntheticText.ttf" id="6_k5ath"]
+[ext_resource type="PackedScene" uid="uid://bc51t7ypiba6o" path="res://Scenes/weapon_picker.tscn" id="7_qnst6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_36ncf"]
 font = ExtResource("5_aieg1")
@@ -54,10 +55,10 @@ offset_right = 346.0
 color = Color(0.0509804, 0.00784314, 0.129412, 0.541176)
 
 [node name="Remaining" type="ColorRect" parent="."]
-offset_left = 1589.0
-offset_top = 835.0
-offset_right = 1856.0
-offset_bottom = 1039.0
+offset_left = 7.0
+offset_top = 156.0
+offset_right = 274.0
+offset_bottom = 360.0
 color = Color(0.0509804, 0.00784314, 0.129412, 0.541176)
 
 [node name="Label" type="Label" parent="Remaining"]
@@ -83,3 +84,10 @@ text = "99
 label_settings = SubResource("LabelSettings_meoej")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="WeaponPicker" parent="." instance=ExtResource("7_qnst6")]
+visible = false
+offset_left = 572.0
+offset_top = 368.0
+offset_right = 572.0
+offset_bottom = 368.0

@@ -30,6 +30,7 @@ var combatEnabled = true;
 func _ready():
 	angular_damp = 1
 	SignalBus.player_damage_taken.connect(on_damage)
+	SignalBus.weapon_picked.connect(_on_weapon_picked)
 	healthComponent.health = GlobalGameState.player_health
 	body_entered.connect(_on_body_entered)
 	contact_monitor = true
@@ -145,3 +146,7 @@ func _on_ship_interior_enable_combat():
 	$ShipInterior.visible = false
 	$Camera2D.set_target_zoom(Vector2(0.5, 0.5))
 	enableArms()
+
+func _on_weapon_picked(weapon, is_right):
+	print('weapon_picked')
+	print(weapon + str(is_right))

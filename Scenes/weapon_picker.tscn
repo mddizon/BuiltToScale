@@ -1,0 +1,113 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc51t7ypiba6o"]
+
+[ext_resource type="Script" path="res://src/weapon_picker.gd" id="1_able4"]
+[ext_resource type="Theme" uid="uid://w7lokxr7htxk" path="res://Resources/button_theme.tres" id="1_uxu71"]
+[ext_resource type="ButtonGroup" uid="uid://cqjl2e4ocls6t" path="res://left_hand_weapons.tres" id="2_p6nsg"]
+[ext_resource type="ButtonGroup" uid="uid://bxkghwowtrfk3" path="res://right_hand_weapons.tres" id="3_gnn4m"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_able4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 369.0
+offset_bottom = 317.0
+color = Color(0.14902, 0.0784314, 0.278431, 0.545098)
+
+[node name="Button" type="Button" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.5
+offset_top = -62.0
+offset_right = 44.5
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.16112, 1.16112)
+theme = ExtResource("1_uxu71")
+text = "Confirm"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 27.0
+offset_right = 217.0
+offset_bottom = 149.0
+scale = Vector2(1.67965, 1.8082)
+
+[node name="Left" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Left"]
+layout_mode = 2
+theme = ExtResource("1_uxu71")
+text = "Left
+"
+
+[node name="Sword" type="Button" parent="HBoxContainer/Left"]
+layout_mode = 2
+theme = ExtResource("1_uxu71")
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("2_p6nsg")
+text = "Sword"
+
+[node name="Blaster" type="Button" parent="HBoxContainer/Left"]
+layout_mode = 2
+theme = ExtResource("1_uxu71")
+toggle_mode = true
+button_group = ExtResource("2_p6nsg")
+text = "Blaster"
+
+[node name="Shield" type="Button" parent="HBoxContainer/Left"]
+layout_mode = 2
+theme = ExtResource("1_uxu71")
+toggle_mode = true
+button_group = ExtResource("2_p6nsg")
+text = "Shield
+"
+
+[node name="Right" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Right"]
+layout_mode = 2
+theme = ExtResource("1_uxu71")
+text = "Right"
+
+[node name="Sword" type="Button" parent="HBoxContainer/Right"]
+layout_mode = 2
+theme = ExtResource("1_uxu71")
+toggle_mode = true
+button_group = ExtResource("3_gnn4m")
+text = "Sword"
+
+[node name="Blaster" type="Button" parent="HBoxContainer/Right"]
+layout_mode = 2
+theme = ExtResource("1_uxu71")
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("3_gnn4m")
+text = "Blaster"
+
+[node name="Shield" type="Button" parent="HBoxContainer/Right"]
+layout_mode = 2
+theme = ExtResource("1_uxu71")
+toggle_mode = true
+button_group = ExtResource("3_gnn4m")
+text = "Shield
+"
+
+[connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Left/Sword" to="." method="_on_sword_pressed" binds= [false]]
+[connection signal="pressed" from="HBoxContainer/Left/Blaster" to="." method="_on_blaster_pressed" binds= [false]]
+[connection signal="pressed" from="HBoxContainer/Left/Shield" to="." method="_on_shield_pressed" binds= [false]]
+[connection signal="pressed" from="HBoxContainer/Right/Sword" to="." method="_on_sword_pressed" binds= [true]]
+[connection signal="pressed" from="HBoxContainer/Right/Blaster" to="." method="_on_blaster_pressed" binds= [true]]
+[connection signal="pressed" from="HBoxContainer/Right/Shield" to="." method="_on_shield_pressed" binds= [true]]

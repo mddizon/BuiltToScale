@@ -9,6 +9,7 @@ var current_system = null : set = _set_system;
 
 func _on_weapons_locker_interacted(_action_name):
 	if not current_system == "weapons":
+		SignalBus.change_mode.emit('weapons')
 		AudioController.play_game_sound('activated')
 		current_system = "weapons"
 
@@ -36,7 +37,6 @@ func _set_system(new_system):
 	if new_system == current_system:
 		return
 	
-	print(str(current_system) + '->' + str(new_system))
 	if current_system == 'combat' || current_system == 'pilot':
 		AudioController.go_inside()
 
@@ -48,6 +48,7 @@ func _on_change_mode(mode):
 
 func _on_pilot_interacted(action_name):
 	if not current_system == 'pilot':
+		AudioController.go_outside()
 		AudioController.play_game_sound('activated')
 		current_system = "pilot"
 		SignalBus.change_mode.emit('navigation')
