@@ -8,6 +8,7 @@ var trauma = 0
 @export var trauma_decay = 3
 @export var impact_trauma = 4
 @export var damage_trauma = 3
+@export var minor_trauma = 2
 @export var max_trauma = 4
 
 @onready var noise = FastNoiseLite.new()
@@ -19,6 +20,7 @@ func _ready():
 
 	SignalBus.player_collision.connect(_on_impact)
 	SignalBus.player_damage_taken.connect(_on_player_damaged)
+	SignalBus.do_screen_shake.connect(_on_force_shake)
 
 	noise.noise_type = FastNoiseLite.TYPE_SIMPLEX
 	noise.seed = randi()
@@ -49,7 +51,13 @@ func set_target_zoom(new_zoom: Vector2):
 
 
 func _on_impact(other: Node):
-	trauma = min(max_trauma, trauma + impact_trauma)
+	trauma = impact_trauma
 
 func _on_player_damaged(damage):
-	trauma = min(max_trauma, trauma + damage_trauma)
+	trauma = damage_trauma
+
+func _on_force_shake(big: bool):
+	if big:
+		trauma = damage_trauma
+	else:
+		trauma = minor_trauma

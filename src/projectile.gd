@@ -11,8 +11,11 @@ func _ready():
 	particle.rotation = global_rotation
 	particle.emitting = true
 	get_tree().current_scene.add_child(particle)
-
-	pass
+	
+	#var isEnemy = get_collision_layer_value(3) 
+	#if isEnemy:
+		#AudioController.play_game_sound("enemy_laser")
+	
 
 func _physics_process(delta):
 	position += Vector2.DOWN.rotated(rotation) * speed * delta
