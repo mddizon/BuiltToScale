@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://nqjvarmir6ow"]
+[gd_scene load_steps=22 format=3 uid="uid://nqjvarmir6ow"]
 
 [ext_resource type="Script" path="res://src/PlayerShip.gd" id="1_a0hv5"]
 [ext_resource type="Texture2D" uid="uid://rsr148c88yag" path="res://Resources/Art/Hero Ship_sprites/Ship_.png" id="2_g3qkk"]
@@ -15,15 +15,11 @@
 [ext_resource type="Script" path="res://src/gun.gd" id="11_g5wqe"]
 [ext_resource type="PackedScene" uid="uid://be2w4f443eyhp" path="res://Scenes/damage_source.tscn" id="11_iet6x"]
 [ext_resource type="PackedScene" uid="uid://c305dj7kmix7v" path="res://Scenes/health.tscn" id="12_ul2m7"]
+[ext_resource type="Texture2D" uid="uid://bl5ngwljc0oft" path="res://Resources/Art/Arms/Hand-Sword_L.png" id="13_6xylr"]
 [ext_resource type="Texture2D" uid="uid://cro37fxsm461x" path="res://Resources/Art/Arms/Hand-Pistol_R.png" id="15_w1scr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8672g"]
 size = Vector2(67, 136)
-
-[sub_resource type="Gradient" id="Gradient_ctlx6"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_bx214"]
-gradient = SubResource("Gradient_ctlx6")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pcycr"]
 size = Vector2(19.0047, 171.279)
@@ -108,7 +104,6 @@ collision_mask = 36
 righty = false
 
 [node name="Sword" type="StaticBody2D" parent="LeftArm"]
-visible = false
 position = Vector2(1.59961, -14.2707)
 rotation = -0.00475759
 collision_layer = 8
@@ -116,10 +111,9 @@ collision_mask = 36
 script = ExtResource("10_il2n6")
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftArm/Sword"]
-position = Vector2(-99, 13)
-rotation = -1.5708
-scale = Vector2(0.368797, 2.68053)
-texture = SubResource("GradientTexture2D_bx214")
+position = Vector2(-79.6675, 13.2629)
+scale = Vector2(0.8305, 0.8)
+texture = ExtResource("13_6xylr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArm/Sword"]
 position = Vector2(-99, 13)
